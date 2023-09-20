@@ -3,11 +3,11 @@ def middle(x, y, z):
     if y < z:
         if x < y:
             m = y
-        elif x < z: #3, 2, 1 x > z, y > z, x < y 2 3 1 
-            m = x  
+        elif x < z:
+            m = y  # bug
     else:
         if x > y:
             m = y
         elif x > z:
-            m = x # line to call
+            m = x
     return m
