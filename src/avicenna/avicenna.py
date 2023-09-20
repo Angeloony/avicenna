@@ -151,9 +151,11 @@ class Avicenna:
         return Maybe.nothing()
 
     def explain(self) -> Tuple[Formula, float, float]:
+        """Main function call for Avicenna. Returns the invariant with the best score for a given Input set."""
         new_inputs: Set[Input] = self.all_inputs.union(self.generate_more_inputs())
         while self._do_more_iterations():
             new_inputs = self._loop(new_inputs)
+        print("hi")
         return self.finalize()
 
     def _do_more_iterations(self):
