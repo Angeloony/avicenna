@@ -155,7 +155,7 @@ class Avicenna:
         new_inputs: Set[Input] = self.all_inputs.union(self.generate_more_inputs())
         while self._do_more_iterations():
             new_inputs = self._loop(new_inputs)
-        print("hi")
+        print("before finalize")
         return self.finalize()
 
     def _do_more_iterations(self):
@@ -199,7 +199,8 @@ class Avicenna:
     def _loop(self, test_inputs: Set[Input]):
         test_inputs = self.construct_inputs(test_inputs)
         exclusion_non_terminals = self.learn_relevant_features()
-
+        #print("printing test inputs")
+        #print(test_inputs)
         new_candidates = self.pattern_learner.learn_failure_invariants(
             test_inputs,
             self.precision_truth_table,
@@ -240,11 +241,14 @@ class Avicenna:
 
     def finalize(self) -> Tuple[Formula, float, float]:
         best_candidate = self._calculate_best_formula()[0]
+        print("after best_candidate" + str(best_candidate))
         # self._log_best_candidates([best_candidate])
         return best_candidate
 
     def _calculate_best_formula(self) -> List[Tuple[Formula, float, float]]:
         candidates_with_scores = self._gather_candidates_with_scores()
+        print("cand w scores")
+        print(candidates_with_scores)
         best_candidates = self._get_best_candidates(candidates_with_scores)
 
         return best_candidates
@@ -285,6 +289,7 @@ class Avicenna:
             candidates_with_scores[0][1],
             candidates_with_scores[0][2],
         )
+        print(str(top_precision) + " " + str(top_recall))
 
         return [
             candidate
