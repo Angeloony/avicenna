@@ -65,6 +65,8 @@ def construct_oracle(
     )
 
 
+# call this if an oracle was defined and given 
+# this could check for our line to be called
 def _construct_functional_oracle(
     program_under_test: Callable,
     program_oracle: Callable,
@@ -73,14 +75,17 @@ def _construct_functional_oracle(
     default_oracle_result: OracleResult,
 ):
     def oracle(inp: Input) -> OracleResult:
+        # param list needs to be extended to account for the desired line to be called 
         param = list(map(int, str(inp).strip().split()))  # This might become a problem
         try:
+            # checks timeout exception
             with ManageTimeout(timeout):
                 produced_result = program_under_test(*param)
 
             expected_result = program_oracle(*param)
             if expected_result != produced_result:
                 raise UnexpectedResultError("Results do not match")
+            
         except Exception as e:
             return error_definitions.get(type(e), default_oracle_result)
         return OracleResult.NO_BUG
@@ -88,6 +93,7 @@ def _construct_functional_oracle(
     return oracle
 
 
+# only works when a failure occurs, meaning the program under test must throw an exception
 def _construct_failure_oracle(
     program_under_test: Callable,
     error_definitions: Dict[Type[Exception], OracleResult],
@@ -98,8 +104,10 @@ def _construct_failure_oracle(
         try:
             with ManageTimeout(timeout):
                 program_under_test(str(inp))
+                
         except Exception as e:
             return error_definitions.get(type(e), default_oracle_result)
+        
         return OracleResult.NO_BUG
 
     return oracle
