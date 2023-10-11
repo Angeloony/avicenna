@@ -1,4 +1,5 @@
 from typing import Callable, Dict, Type, Optional
+from pathlib import Path
 import signal
 from avicenna.oracle import OracleResult
 from avicenna.input import Input
@@ -14,6 +15,17 @@ class ManageTimeout:
     def __exit__(self, exc_type, exc_value, traceback):
         cancel_alarm()
 
+# for managing event files below
+class EventFile:
+    def __init__(self, file_name: str):
+        self.file = open(file_name, newline='')
+        
+    def __enter__(self):
+        return self.file
+    
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.file.close()
+        
 
 class UnexpectedResultError(Exception):
     pass
@@ -42,6 +54,7 @@ def construct_oracle(
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEF,
+    line: int = -1,
 ) -> Callable[[Input], OracleResult]:
     error_definitions = error_definitions or {}
     default_oracle_result = (
@@ -52,10 +65,21 @@ def construct_oracle(
         raise ValueError(f"Invalid value for expected_error: {error_definitions}")
 
     # Choose oracle construction method based on presence of program_oracle
-    oracle_constructor = (
-        _construct_functional_oracle if program_oracle else _construct_failure_oracle
-    )
-
+    if program_oracle:
+        if line > 0:
+            oracle_constructor = _construct_functional_line_oracle
+            # added separate return here since line oracles need greatly different inputs
+            return oracle_constructor(
+                program_under_test,
+                timeout,
+                line,
+            )
+        else:  
+            oracle_constructor = _construct_functional_oracle
+    else: 
+        oracle_constructor = _construct_failure_oracle
+    
+    
     return oracle_constructor(
         program_under_test,
         program_oracle,
@@ -63,6 +87,60 @@ def construct_oracle(
         timeout,
         default_oracle_result,
     )
+
+# ** UNDER CONSTRUCTION **
+# important: oracles will be hard coded before-hand and must maintain a given shape
+def _construct_functional_line_oracle(
+    instrumented_program_under_test: Callable,
+    call_function: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
+    timeout: int,
+    desired_line: int,
+):
+    def oracle(inp: Input) -> OracleResult:        
+        # TODO : add call function 
+        # ** ADD HERE **
+        converted_inp = call_function(str(inp)) # list containing the PUT's inputs in order of the PUT's inputs
+        
+        
+        try:
+            # checks timeout exception and whether the line was triggered
+            with ManageTimeout(timeout):
+                _run_instrumented_PUT( # run the instrumented file here already, allow for timeout * 2 or something instead, because of frequent outputs
+                    instrumented_program_under_test,
+                    converted_inp
+                ) 
+
+        except Exception as e:
+            print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?
+            
+        # ** add proper handling of created directories and files ** 
+        path = Path('./event-files/0') # This are the only file/folder that will exist and be deleted during each run
+        
+        with EventFile(path) as event_file:
+            for line in event_file.readlines():
+                cur_line = line.split(',')
+                if cur_line[-2] == desired_line.str():
+                    return OracleResult.BUG
+                
+            return OracleResult.NO_BUG
+
+    return oracle
+
+
+# running the instrumented PUT
+# instrumentation happens in the beginning of AviX's run, the instrmented code is used here
+def _run_instrumented_PUT(
+    instr_PUT: Callable, # callable tmp PUT
+    converted_inp: list, # list of inputs for PUT
+    ):
+        import tmp # tmp file has to be in avicenna.src
+        importlib.reload(tmp)
+        tmp.sflkitlib.lib.reset()
+        try:
+            return instr_PUT(converted_inp)
+        finally:
+            tmp.sflkitlib.lib.dump_events()
+            del tmp
 
 
 # call this if an oracle was defined and given 
@@ -82,6 +160,7 @@ def _construct_functional_oracle(
             with ManageTimeout(timeout):
                 produced_result = program_under_test(*param)
 
+            
             expected_result = program_oracle(*param)
             if expected_result != produced_result:
                 raise UnexpectedResultError("Results do not match")
