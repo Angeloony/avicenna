@@ -51,10 +51,11 @@ def cancel_alarm():
 def construct_oracle(
     program_under_test: Callable,
     program_oracle: Optional[Callable],
+    inp_converter: Optional[Callable],
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEF,
-    line: int = -1,
+    line: int = None,
 ) -> Callable[[Input], OracleResult]:
     error_definitions = error_definitions or {}
     default_oracle_result = (
@@ -65,17 +66,18 @@ def construct_oracle(
         raise ValueError(f"Invalid value for expected_error: {error_definitions}")
 
     # Choose oracle construction method based on presence of program_oracle
+    # TODO : refactor to switch case
     if program_oracle:
-        if line > 0:
-            oracle_constructor = _construct_functional_line_oracle
-            # added separate return here since line oracles need greatly different inputs
-            return oracle_constructor(
-                program_under_test,
-                timeout,
-                line,
-            )
-        else:  
             oracle_constructor = _construct_functional_oracle
+    elif line: 
+        oracle_constructor = _construct_functional_line_oracle
+        # added separate return here since line oracles need greatly different inputs
+        return oracle_constructor(
+            program_under_test,
+            inp_converter,
+            timeout,
+            line,
+        )
     else: 
         oracle_constructor = _construct_failure_oracle
     
@@ -91,30 +93,26 @@ def construct_oracle(
 # ** UNDER CONSTRUCTION **
 # important: oracles will be hard coded before-hand and must maintain a given shape
 def _construct_functional_line_oracle(
-    instrumented_program_under_test: Callable,
-    call_function: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
+    program_under_test: Callable,
+    inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
     timeout: int,
     desired_line: int,
 ):
     def oracle(inp: Input) -> OracleResult:        
         # TODO : add call function 
         # ** ADD HERE **
-        converted_inp = call_function(str(inp)) # list containing the PUT's inputs in order of the PUT's inputs
-        
+        converted_inp = inp_converter(str(inp)) # list containing the PUT's inputs in order of the PUT's inputs
         
         try:
             # checks timeout exception and whether the line was triggered
             with ManageTimeout(timeout):
-                _run_instrumented_PUT( # run the instrumented file here already, allow for timeout * 2 or something instead, because of frequent outputs
-                    instrumented_program_under_test,
-                    converted_inp
-                ) 
+                program_under_test(converted_inp)
 
         except Exception as e:
             print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?
             
         # ** add proper handling of created directories and files ** 
-        path = Path('./event-files/0') # This are the only file/folder that will exist and be deleted during each run
+        path = Path('./resources/event_file') # This are the only file/folder that will exist and be deleted during each run
         
         with EventFile(path) as event_file:
             for line in event_file.readlines():
@@ -133,14 +131,7 @@ def _run_instrumented_PUT(
     instr_PUT: Callable, # callable tmp PUT
     converted_inp: list, # list of inputs for PUT
     ):
-        import tmp # tmp file has to be in avicenna.src
-        importlib.reload(tmp)
-        tmp.sflkitlib.lib.reset()
-        try:
-            return instr_PUT(converted_inp)
-        finally:
-            tmp.sflkitlib.lib.dump_events()
-            del tmp
+    return instr_PUT(converted_inp)
 
 
 # call this if an oracle was defined and given 
