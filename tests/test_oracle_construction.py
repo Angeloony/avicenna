@@ -55,7 +55,7 @@ class TestConstructOracle(unittest.TestCase):
         def under_test(x, y):
             raise TimeoutError()
 
-        my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
+        my_oracle = construct_oracle(program_under_test=under_test, program_oracle=oracle, error_definitions=self.error_definitions)
         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
 
     def test_undefined_exception(self):
@@ -65,7 +65,7 @@ class TestConstructOracle(unittest.TestCase):
         def under_test(x, y):
             raise ValueError()
 
-        my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
+        my_oracle = construct_oracle(program_under_test=under_test, program_oracle=oracle, error_definitions=self.error_definitions)
         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
 
     def test_timeout_sleep(self):

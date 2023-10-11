@@ -39,6 +39,8 @@ class TestConstructLineOracle(unittest.TestCase):
         self.inp_converter = middle_inp_conv
         self.program_under_test = Path('./resources/middle_instr.py')
 
+    def test_meow(self):
+        self.assertEqual(1, 1)
 # class TestConstructOracle(unittest.TestCase):
 #     def setUp(self):
 #         self.error_definitions = {

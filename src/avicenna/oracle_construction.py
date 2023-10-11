@@ -51,7 +51,7 @@ def cancel_alarm():
 def construct_oracle(
     program_under_test: Callable,
     program_oracle: Optional[Callable],
-    inp_converter: Optional[Callable],
+    inp_converter: Optional[Callable] = None,
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEF,
