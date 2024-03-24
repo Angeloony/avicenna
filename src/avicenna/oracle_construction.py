@@ -71,7 +71,7 @@ def construct_oracle(
             oracle_constructor = _construct_functional_oracle
     elif line: 
         oracle_constructor = _construct_functional_line_oracle
-        # added separate return here since line oracles need greatly different inputs
+        # added separate return here since line oracles need vastly different inputs
         return oracle_constructor(
             program_under_test,
             inp_converter,
@@ -106,7 +106,7 @@ def _construct_functional_line_oracle(
         try:
             # checks timeout exception and whether the line was triggered
             with ManageTimeout(timeout):
-                program_under_test(converted_inp)
+                program_under_test(converted_inp) # TODO check *param
 
         except Exception as e:
             print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?

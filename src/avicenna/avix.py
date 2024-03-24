@@ -6,6 +6,7 @@ from typing import Callable
 
 from sflkit import * 
 import importlib
+import os
 
 
 # maybe add oracle construction to avix separately as well to differentiate my contributions?
@@ -16,7 +17,7 @@ class AviX(Avicenna):
         desired_line: int,
         call_function: Callable,
         put_path: str,
-        instr_path: str = 'tmp.py',
+        instr_path: str = 'rsc/instr.py',
         ):
         super().__init__()
         
@@ -24,37 +25,67 @@ class AviX(Avicenna):
         instrument(put_path=put_path, instr_path=instr_path)
         
         # importing instrumented function
-        import avicenna.tmp
-        importlib.reload(avicenna.tmp)
-        avicenna.tmp.sflkitlib.lib.reset()  
+        from avicenna.rsc import instr
+        importlib.reload(instr)
+        instr.sflkitlib.lib.reset()  
         
         self.oracle = construct_oracle(
-            program_under_test=avicenna.tmp.middle, # TODO : make the function name dynamic somehow
+            program_under_test=instr.middle, # TODO : make the function name dynamic somehow
             call_function=call_function,
             timeout=10,
             line=desired_line,
         ) # will be the line-Oracle, needs line and callable func and instrumentation
         
-
-# config for instrumentation, needs path for PUT and instrumentation, instr might be obsolete later
-def get_config(
-        put_path,
-        instr_path,
-    ):
-    return Config.create(
-        path=put_path, 
-        working=instr_path, 
-        language='python',
-        predicates='line'
-    )
+        
+    def run_instr(call_function, instr_file_function, inp):
+        call_function(instr_file_function, inp)
+        
 
 
-def instrument(instr_put, put_path):
-    instrument_config(get_config(put_path, instr_put)) 
+    """
+        Create event-file for a given instrumented file and its input
+    """
+    def create_event_file(
+            instr_func,
+            inp, # string in
+            conversion_func, # convert the inp string to an input usable by the function
+             # used to call the instrumented version of a function (needed bcs funcs have different amounts/types of variables needed for calls)
+        ): 
+        os.environ['EVENTS_PATH'] = os.path.join('./rsc', '') # make sure that event-file is actually written in the rsc folder
+        
+        from avicenna.rsc import instr # TODO what is better style for this?
+        importlib.reload(instr)
+        instr.sflkitlib.lib.reset() # <-- this writes the event files
+        
+        converted_inp = conversion_func(inp) # must always return a list!!
+        
+        try:
+            return instr_func(*converted_inp)
+        finally:
+            instr.sflkitlib.lib.dump_events()
+            del instr
+            
+            
+    # config for instrumentation, needs path for PUT and instrumentation, instr might be obsolete later
+    def get_config(
+            put_path,
+            instr_path,
+        ):
+        
+        return Config.create(
+            path=put_path, 
+            working=instr_path, 
+            language='python',
+            predicates='line'
+        )
 
 
-def import_instrumented():
-    import avicenna.tmp
-    importlib.reload(avicenna.tmp)
-    avicenna.tmp.sflkitlib.lib.reset()
-    return
+    def instrument_avix(instr_path, put_path):
+        instrument_config(AviX.get_config(put_path=put_path, instr_path=instr_path))
+
+
+    def import_instrumented():
+        import avicenna.tmp
+        importlib.reload(avicenna.tmp)
+        avicenna.tmp.sflkitlib.lib.reset()
+        return
