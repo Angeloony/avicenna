@@ -1,0 +1,2 @@
+[console_scripts]
+isla = isla.cli:main
