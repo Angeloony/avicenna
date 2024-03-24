@@ -3,19 +3,30 @@ import re
 from abc import ABC, abstractmethod
 from collections import defaultdict
 
-from numpy import inf
+from debugging_framework.oracle import OracleResult
+
 from fuzzingbook.Grammars import is_nonterminal, Grammar, reachable_nonterminals
 from isla.language import DerivationTree
-
-from avicenna.oracle import OracleResult
 
 
 class Feature(ABC):
     def __init__(self, non_terminal: str):
         self.non_terminal = non_terminal
 
-    @abstractmethod
     def __repr__(self) -> str:
+        return (
+            self._repr()
+            .replace('"', "&quot;")
+            .replace(",", "&comma;")
+            .replace("[", "&lsqb;")
+            .replace("]", "&rsqb;")
+            .replace("{", "&lcub;")
+            .replace("}", "&rcub;")
+            .replace(":", "&colon;")
+        )
+
+    @abstractmethod
+    def _repr(self) -> str:
         raise NotImplementedError
 
     def __hash__(self):
@@ -48,7 +59,7 @@ class ExistenceFeature(Feature):
     def __init__(self, non_terminal: str):
         super().__init__(non_terminal)
 
-    def __repr__(self) -> str:
+    def _repr(self) -> str:
         return f"exists({self.non_terminal})"
 
     @property
@@ -73,7 +84,7 @@ class DerivationFeature(Feature):
         super().__init__(non_terminal)
         self.expansion = expansion
 
-    def __repr__(self) -> str:
+    def _repr(self) -> str:
         return f"exists({self.non_terminal} -> {self.expansion})"
 
     @property
@@ -102,7 +113,7 @@ class DerivationFeature(Feature):
 
 
 class NumericFeature(Feature):
-    def __repr__(self):
+    def _repr(self):
         return f"num({self.non_terminal})"
 
     @property
@@ -199,7 +210,7 @@ class NumericFeature(Feature):
 
 
 class LengthFeature(Feature):
-    def __repr__(self):
+    def _repr(self):
         return f"len({self.non_terminal})"
 
     @property

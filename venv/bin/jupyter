@@ -1,4 +1,4 @@
-#!/home/lina/ba/avicenna/venv/bin/python3.10
+#!/home/lina/avicenna/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

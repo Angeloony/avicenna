@@ -1,7 +1,9 @@
-from typing import Callable, Dict, Type, Optional
-from pathlib import Path
 import signal
-from avicenna.oracle import OracleResult
+from pathlib import Path
+from typing import Callable, Dict, Optional, Type
+
+from debugging_framework.oracle import OracleResult
+
 from avicenna.input import Input
 
 
@@ -54,12 +56,12 @@ def construct_oracle(
     inp_converter: Optional[Callable] = None,
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
-    default_oracle_result: OracleResult = OracleResult.UNDEF,
+    default_oracle_result: OracleResult = OracleResult.UNDEFINED,
     line: int = None,
 ) -> Callable[[Input], OracleResult]:
     error_definitions = error_definitions or {}
     default_oracle_result = (
-        OracleResult.BUG if not error_definitions else default_oracle_result
+        OracleResult.FAILING if not error_definitions else default_oracle_result
     )
 
     if not isinstance(error_definitions, dict):
@@ -158,7 +160,7 @@ def _construct_functional_oracle(
             
         except Exception as e:
             return error_definitions.get(type(e), default_oracle_result)
-        return OracleResult.NO_BUG
+        return OracleResult.PASSING
 
     return oracle
 
@@ -178,6 +180,6 @@ def _construct_failure_oracle(
         except Exception as e:
             return error_definitions.get(type(e), default_oracle_result)
         
-        return OracleResult.NO_BUG
+        return OracleResult.PASSING
 
     return oracle
