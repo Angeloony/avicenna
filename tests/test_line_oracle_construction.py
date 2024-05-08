@@ -1,15 +1,13 @@
+import string
 import unittest
 from pathlib import Path
-import string
 
-from avicenna.oracle_construction import (
-    construct_oracle,
-    _construct_functional_line_oracle,
-    OracleResult,
-    Input,
-    UnexpectedResultError,
-)
 from fuzzingbook.Grammars import Grammar
+
+from avicenna.oracle_construction import (Input, OracleResult,
+                                          UnexpectedResultError,
+                                          _construct_functional_line_oracle,
+                                          construct_oracle)
 
 grammar: Grammar = {
     "<start>": ["<input>"],
@@ -21,108 +19,66 @@ grammar: Grammar = {
     "<digit>": list(string.digits),
     "<maybe_digits>": ["", "<digits>"],
     "<digits>": ["<digit>", "<digit><digits>"],
-}
+}     
+
+# converts string inputs to lists of ints
+def middle_inp_conv(inp):
+    inp = inp.__str__()
+    middle_input = inp.split(',')
+    
+    converted_inp = [
+        int(middle_input[0]),
+        int(middle_input[1]),
+        int(middle_input[2])
+    ]
+    
+    return converted_inp
 
 class TestConstructLineOracle(unittest.TestCase):
     def setUp(self):
-        def middle_inp_conv(inp):
-            inp = inp.__str__()
-            middle_input = inp.split(',')
-            
-            converted_inp = [
-                int(middle_input[0]),
-                int(middle_input[1]),
-                int(middle_input[2])
-            ]
-            return converted_inp
         
         self.inp_converter = middle_inp_conv
-        self.program_under_test = Path('./resources/middle_instr.py')
+        self.event_file_path = Path('tests/rsc/event_file')
+        self.program_under_test = Path('tests/rsc/instr.py')
 
-    def test_meow(self):
-        self.assertEqual(1, 1)
-# class TestConstructOracle(unittest.TestCase):
-#     def setUp(self):
-#         self.error_definitions = {
-#             UnexpectedResultError: OracleResult.BUG,
-#             TimeoutError: OracleResult.UNDEF,
-#         }
-
-#     def test_same_result(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             return x + y
-
-#         my_oracle = construct_oracle(under_test, oracle, self.error_definitions)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.NO_BUG)
-
-#     def test_different_result(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             return x - y
-
-#         my_oracle = construct_oracle(under_test, oracle, self.error_definitions)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.BUG)
-
-#     def test_defined_exception(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             raise TimeoutError()
-
-#         my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
-
-#     def test_undefined_exception(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             raise ValueError()
-
-#         my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
-
-#     def test_timeout_sleep(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             import time
-#             time.sleep(2)
-#             return x + y
-
-#         my_oracle = construct_oracle(under_test, oracle, {UnexpectedResultError: OracleResult.NO_BUG, TimeoutError: OracleResult.BUG}, timeout=1)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.BUG)
-
-#     def test_no_error_definition(self):
-#         def oracle(x, y):
-#             return x + y
-
-#         def under_test(x, y):
-#             raise ValueError
-
-#         def under_test_unexpected_result_error(x, y):
-#             raise x + y + 1
-
-#         def under_test_timeout(x, y):
-#             import time
-
-#             time.sleep(2)
-#             return x + y
-
-#         my_oracle = construct_oracle(under_test, oracle)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.BUG)
-#         my_oracle = construct_oracle(under_test_unexpected_result_error, oracle)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.BUG)
-#         my_oracle = construct_oracle(under_test_timeout, oracle)
-#         self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.BUG)
-
-
-# if __name__ == "__main__":
-#     unittest.main()
+    # Check if path exists where we want it
+    def test_path_exists(self):
+        self.assertEqual(True, Path.exists(self.program_under_test))
+        
+    # Check if middle inp converter works
+    def test_middle_inp_converter(self):
+        input = '1, 2, 3'
+        self.assertEqual(middle_inp_conv(input), [1,2,3])
+        
+    # Whenever desired line is hit
+    def test_oracle_line_hit(self):
+        from rsc.instr import middle
+        input = "2, 1, 3"
+        line_oracle = construct_oracle(program_oracle=None,
+                                       program_under_test=middle,
+                                       inp_converter=middle_inp_conv,
+                                       timeout=10,
+                                       line=6,
+                                       event_file_path='tests/rsc/event_file')
+        
+        
+        self.assertEqual(
+            line_oracle(input),
+            OracleResult.FAILING
+            )
+    
+    # Whenever desired line is missed
+    def test_oracle_line_miss(self):
+        from rsc.instr import middle
+        input = "2, 1, 3"
+        line_oracle = construct_oracle( program_oracle=None,
+                                        program_under_test=middle,
+                                        inp_converter=middle_inp_conv,
+                                        timeout=10,
+                                        line=5,
+                                        event_file_path='tests/rsc/event_file')
+                
+        self.assertEqual(
+            OracleResult.PASSING,
+            line_oracle(input)
+            )

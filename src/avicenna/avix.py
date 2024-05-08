@@ -1,12 +1,12 @@
 # refine the import statements so they dont just import everything
-from avicenna import Avicenna
-from avicenna.oracle_construction import *
-
-from typing import Callable
-
-from sflkit import * 
 import importlib
 import os
+from typing import Callable
+
+from sflkit import *
+
+from avicenna import Avicenna
+from avicenna.oracle_construction import *
 
 
 # maybe add oracle construction to avix separately as well to differentiate my contributions?
@@ -49,11 +49,14 @@ class AviX(Avicenna):
             instr_func,
             inp, # string in
             conversion_func, # convert the inp string to an input usable by the function
-             # used to call the instrumented version of a function (needed bcs funcs have different amounts/types of variables needed for calls)
+            path, # used to call the instrumented version of a function (needed bcs funcs have different amounts/types of variables needed for calls)
         ): 
-        os.environ['EVENTS_PATH'] = os.path.join('./rsc', '') # make sure that event-file is actually written in the rsc folder
+        # path must be a variable
+        # os.environ['EVENTS_PATH'] = os.path.join('src/avicenna/rsc', '0') 
+        # # make sure that event-file is actually written in the rsc folder
+        os.environ['EVENTS_PATH'] = path
         
-        from avicenna.rsc import instr # TODO what is better style for this?
+        from avicenna.rsc import instr  # TODO what is better style for this?
         importlib.reload(instr)
         instr.sflkitlib.lib.reset() # <-- this writes the event files
         
@@ -79,10 +82,9 @@ class AviX(Avicenna):
             predicates='line'
         )
 
-
+    # instrumentation call
     def instrument_avix(instr_path, put_path):
-        instrument_config(AviX.get_config(put_path=put_path, instr_path=instr_path))
-
+        return instrument_config(AviX.get_config(put_path=put_path, instr_path=instr_path))
 
     def import_instrumented():
         import avicenna.tmp

@@ -1,12 +1,11 @@
-import unittest
-from avicenna.oracle_construction import (
-    construct_oracle,
-    OracleResult,
-    Input,
-    UnexpectedResultError,
-)
-from fuzzingbook.Grammars import Grammar
 import string
+import unittest
+
+from fuzzingbook.Grammars import Grammar
+
+from avicenna.oracle_construction import (Input, OracleResult,
+                                          UnexpectedResultError,
+                                          construct_oracle)
 
 grammar: Grammar = {
     "<start>": ["<input>"],
@@ -59,15 +58,10 @@ class TestConstructOracle(unittest.TestCase):
         def under_test(x, y):
             raise TimeoutError()
 
-<<<<<<< HEAD
-        my_oracle = construct_oracle(program_under_test=under_test, program_oracle=oracle, error_definitions=self.error_definitions)
-        self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
-=======
-        my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
+        my_oracle = construct_oracle(program_oracle=oracle, program_under_test=under_test, error_definitions=self.error_definitions)
         self.assertEqual(
             my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEFINED
         )
->>>>>>> upstream/dev
 
     def test_undefined_exception(self):
         def oracle(x, y):
@@ -76,15 +70,10 @@ class TestConstructOracle(unittest.TestCase):
         def under_test(x, y):
             raise ValueError()
 
-<<<<<<< HEAD
-        my_oracle = construct_oracle(program_under_test=under_test, program_oracle=oracle, error_definitions=self.error_definitions)
-        self.assertEqual(my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEF)
-=======
-        my_oracle = construct_oracle(oracle, under_test, self.error_definitions)
+        my_oracle = construct_oracle(program_oracle=oracle, program_under_test=under_test, error_definitions=self.error_definitions)
         self.assertEqual(
             my_oracle(Input.from_str(grammar, "1 1")), OracleResult.UNDEFINED
         )
->>>>>>> upstream/dev
 
     def test_timeout_sleep(self):
         def oracle(x, y):

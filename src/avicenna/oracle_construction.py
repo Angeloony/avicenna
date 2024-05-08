@@ -1,9 +1,12 @@
+import importlib
+import os
 import signal
 from pathlib import Path
 from typing import Callable, Dict, Optional, Type
 
 from debugging_framework.oracle import OracleResult
 
+from avicenna.avix import AviX
 from avicenna.input import Input
 
 
@@ -17,7 +20,7 @@ class ManageTimeout:
     def __exit__(self, exc_type, exc_value, traceback):
         cancel_alarm()
 
-# for managing event files below
+# for managing event files below (line oracle)
 class EventFile:
     def __init__(self, file_name: str):
         self.file = open(file_name, newline='')
@@ -53,11 +56,12 @@ def cancel_alarm():
 def construct_oracle(
     program_under_test: Callable,
     program_oracle: Optional[Callable],
-    inp_converter: Optional[Callable] = None,
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEFINED,
     line: int = None,
+    inp_converter: Optional[Callable] = None, # used for line oracle 
+    event_file_path: Path = None,
 ) -> Callable[[Input], OracleResult]:
     error_definitions = error_definitions or {}
     default_oracle_result = (
@@ -79,6 +83,7 @@ def construct_oracle(
             inp_converter,
             timeout,
             line,
+            event_file_path,
         )
     else: 
         oracle_constructor = _construct_failure_oracle
@@ -95,34 +100,38 @@ def construct_oracle(
 # ** UNDER CONSTRUCTION **
 # important: oracles will be hard coded before-hand and must maintain a given shape
 def _construct_functional_line_oracle(
-    program_under_test: Callable,
+    program_under_test: Callable, # i.e. instrumented middle
     inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
     timeout: int,
     desired_line: int,
+    event_file_path: str,
 ):
-    def oracle(inp: Input) -> OracleResult:        
-        # TODO : add call function 
-        # ** ADD HERE **
-        converted_inp = inp_converter(str(inp)) # list containing the PUT's inputs in order of the PUT's inputs
-        
+    def oracle(inp: Input) -> OracleResult:     
         try:
             # checks timeout exception and whether the line was triggered
             with ManageTimeout(timeout):
-                program_under_test(converted_inp) # TODO check *param
-
+                # run instrumented program and save event file here
+                AviX.create_event_file( program_under_test,
+                                        str(inp), 
+                                        inp_converter, 
+                                        event_file_path,
+                )
+                
         except Exception as e:
+            print('exception')
             print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?
             
-        # ** add proper handling of created directories and files ** 
-        path = Path('./resources/event_file') # This are the only file/folder that will exist and be deleted during each run
-        
-        with EventFile(path) as event_file:
+        with EventFile(str(event_file_path)) as event_file:
+            # checks event file per line to see if our desired line was hit
             for line in event_file.readlines():
                 cur_line = line.split(',')
-                if cur_line[-2] == desired_line.str():
-                    return OracleResult.BUG
                 
-            return OracleResult.NO_BUG
+                # if desired line was hit:
+                # compare int as char
+                if cur_line[-2] == str(desired_line):
+                    return OracleResult.FAILING
+                
+            return OracleResult.PASSING
 
     return oracle
 
