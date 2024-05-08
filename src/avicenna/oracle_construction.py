@@ -76,7 +76,7 @@ def construct_oracle(
     if program_oracle:
             oracle_constructor = _construct_functional_oracle
     elif line: 
-        oracle_constructor = _construct_functional_line_oracle
+        oracle_constructor = _construct_line_oracle
         # added separate return here since line oracles need vastly different inputs
         return oracle_constructor(
             program_under_test,
@@ -99,7 +99,7 @@ def construct_oracle(
 
 # ** UNDER CONSTRUCTION **
 # important: oracles will be hard coded before-hand and must maintain a given shape
-def _construct_functional_line_oracle(
+def _construct_line_oracle(
     program_under_test: Callable, # i.e. instrumented middle
     inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
     timeout: int,

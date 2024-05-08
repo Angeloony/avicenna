@@ -6,7 +6,7 @@ from fuzzingbook.Grammars import Grammar
 
 from avicenna.oracle_construction import (Input, OracleResult,
                                           UnexpectedResultError,
-                                          _construct_functional_line_oracle,
+                                          _construct_line_oracle,
                                           construct_oracle)
 
 grammar: Grammar = {
@@ -35,23 +35,28 @@ def middle_inp_conv(inp):
     return converted_inp
 
 class TestConstructLineOracle(unittest.TestCase):
+    
+    
     def setUp(self):
         
         self.inp_converter = middle_inp_conv
         self.event_file_path = Path('tests/rsc/event_file')
         self.program_under_test = Path('tests/rsc/instr.py')
 
+
     # Check if path exists where we want it
     def test_path_exists(self):
         self.assertEqual(True, Path.exists(self.program_under_test))
+        
         
     # Check if middle inp converter works
     def test_middle_inp_converter(self):
         input = '1, 2, 3'
         self.assertEqual(middle_inp_conv(input), [1,2,3])
         
+        
     # Whenever desired line is hit
-    def test_oracle_line_hit(self):
+    def test_line_hit(self):
         from rsc.instr import middle
         input = "2, 1, 3"
         line_oracle = construct_oracle(program_oracle=None,
@@ -61,14 +66,14 @@ class TestConstructLineOracle(unittest.TestCase):
                                        line=6,
                                        event_file_path='tests/rsc/event_file')
         
-        
         self.assertEqual(
             line_oracle(input),
             OracleResult.FAILING
             )
     
+    
     # Whenever desired line is missed
-    def test_oracle_line_miss(self):
+    def test_line_miss(self):
         from rsc.instr import middle
         input = "2, 1, 3"
         line_oracle = construct_oracle( program_oracle=None,
