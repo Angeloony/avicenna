@@ -50,7 +50,7 @@ class TestEventFileConstructor(unittest.TestCase):
         
         self.inp_converter = middle_converter
         self.program_under_test = Path('tests/rsc/middle.py')
-        self.instr_path = Path('tests/rsc/instr.py')
+        self.instr_path = Path('tests/rsc/instrumented.py')
         self.tmp_path = Path('tests/tmp/')
         
         
@@ -66,7 +66,23 @@ class TestEventFileConstructor(unittest.TestCase):
             )
     
     
-    
+    def test_path_exists(self):
+        self.assertEqual(
+            True,
+            Path.exists(Path(self.instr_path))
+        )
+        
+        self.assertEqual(
+            True,
+            Path.exists(Path(self.tmp_path))
+        )
+        
+        self.assertEqual(
+            True,
+            Path.exists(Path(self.program_under_test))
+        )
+        
+
     # TODO : use a program with multiple files to test for this
     # This will be important in order to check how the instrumentation works.
     # How many files will be get back? Do we have to enter file names into line oracle? etc.
@@ -80,12 +96,16 @@ class TestEventFileConstructor(unittest.TestCase):
         # os.mkdir(self.tmp_path)
         
         # create new event files
-        from rsc.instr import middle
+        #from tests.rsc.instrumented import middle
+        
+        self.assertEqual(
+            True,
+            Path.exists(Path(self.instr_path))
+        )
         
         input = "2, 1, 3"
         event_path = os.path.join(str(self.tmp_path), 'event_file')
-        
-        AviX.create_event_file(instr_func=middle,
+        AviX.create_event_file(instrumented_function='middle',
                                inp=input, 
                                conversion_func=self.inp_converter,
                                event_path= event_path

@@ -2,7 +2,7 @@ import importlib
 import os
 import signal
 from pathlib import Path
-from typing import Callable, Dict, Optional, Type
+from typing import Callable, Dict, Optional, Type, Union
 
 from debugging_framework.oracle import OracleResult
 
@@ -54,14 +54,14 @@ def cancel_alarm():
 
 
 def construct_oracle(
-    program_under_test: Callable,
+    program_under_test: Union[Callable, str],
     program_oracle: Optional[Callable],
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEFINED,
     line: int = None,
     inp_converter: Optional[Callable] = None, # used for line oracle 
-    event_file_path: Path = None,
+    resource_path: Path = None,
 ) -> Callable[[Input], OracleResult]:
     error_definitions = error_definitions or {}
     default_oracle_result = (
@@ -79,11 +79,11 @@ def construct_oracle(
         oracle_constructor = _construct_line_oracle
         # added separate return here since line oracles need vastly different inputs
         return oracle_constructor(
-            program_under_test,
-            inp_converter,
-            timeout,
-            line,
-            event_file_path,
+            program_under_test=program_under_test,
+            inp_converter=inp_converter,
+            timeout=timeout,
+            desired_line=line,
+            resource_path=resource_path,
         )
     else: 
         oracle_constructor = _construct_failure_oracle
@@ -100,23 +100,26 @@ def construct_oracle(
 # ** UNDER CONSTRUCTION **
 # important: oracles will be hard coded before-hand and must maintain a given shape
 def _construct_line_oracle(
-    program_under_test: Callable, # i.e. instrumented middle
+    program_under_test: str, # name of function we want to run later TODO talk to martin if this makes sense
     inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
     timeout: int,
     desired_line: int,
-    event_file_path: str,
+    resource_path: str, # event files and instrumented files etc are here
 ):
+    instrumented_file_path = resource_path + 'instrumented.py'
+    event_file_path = resource_path + 'event_file'
     def oracle(inp: Input) -> OracleResult:     
         try:
             # checks timeout exception and whether the line was triggered
             with ManageTimeout(timeout):
                 # run instrumented program and save event file here
-                AviX.create_event_file( program_under_test,
-                                        str(inp), 
-                                        inp_converter, 
-                                        event_file_path,
+                AviX.create_event_file( instrumented_function=program_under_test,
+                                        #instr_path=instrumented_file_path,
+                                        inp=str(inp), 
+                                        conversion_func=inp_converter, 
+                                        event_path=event_file_path,
                 )
-                
+            
         except Exception as e:
             print('exception')
             print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?

@@ -48,7 +48,7 @@ class AviX(Avicenna):
         oracle: Callable[[Input], OracleResult],
         initial_inputs: List[str],
         
-        instr_path: str = 'rsc/instr.py',
+        instr_path: str = 'rsc/instrumented.py',
         
         patterns: List[str] = None,
         max_iterations: int = 10,
@@ -90,9 +90,9 @@ class AviX(Avicenna):
         AviX.instrument_avix(put_path=put_path, instr_path=instr_path)
         
         # importing instrumented function
-        from avicenna.rsc import instr
-        importlib.reload(instr)
-        instr.sflkitlib.lib.reset()  
+        from avicenna.rsc import instrumented
+        importlib.reload(instrumented)
+        instrumented.sflkitlib.lib.reset()  
         
         # move this outside of avix, do this before and avix call
         # self.oracle = construct_oracle(
@@ -126,36 +126,43 @@ class AviX(Avicenna):
     """
         Create event-file for a given instrumented file and its input
     """
+
     def create_event_file(
-            instr_func, #callable
-            instr_path, #str
+            instrumented_function, #str # we call it dynamically in a sub-func
+            #instr_path, #str
             inp, # string in
             conversion_func, #callable # convert the inp string to an input usable by the function
             event_path, #str # used to call the instrumented version of a function (needed bcs funcs have different amounts/types of variables needed for calls)
         ): 
+        
+        converted_inp = conversion_func(inp) # must always return a list!!
+        
         # delete old event files first
         if os.path.exists(event_path):
             os.unlink(event_path)
         
         # # make sure that event-file is actually written in the rsc folder
-        os.environ['EVENTS_PATH'] = event_path
+        # TODO move the import into its own function maybe?
+        os.environ['EVENTS_PATH'] = event_path        
         
-        instrument_path = instr_path
-        instrumented_file = importlib.import_module(instrument_path, package = 1)
-        
-        #print(test)
-        importlib.reload(instrumented_file)
-        instrumented_file.sflkitlib.lib.reset() # <-- this writes the event files
-        
-        converted_inp = conversion_func(inp) # must always return a list!!
-        
+        # this ends up creating the event file
+        AviX.import_instrumented_module(instrumented_function, converted_inp)
+          
+          
+    # help func to shorten create event file  
+    def import_instrumented_module(function_under_test, converted_inp):
+        from .rsc import \
+            instrumented  # TODO make this dynamic by connecting it with avix variable instrpath somehow
+        importlib.reload(instrumented)
+        instrumented.sflkitlib.lib.reset()
+        instrumented_function = getattr(instrumented, function_under_test)
         try:
             # multiple args
-            return instr_func(*converted_inp)
+            return instrumented_function(*converted_inp)
         
         finally:
-            instrumented_file.sflkitlib.lib.dump_events()
-            del instrumented_file
+            instrumented.sflkitlib.lib.dump_events()
+            del instrumented
             
             
     """ Instrumentation funcs and helper funcs"""
@@ -181,7 +188,7 @@ class AviX(Avicenna):
 
     # import the instrumented function for later use
     def import_instrumented():
-        import avicenna.rsc.instr
-        importlib.reload(avicenna.rsc.instr)
-        avicenna.rsc.instr.sflkitlib.lib.reset()
+        import avicenna.rsc.instrumented
+        importlib.reload(avicenna.rsc.instrumented)
+        avicenna.rsc.instrumented.sflkitlib.lib.reset()
         return

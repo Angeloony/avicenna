@@ -40,13 +40,12 @@ class TestConstructLineOracle(unittest.TestCase):
     def setUp(self):
         
         self.inp_converter = middle_inp_conv
-        self.event_file_path = Path('tests/rsc/event_file')
-        self.program_under_test = Path('tests/rsc/instr.py')
+        self.resource_path = Path('tests/rsc/')
 
 
     # Check if path exists where we want it
     def test_path_exists(self):
-        self.assertEqual(True, Path.exists(self.program_under_test))
+        self.assertEqual(True, Path.exists(self.resource_path))
         
         
     # Check if middle inp converter works
@@ -57,14 +56,14 @@ class TestConstructLineOracle(unittest.TestCase):
         
     # Whenever desired line is hit
     def test_line_hit(self):
-        from rsc.instr import middle
+        #from tests.rsc.instrumented import middle
         input = "2, 1, 3"
         line_oracle = construct_oracle(program_oracle=None,
-                                       program_under_test=middle,
+                                       program_under_test='middle',
                                        inp_converter=middle_inp_conv,
                                        timeout=10,
-                                       line=6,
-                                       event_file_path='tests/rsc/event_file')
+                                       line=7,
+                                       resource_path='tests/rsc/')
         
         self.assertEqual(
             line_oracle(input),
@@ -74,16 +73,49 @@ class TestConstructLineOracle(unittest.TestCase):
     
     # Whenever desired line is missed
     def test_line_miss(self):
-        from rsc.instr import middle
+        #from tests.rsc.instrumented import middle
         input = "2, 1, 3"
         line_oracle = construct_oracle( program_oracle=None,
-                                        program_under_test=middle,
+                                        program_under_test='middle',
                                         inp_converter=middle_inp_conv,
                                         timeout=10,
                                         line=5,
-                                        event_file_path='tests/rsc/event_file')
+                                        resource_path='tests/rsc/'
+                                        )
                 
         self.assertEqual(
             OracleResult.PASSING,
             line_oracle(input)
             )
+
+
+    # check if event files are created properly
+    def test_multiple_inputs(self):
+        #from .rsc.instrumented import middle 
+        inputs =[
+            "2, 1, 3", 
+            "3, 2, 1", 
+            "1, 2, 3"
+            ]
+        line_oracle = construct_oracle( program_oracle=None,
+                                        program_under_test='middle',
+                                        inp_converter=middle_inp_conv,
+                                        timeout=10,
+                                        line=7,
+                                        resource_path='tests/rsc/')
+        
+        self.assertEqual(
+            OracleResult.FAILING,
+            line_oracle(inputs[0])
+        )
+        
+        self.assertEqual(
+            OracleResult.PASSING,
+            line_oracle(inputs[2])
+        )
+        
+        self.assertEqual(
+            OracleResult.PASSING,
+            line_oracle(inputs[1])
+        )
+        
