@@ -95,7 +95,8 @@ class TestConstructLineOracle(unittest.TestCase):
         inputs =[
             "2, 1, 3", 
             "3, 2, 1", 
-            "1, 2, 3"
+            "1, 2, 3",
+            "14, 0, 501"
             ]
         line_oracle = construct_oracle( program_oracle=None,
                                         program_under_test='middle',
@@ -104,18 +105,26 @@ class TestConstructLineOracle(unittest.TestCase):
                                         line=7,
                                         resource_path='tests/rsc/')
         
+        # 2, 1, 3
         self.assertEqual(
             OracleResult.FAILING,
             line_oracle(inputs[0])
         )
         
+        # 3, 2, 1
+        self.assertEqual(
+            OracleResult.PASSING,
+            line_oracle(inputs[1])
+        )
+        # 1, 2, 3
         self.assertEqual(
             OracleResult.PASSING,
             line_oracle(inputs[2])
         )
         
+        # 14, 0, 501
         self.assertEqual(
-            OracleResult.PASSING,
-            line_oracle(inputs[1])
+            OracleResult.FAILING,
+            line_oracle(inputs[3])
         )
         

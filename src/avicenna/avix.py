@@ -63,7 +63,10 @@ class AviX(Avicenna):
         pattern_learner: Type[PatternLearner] = None,
         timeout_seconds: Optional[int] = None,
         ):
-        super().__init__(grammar=grammar,
+        
+        
+        super().__init__(
+            grammar=grammar,
             initial_inputs=initial_inputs,
             oracle=oracle,
             max_iterations=max_iterations,
@@ -89,10 +92,10 @@ class AviX(Avicenna):
         # requires the path to PUT and the instrumented version of it. save tmp.py in the folder for now, delete when done
         AviX.instrument_avix(put_path=put_path, instr_path=instr_path)
         
-        # importing instrumented function
-        from avicenna.rsc import instrumented
-        importlib.reload(instrumented)
-        instrumented.sflkitlib.lib.reset()  
+        # # importing instrumented function
+        # from avicenna.rsc import instrumented
+        # importlib.reload(instrumented)
+        # instrumented.sflkitlib.lib.reset()  
         
         # move this outside of avix, do this before and avix call
         # self.oracle = construct_oracle(

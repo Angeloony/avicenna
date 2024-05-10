@@ -106,7 +106,7 @@ def _construct_line_oracle(
     desired_line: int,
     resource_path: str, # event files and instrumented files etc are here
 ):
-    instrumented_file_path = resource_path + 'instrumented.py'
+    #instrumented_file_path = resource_path + 'instrumented.py' TODO check if i can dynamically do this
     event_file_path = resource_path + 'event_file'
     def oracle(inp: Input) -> OracleResult:     
         try:

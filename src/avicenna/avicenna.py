@@ -295,6 +295,7 @@ class Avicenna:
             self.recall_truth_table,
             exclusion_non_terminals,
         )
+        #print(self.precision_truth_table)
 
         new_candidates = set([x[0] for x in new_candidates[:20]])
 
@@ -438,6 +439,7 @@ class Avicenna:
         if all([test_input.oracle.to_bool() for test_input in test_inputs]):
             raise AssertionError("Avicenna requires at least one passing input!")
         elif all([not (test_input.oracle.to_bool()) for test_input in test_inputs]):
+            print(test_inputs)
             raise AssertionError(
                 "Avicenna requires at least one failure-inducing input!"
             )
