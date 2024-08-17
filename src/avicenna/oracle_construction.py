@@ -8,7 +8,7 @@ from debugging_framework.input.oracle import OracleResult
 
 from avicenna.avix import AviX
 from avicenna.input import Input
-from avicenna.avix_help import get_avicenna_rsc_path
+from avicenna.avix_help import get_avicenna_rsc_path, get_sfl_config
 
 class ManageTimeout:
     def __init__(self, timeout: int):
@@ -60,6 +60,7 @@ def construct_oracle(
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEFINED,
     line: int = None,
+    put_path = Optional[str],
     inp_converter: Optional[Callable] = None, # used for line oracle 
     resource_path: Optional[str] = str(get_avicenna_rsc_path()), #needed for line oracle, standard is the file path to src/avicenna/rsc
 ) -> Callable[[Input], OracleResult]:
@@ -85,6 +86,7 @@ def construct_oracle(
             timeout=timeout,
             desired_line=line,
             resource_path=resource_path,
+            put_path=put_path
         )
     else: 
         oracle_constructor = _construct_failure_oracle
@@ -102,13 +104,17 @@ def construct_oracle(
 # important: oracles will be hard coded before-hand and must maintain a given shape
 def _construct_line_oracle(
     program_under_test: str, # name of function we want to run later TODO talk to martin if this makes sense
-    inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
-    timeout: int,
     desired_line: int,
     resource_path: str, # event files and instrumented files etc are here  
+    put_path: str,    
+    timeout: int,
+    
+    inp_converter: Optional[Callable] = None, # transforms the string input given by our grammar to be usable by the program under test (PUT)
 ):
     #instrumented_file_path = resource_path + 'instrumented.py' TODO check if i can dynamically do this
-    event_file_path = resource_path + 'event_file'
+    event_file_path = resource_path + '/event_file'
+    
+    
     def oracle(inp: Input) -> OracleResult:     
         try:
             # checks timeout exception and whether the line was triggered
@@ -118,7 +124,7 @@ def _construct_line_oracle(
                 AviX.create_event_file( instrumented_function=program_under_test,
                                         #instr_path=instrumented_file_path,
                                         inp=str(inp), 
-                                        conversion_func=inp_converter, 
+                                        inp_converter=inp_converter, 
                                         event_path=event_file_path,
                 )            
         except Exception as e:
@@ -126,11 +132,11 @@ def _construct_line_oracle(
         
         # TODO : double check this call middle cant be right here
         coverage = AviX.run_sfl_analysis(
-            failing=resource_path + 'event_file', 
-            put_path='middle.py', 
-            instr_path=resource_path + 'instrumented.py'
-            )
-        
+            get_sfl_config(
+                failing=event_file_path, 
+                put_path=put_path, # path to the base file
+                instr_path=resource_path + '/instrumented.py'
+            ))
         if desired_line in coverage:
             # print(coverage)
             # print(inp)

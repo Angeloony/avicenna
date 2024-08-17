@@ -7,14 +7,14 @@ from debugging_framework.input.oracle import OracleResult
 
 from fuzzingbook.Grammars import Grammar
 
-from sflkit import *
-from sflkit.analysis import factory
+from sflkit.config import Config
 from sflkit.analysis.spectra import Line
 
 from avicenna import Avicenna
 from avicenna.input import Input
 
-from avicenna.avix_help import get_avicenna_rsc_path
+from avicenna.avix_help import (analyzer_conf, get_avicenna_rsc_path,
+                                import_instrumented, instrument)
 
 
 # maybe add oracle construction to avix separately as well to differentiate my contributions?
@@ -29,10 +29,13 @@ class AviX(Avicenna):
         oracle: Callable[[Input], OracleResult],
         initial_inputs: List[str],
         
-        instr_path: str = str(get_avicenna_rsc_path()),
+        instr_path: str = str(get_avicenna_rsc_path()) + '/instrumented.py',
         max_iterations: int = 10,
         top_n_relevant_features: int = 3,
         ):
+        
+        # requires the path to PUT and the instrumented version of it. save tmp.py in the folder for now, delete when done
+        instrument(put_path=put_path, instr_path=instr_path)
         
         # init avicenna class object
         super().__init__(
@@ -42,37 +45,13 @@ class AviX(Avicenna):
             max_iterations=max_iterations,
             top_n_relevant_features=top_n_relevant_features
         )
-            
-        # requires the path to PUT and the instrumented version of it. save tmp.py in the folder for now, delete when done
-        AviX.instrument_avix(put_path=put_path, instr_path=instr_path)
-      
-
-    # Embedded SFLKit's instrumentation into AviX
-    def instrument_avix(
-        put_path:   str,
-        instr_path: str,
-    ):
-        # taken from sflkit
-        return instrument_config(AviX._get_config(put_path=put_path,
-                                                  instr_path=instr_path)
-                                 )
 
 
-    
     # Running SFLKit analysis on lines triggered etc. in event files.
     # Returns list of integers.
-    def run_sfl_analysis(
-        failing=None,
-        passing=None,
-        put_path=None,
-        instr_path=None
-    ):
+    def run_sfl_analysis(conf: Config):
 
-        analyzer = AviX.analyzer_conf(
-            AviX._get_config(put_path=put_path,
-                            instr_path=instr_path,
-                            failing=failing,
-                            passing=passing))
+        analyzer = analyzer_conf(conf)
         
         analyzer.analyze()
         
@@ -89,12 +68,12 @@ class AviX(Avicenna):
     def create_event_file(
         inp: str,                   # string inputs which will have to be converted later on
         instrumented_function: str, # name of the function-under-test used for dynamic imports
-        conversion_func: Callable,  # used for conversion of inp
+        inp_converter: Optional[Callable] = None,  # used for conversion of inp
         
-        event_path: str = 'rsc/',   # path to event_files. Usually rsc/            
+        event_path: str = str(get_avicenna_rsc_path()),   # path to event_files. Usually rsc/            
     ): 
-        if conversion_func != None:
-            converted_inp = conversion_func(inp) # must always return a list!!
+        if inp_converter:
+            converted_inp = inp_converter(inp) # must always return a list!!
         else:
             converted_inp = inp
         
@@ -105,56 +84,6 @@ class AviX(Avicenna):
         os.environ['EVENTS_PATH'] = event_path    
         
         # this ends up creating the event file
-        AviX.import_instrumented_module(instrumented_function, converted_inp)
+        import_instrumented(instrumented_function, converted_inp)
 
-          
-
-    """ Instrumentation funcs and helper funcs"""
-    
-    # config for instrumentation, needs path for PUT and instrumentation, instr might be obsolete later
-    def _get_config(          
-        put_path:   str = None,
-        instr_path: str = None,
-        language:   str = 'python',
-        predicates: str = 'line',
-        passing:    str = None, 
-        failing:    str = None,
-    ):
         
-        return Config.create(
-            path=put_path, 
-            working=instr_path, 
-            language=language,
-            predicates=predicates,
-            failing=failing,
-            passing=passing,
-        )
-        
-    
-    # Used to create an Analyzer object used by SFLKit for line-trigger analyses etc.
-    def analyzer_conf(conf: Config):
-        
-        analyzer = Analyzer(irrelevant_event_files=conf.failing,
-                            relevant_event_files=conf.passing,
-                            factory=factory.LineFactory())
-        return analyzer
-                
-    # help func to shorten create event file  
-    def import_instrumented_module(function_under_test,converted_inp):
-        from .rsc import instrumented  # TODO make this dynamic by connecting it with avix variable instrpath somehow
-        # TODO : whyyyy reload breaky
-        # for some reason reload broke this, maybe check this out later?
-        #importlib.reload(instrumented)
-        instrumented.sflkitlib.lib.reset()
-        instrumented_function = getattr(instrumented, function_under_test)
-        try:
-            # # multiple args
-            if (isinstance(converted_inp, list)):
-                return instrumented_function(*converted_inp)
-            else: 
-                # result = instrumented_function(converted_inp)
-                return instrumented_function(converted_inp)
-        
-        finally:
-            instrumented.sflkitlib.lib.dump_events()
-            #del instrumented
