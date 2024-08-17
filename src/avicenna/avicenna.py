@@ -1,9 +1,10 @@
 import logging
 import time
 from pathlib import Path
-from typing import Callable, Dict, Iterable, List, Optional, Set, Tuple, Type
+from typing import Dict, Iterable, List, Optional, Set, Tuple, Type
 
-from debugging_framework.oracle import OracleResult
+from debugging_framework.input.oracle import OracleResult
+from debugging_framework.types import OracleType
 from fuzzingbook.Grammars import Grammar, is_valid_grammar
 from isla.language import Formula, ISLaUnparser
 from islearn.language import parse_abstract_isla
@@ -41,7 +42,7 @@ class Avicenna:
     def __init__(
         self,
         grammar: Grammar,
-        oracle: Callable[[Input], OracleResult],
+        oracle: OracleType,
         initial_inputs: List[str],
         patterns: List[str] = None,
         max_iterations: int = 10,
@@ -55,6 +56,8 @@ class Avicenna:
         input_generator: Type[Generator] = None,
         pattern_learner: Type[PatternLearner] = None,
         timeout_seconds: Optional[int] = None,
+        min_recall: float = 0.9,
+        min_min_specificity: float = 0.6
     ):
         """
         The constructor of :class:`~avicenna.Avicenna.` accepts a large number of
@@ -96,8 +99,8 @@ class Avicenna:
         self._all_data = None
         self._learned_invariants: Dict[str, List[float]] = {}
         self._best_candidates: Dict[str, List[float]] = {}
-        self.min_precision = 0.6
-        self.min_recall = 0.9
+        self.min_precision = min_min_specificity
+        self.min_recall = min_recall
 
         if log:
             configure_logging()
@@ -144,6 +147,8 @@ class Avicenna:
             "grammar": grammar,
             "pattern_file": str(self.pattern_file),
             "patterns": self.patterns,
+            "min_recall": self.min_recall,
+            "min_specificity": self.min_precision
         }
 
         self.pattern_learner = (
@@ -235,7 +240,10 @@ class Avicenna:
         if self.timeout_seconds is not None and self.start_time is None:
             self.start_time = int(time.time())
 
+        num_failing = len([inp for inp in self.all_inputs if inp.oracle == OracleResult.FAILING])
+        LOGGER.info(f"Starting Avicenna with {num_failing} failing inputs and {len(self.all_inputs)-num_failing} passing inputs.")
         new_inputs: Set[Input] = self.all_inputs.union(self.generate_more_inputs())
+        
         while self._do_more_iterations():
             if self.timeout_seconds is not None:
                 if int(time.time()) - self.start_time > self.timeout_seconds:
@@ -243,7 +251,7 @@ class Avicenna:
                     raise TimeoutError(self.timeout_seconds)
 
             new_inputs = self._loop(new_inputs)
-        print("before finalize")
+            
         return self.finalize()
 
     def _do_more_iterations(self):
@@ -268,6 +276,11 @@ class Avicenna:
             .reraise()
             .get()
         )
+        for input in result:
+            if input.oracle == OracleResult.PASSING:
+                LOGGER.info("this input is passing " + str(input.tree))
+            if input.oracle == OracleResult.FAILING:
+                LOGGER.info("this input is failing " + str(input.tree))
         return result
 
     def learn_relevant_features(self) -> List[str]:
@@ -287,16 +300,13 @@ class Avicenna:
     def _loop(self, test_inputs: Set[Input]):
         test_inputs = self.construct_inputs(test_inputs)
         exclusion_non_terminals = self.learn_relevant_features()
-        #print("printing test inputs")
-        #print(test_inputs)
+        
         new_candidates = self.pattern_learner.learn_failure_invariants(
             test_inputs,
             self.precision_truth_table,
             self.recall_truth_table,
             exclusion_non_terminals,
         )
-        #print(self.precision_truth_table)
-
         new_candidates = set([x[0] for x in new_candidates[:20]])
 
         self.best_candidates = new_candidates
@@ -343,6 +353,7 @@ class Avicenna:
         logging.debug(f"Infeasible constraint: {constraint}")
 
     def finalize(self) -> Optional[Tuple[Formula, float, float]]:
+        #print(self._best_candidates)
         return (
             self._calculate_best_formula()
             .map(lambda candidates: candidates[0])
@@ -369,6 +380,14 @@ class Avicenna:
             .value_or(None)
         )
 
+    def get_learned_formulas(
+            self
+    ) -> Optional[List[Tuple[Formula, float, float]]]:
+        candidates_with_scores = self._gather_candidates_with_scores()
+        if not candidates_with_scores:
+            return None
+        return candidates_with_scores
+
     def _gather_candidates_with_scores(self) -> List[Tuple[Formula, float, float]]:
         def meets_criteria(precision_value_, recall_value_):
             return (
@@ -389,9 +408,9 @@ class Avicenna:
                 )
 
         candidates_with_scores.sort(
-            key=lambda x: (x[1], x[2], -len(x[0])), reverse=True
+            key=lambda x: (x[2], x[1], len(x[0])), reverse=True
         )
-
+        #print(candidates_with_scores)
         return candidates_with_scores
 
     @staticmethod
@@ -402,7 +421,8 @@ class Avicenna:
             candidates_with_scores[0][1],
             candidates_with_scores[0][2],
         )
-        print(str(top_precision) + " " + str(top_recall))
+        #print(candidates_with_scores)
+        #print("top precision: " +  str(top_precision) + " top recall: " + str(top_recall))
 
         return [
             candidate
@@ -427,7 +447,10 @@ class Avicenna:
 
     def assign_label_single(self, test_inputs: Set[Input]) -> Set[Input]:
         for inp_ in test_inputs:
+            
             inp_.oracle = self.oracle(inp_)
+            if inp_.oracle == OracleResult.FAILING:
+                LOGGER.info("this input is failing" + str(inp_.tree))
         return test_inputs
 
     def assign_label(self, test_inputs: Set[Input]) -> Set[Input]:
@@ -436,10 +459,9 @@ class Avicenna:
 
     @staticmethod
     def check_initial_inputs(test_inputs: Set[Input]) -> Set[Input]:
-        if all([test_input.oracle.to_bool() for test_input in test_inputs]):
+        if all([test_input.oracle.is_failing() for test_input in test_inputs]):
             raise AssertionError("Avicenna requires at least one passing input!")
-        elif all([not (test_input.oracle.to_bool()) for test_input in test_inputs]):
-            print(test_inputs)
+        elif all([not (test_input.oracle.is_failing()) for test_input in test_inputs]):
             raise AssertionError(
                 "Avicenna requires at least one failure-inducing input!"
             )

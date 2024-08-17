@@ -3,6 +3,7 @@ import os
 import shutil
 import string
 import unittest
+
 from pathlib import Path
 
 from fuzzingbook.Grammars import Grammar
@@ -108,7 +109,7 @@ class TestEventFileConstructor(unittest.TestCase):
         AviX.create_event_file(instrumented_function='middle',
                                inp=input, 
                                conversion_func=self.inp_converter,
-                               event_path= event_path
+                               event_path= event_path,
         )
         
         self.assertEqual(

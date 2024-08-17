@@ -1,29 +1,28 @@
 import sflkitlib.lib
 
-
 def middle(x, y, z):
-    sflkitlib.lib.add_line_event('middle.py', 2, 0)
+    sflkitlib.lib.add_line_event(0)
     m = z
-    sflkitlib.lib.add_line_event('middle.py', 3, 1)
+    sflkitlib.lib.add_line_event(1)
     if y < z:
-        sflkitlib.lib.add_line_event('middle.py', 4, 2)
+        sflkitlib.lib.add_line_event(2)
         if x < y:
-            sflkitlib.lib.add_line_event('middle.py', 5, 3)
+            sflkitlib.lib.add_line_event(3)
             m = y
         else:
-            sflkitlib.lib.add_line_event('middle.py', 6, 4)
+            sflkitlib.lib.add_line_event(4)
             if x < z:
-                sflkitlib.lib.add_line_event('middle.py', 7, 5)
+                sflkitlib.lib.add_line_event(5)
                 m = x
     else:
-        sflkitlib.lib.add_line_event('middle.py', 9, 6)
+        sflkitlib.lib.add_line_event(6)
         if x > y:
-            sflkitlib.lib.add_line_event('middle.py', 10, 7)
+            sflkitlib.lib.add_line_event(7)
             m = y
         else:
-            sflkitlib.lib.add_line_event('middle.py', 11, 8)
+            sflkitlib.lib.add_line_event(8)
             if x > z:
-                sflkitlib.lib.add_line_event('middle.py', 12, 9)
+                sflkitlib.lib.add_line_event(9)
                 m = x
-    sflkitlib.lib.add_line_event('middle.py', 13, 10)
+    sflkitlib.lib.add_line_event(10)
     return m

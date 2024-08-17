@@ -4,11 +4,11 @@ import signal
 from pathlib import Path
 from typing import Callable, Dict, Optional, Type, Union
 
-from debugging_framework.oracle import OracleResult
+from debugging_framework.input.oracle import OracleResult
 
 from avicenna.avix import AviX
 from avicenna.input import Input
-
+from avicenna.avix_help import get_avicenna_rsc_path
 
 class ManageTimeout:
     def __init__(self, timeout: int):
@@ -54,15 +54,16 @@ def cancel_alarm():
 
 
 def construct_oracle(
-    program_under_test: Union[Callable, str],
-    program_oracle: Optional[Callable],
+    program_under_test: Union[Callable, str], # name of the first function to enter im pretty sure
+    program_oracle: Optional[Callable] = None,
     error_definitions: Optional[Dict[Type[Exception], OracleResult]] = None,
     timeout: int = 1,
     default_oracle_result: OracleResult = OracleResult.UNDEFINED,
     line: int = None,
     inp_converter: Optional[Callable] = None, # used for line oracle 
-    resource_path: Path = None,
+    resource_path: Optional[str] = str(get_avicenna_rsc_path()), #needed for line oracle, standard is the file path to src/avicenna/rsc
 ) -> Callable[[Input], OracleResult]:
+    
     error_definitions = error_definitions or {}
     default_oracle_result = (
         OracleResult.FAILING if not error_definitions else default_oracle_result
@@ -104,7 +105,7 @@ def _construct_line_oracle(
     inp_converter: Callable, # transforms the string input given by our grammar to be usable by the program under test (PUT)
     timeout: int,
     desired_line: int,
-    resource_path: str, # event files and instrumented files etc are here
+    resource_path: str, # event files and instrumented files etc are here  
 ):
     #instrumented_file_path = resource_path + 'instrumented.py' TODO check if i can dynamically do this
     event_file_path = resource_path + 'event_file'
@@ -113,40 +114,33 @@ def _construct_line_oracle(
             # checks timeout exception and whether the line was triggered
             with ManageTimeout(timeout):
                 # run instrumented program and save event file here
+                # TODO : check this function call, rename stuff 
                 AviX.create_event_file( instrumented_function=program_under_test,
                                         #instr_path=instrumented_file_path,
                                         inp=str(inp), 
                                         conversion_func=inp_converter, 
                                         event_path=event_file_path,
-                )
-            
+                )            
         except Exception as e:
-            print('exception')
-            print(e) # exception was triggered, print for later use, maybe add to return somehow? global var?
-            
-        with EventFile(str(event_file_path)) as event_file:
-            # checks event file per line to see if our desired line was hit
-            for line in event_file.readlines():
-                cur_line = line.split(',')
-                
-                # if desired line was hit:
-                # compare int as char
-                if cur_line[-2] == str(desired_line):
-                    return OracleResult.FAILING
-                
-            return OracleResult.PASSING
+            return OracleResult.PASSING # exception was triggered, print for later use, maybe add to return somehow? global var?
+        
+        # TODO : double check this call middle cant be right here
+        coverage = AviX.run_sfl_analysis(
+            failing=resource_path + 'event_file', 
+            put_path='middle.py', 
+            instr_path=resource_path + 'instrumented.py'
+            )
+        
+        if desired_line in coverage:
+            # print(coverage)
+            # print(inp)
+            return OracleResult.FAILING
+        else: 
+            # print(coverage)
+            # print(inp)
+            return OracleResult.PASSING  
 
     return oracle
-
-
-# running the instrumented PUT
-# instrumentation happens in the beginning of AviX's run, the instrmented code is used here
-def _run_instrumented_PUT(
-    instr_PUT: Callable, # callable tmp PUT
-    converted_inp: list, # list of inputs for PUT
-    ):
-    return instr_PUT(converted_inp)
-
 
 # call this if an oracle was defined and given 
 # this could check for our line to be called
@@ -158,8 +152,8 @@ def _construct_functional_oracle(
     default_oracle_result: OracleResult,
 ):
     def oracle(inp: Input) -> OracleResult:
-        # param list needs to be extended to account for the desired line to be called 
-        param = list(map(int, str(inp).strip().split()))  # This might become a problem
+        # param list needs to be extended to account for the desired line to be called
+        param = list(map(int, str(inp).strip().split(',')))  # This might become a problem
         try:
             # checks timeout exception
             with ManageTimeout(timeout):

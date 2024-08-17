@@ -4,10 +4,10 @@ def middle(x, y, z):
         if x < y:
             m = y
         elif x < z:
-            m = x 
+            m = y  # bug
     else:
         if x > y:
             m = y
         elif x > z:
-            m = x # desired line
+            m = x
     return m

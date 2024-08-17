@@ -17,7 +17,7 @@ from islearn.learner import InvariantLearner
 STANDARD_PATTERNS_REPO = "patterns.toml"
 logger = logging.getLogger("learner")
 
-from debugging_framework.oracle import OracleResult
+from debugging_framework.input.oracle import OracleResult
 from avicenna.input import Input
 
 
@@ -71,6 +71,7 @@ class AvicennaTruthTableRow:
         return evaluate(formula, inp.tree, graph.grammar, graph=graph).is_true()
 
     def update_eval_results_and_combination(self, eval_result: bool, inp: Input):
+        #print(eval_result)
         self.eval_results.append(eval_result)
         self.comb[inp] = eval_result
 
@@ -217,6 +218,8 @@ class AviIslearn(InvariantLearner, PatternLearner):
         patterns: Optional[List[Formula]] = None,
         activated_patterns: Optional[Iterable[str]] = None,
         deactivated_patterns: Optional[Iterable[str]] = None,
+        min_recall: float = 0.9,
+        min_specificity: float = 0.6
     ):
         super().__init__(
             grammar,
@@ -224,6 +227,8 @@ class AviIslearn(InvariantLearner, PatternLearner):
             pattern_file=pattern_file,
             activated_patterns=activated_patterns,
             deactivated_patterns=deactivated_patterns,
+            min_recall=min_recall,
+            min_specificity=min_specificity
         )
         self.all_negative_inputs: Set[Input] = set()
         self.all_positive_inputs: Set[Input] = set()
@@ -250,6 +255,7 @@ class AviIslearn(InvariantLearner, PatternLearner):
         positive_inputs, negative_inputs = self.categorize_inputs(test_inputs)
         self.update_inputs(positive_inputs, negative_inputs)
         self.exclude_nonterminals = exclude_nonterminals or set()
+        
         return self._learn_invariants(
             positive_inputs, negative_inputs, precision_truth_table, recall_truth_table
         )
@@ -279,11 +285,12 @@ class AviIslearn(InvariantLearner, PatternLearner):
         candidates = self.get_candidates(sorted_positive_inputs)
 
         self.evaluate_recall(candidates, recall_truth_table, positive_inputs)
+        
         self.filter_candidates(precision_truth_table, recall_truth_table)
+        
         self.evaluate_precision(
             precision_truth_table, recall_truth_table, negative_inputs
         )
-
         self.get_disjunctions()
         self.get_conjunctions(precision_truth_table, recall_truth_table)
 
@@ -586,7 +593,7 @@ class AvicennaPatternLearner(AviIslearn):
     ):
         sorted_positive_inputs = self.sort_and_filter_inputs(self.all_positive_inputs)
         candidates = self.get_candidates(sorted_positive_inputs)
-        print(f"Number of candidates: ", len(candidates))
+        #print(f"Number of candidates: ", len(candidates))
 
         self.evaluate_recall(candidates, recall_truth_table, positive_inputs)
         self.filter_candidates(precision_truth_table, recall_truth_table)
@@ -605,7 +612,7 @@ class AvicennaPatternLearner(AviIslearn):
         """
 
         result = self.get_result_list(precision_truth_table, recall_truth_table)
-        print(len(precision_truth_table), len(recall_truth_table))
+        #print(len(precision_truth_table), len(recall_truth_table))
         return result  # , precision_truth_table, recall_truth_table
 
     @staticmethod
@@ -628,7 +635,7 @@ class AvicennaPatternLearner(AviIslearn):
         dataframe["oracle"] = [False] * len(precision_truth_table.rows[0].inputs) + [
             True
         ] * len(recall_truth_table.rows[0].inputs)
-        print(dataframe)
+        #print(dataframe)
         return dataframe
 
     @staticmethod
@@ -693,4 +700,4 @@ class AvicennaPatternLearner(AviIslearn):
 
         for candidate in candidates:
             pass
-            print(ISLaUnparser(candidate).unparse())
+            #print(ISLaUnparser(candidate).unparse())

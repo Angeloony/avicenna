@@ -5,7 +5,7 @@ from abc import ABC
 from isla.solver import ISLaSolver
 from sklearn.metrics import confusion_matrix
 
-from debugging_framework.oracle import OracleResult
+from debugging_framework.input.oracle import OracleResult
 
 from avicenna.generator import MutationBasedGenerator
 from avicenna.input import Input
