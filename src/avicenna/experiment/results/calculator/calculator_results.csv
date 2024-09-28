@@ -1,0 +1,38 @@
+1,empty
+2,empty
+3,empty
+4,empty
+5,empty
+6,empty
+7,empty
+8,empty
+9,empty
+10,empty
+11,empty
+12,empty
+13,empty
+14,"(ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), )), 0.8666666666666667, 1.0)"
+15,"(ConjunctiveFormula(ExistsFormula(BoundVariable(""elem"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""0"")', BoundVariable(""elem"", ""<number>""), )), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), ))), 1.0, 1.0)"
+16,"(ConjunctiveFormula(ForallFormula(BoundVariable(""elem"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<number>""), )), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), ))), 1.0, 1.0)"
+17,"(ConjunctiveFormula(ExistsFormula(BoundVariable(""container1"", ""<maybe_minus>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(< (str.len container1) (str.to_int length_field))', BoundVariable(""length_field"", ""<number>""), BoundVariable(""container1"", ""<maybe_minus>""), ))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), ))), 1.0, 1.0)"
+18,"(ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<number>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<one_nine>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<number>""), BoundVariable(""elem_2"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), ))), 1.0, 1.0)"
+19,"(ConjunctiveFormula(ForallFormula(BoundVariable(""elem"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<number>""), )), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), ))), 1.0, 1.0)"
+20,"(ConjunctiveFormula(ForallFormula(BoundVariable(""elem"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<number>""), )), ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem_0) (str.to_int ""4""))', BoundVariable(""elem_0"", ""<function>""), )))), 1.0, 1.0)"
+21,"(ConjunctiveFormula(ExistsFormula(BoundVariable(""container1"", ""<maybe_digits>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(< (str.len container1) (str.to_int length_field))', BoundVariable(""length_field"", ""<number>""), BoundVariable(""container1"", ""<maybe_digits>""), ))), ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<function>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""4""))', BoundVariable(""elem"", ""<function>""), )))), 1.0, 1.0)"
+22,"(ConjunctiveFormula(ForallFormula(BoundVariable(""elem"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<number>""), )), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), ))), 1.0, 1.0)"
+23,empty
+24,empty
+25,empty
+26,"(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<function>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= elem ""tan"")', BoundVariable(""elem"", ""<function>""), ))), 1.0, 1.0)"
+27,empty
+28,empty
+29,empty
+30,"(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<function>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= elem ""cos"")', BoundVariable(""elem"", ""<function>""), ))), 1.0, 1.0)"
+31,empty
+32,empty
+33,empty
+34,"(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<function>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= elem ""sin"")', BoundVariable(""elem"", ""<function>""), ))), 1.0, 1.0)"
+35,empty
+36,empty
+37,empty
+38,

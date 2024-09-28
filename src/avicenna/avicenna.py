@@ -56,7 +56,7 @@ class Avicenna:
         input_generator: Type[Generator] = None,
         pattern_learner: Type[PatternLearner] = None,
         timeout_seconds: Optional[int] = None,
-        min_recall: float = 0.9,
+        min_recall: float = 0.9, # change back later lol
         min_min_specificity: float = 0.6
     ):
         """
@@ -113,7 +113,7 @@ class Avicenna:
             # Clear avicenna logger handlers
             for handler in LOGGER.handlers[:]:
                 LOGGER.removeHandler(handler)
-
+        
         self._infeasible_constraints: Set = set()
         self._max_conjunction_size = max_conjunction_size
 
@@ -130,7 +130,7 @@ class Avicenna:
                 classifier_type=feature_extractor.GradientBoostingTreeRelevanceLearner,
             )
         )
-
+        
         self.pattern_file = pattern_file if pattern_file else get_pattern_file_path()
         if not patterns:
             pattern_repo = patterns_from_file(str(self.pattern_file))
@@ -353,7 +353,6 @@ class Avicenna:
         logging.debug(f"Infeasible constraint: {constraint}")
 
     def finalize(self) -> Optional[Tuple[Formula, float, float]]:
-        #print(self._best_candidates)
         return (
             self._calculate_best_formula()
             .map(lambda candidates: candidates[0])
@@ -410,7 +409,6 @@ class Avicenna:
         candidates_with_scores.sort(
             key=lambda x: (x[2], x[1], len(x[0])), reverse=True
         )
-        #print(candidates_with_scores)
         return candidates_with_scores
 
     @staticmethod
@@ -421,8 +419,6 @@ class Avicenna:
             candidates_with_scores[0][1],
             candidates_with_scores[0][2],
         )
-        #print(candidates_with_scores)
-        #print("top precision: " +  str(top_precision) + " top recall: " + str(top_recall))
 
         return [
             candidate

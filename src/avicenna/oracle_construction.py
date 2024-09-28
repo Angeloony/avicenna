@@ -128,18 +128,20 @@ def _construct_line_oracle(
                                         event_path=event_file_path,
                 )            
         except Exception as e:
-            return OracleResult.PASSING # exception was triggered, print for later use, maybe add to return somehow? global var?
+            print(e)
+            return OracleResult.UNDEFINED # exception was triggered, print for later use, maybe add to return somehow? global var?
         
         # TODO : double check this call middle cant be right here
         coverage = AviX.run_sfl_analysis(
             get_sfl_config(
                 failing=event_file_path, 
-                put_path=put_path, # path to the base file
+                put_path=put_path,#put_path, # path to the base file
                 instr_path=resource_path + '/instrumented.py'
             ))
+        #print(coverage)
+        #print(desired_line)
         if desired_line in coverage:
             # print(coverage)
-            # print(inp)
             return OracleResult.FAILING
         else: 
             # print(coverage)

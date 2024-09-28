@@ -7,6 +7,8 @@ from sflkit.analysis import factory
 from sflkit.analysis.analyzer import Analyzer
 from sflkitlib.lib import reset, dump_events
 
+
+
 """ Instrumentation funcs and helper funcs"""
 
 # Embedded SFLKit's instrumentation into AviX
@@ -53,7 +55,7 @@ def analyzer_conf(conf: Config):
 
     
 # help func to shorten create event file  
-def import_instrumented(function_under_test,converted_inp):
+def import_instrumented(function_under_test, converted_inp):
     from .rsc import instrumented  # TODO make this dynamic by connecting it with avix variable instrpath somehow
     # TODO : whyyyy reload breaky
     # for some reason reload broke this, maybe check this out later?

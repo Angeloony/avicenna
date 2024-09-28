@@ -411,6 +411,8 @@ class AviIslearn(InvariantLearner, PatternLearner):
             int(self.min_specificity * 100),
             int(self.min_recall * 100),
         )
+        # remove later
+        #print(result)
         return result
 
     def get_disjunctions(self):

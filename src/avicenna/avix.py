@@ -32,8 +32,11 @@ class AviX(Avicenna):
         instr_path: str = str(get_avicenna_rsc_path()) + '/instrumented.py',
         max_iterations: int = 10,
         top_n_relevant_features: int = 3,
-        ):
+        max_conjunction_size: int = 3,
         
+        min_recall: float = 0.9,
+        min_min_specificity: float = 0.3,
+        ):
         # requires the path to PUT and the instrumented version of it. save tmp.py in the folder for now, delete when done
         instrument(put_path=put_path, instr_path=instr_path)
         
@@ -43,7 +46,10 @@ class AviX(Avicenna):
             oracle=oracle,
             initial_inputs=initial_inputs,
             max_iterations=max_iterations,
-            top_n_relevant_features=top_n_relevant_features
+            top_n_relevant_features=top_n_relevant_features,
+            max_conjunction_size=max_conjunction_size,
+            min_recall=min_recall,
+            min_min_specificity=min_min_specificity,
         )
 
 
@@ -76,7 +82,7 @@ class AviX(Avicenna):
             converted_inp = inp_converter(inp) # must always return a list!!
         else:
             converted_inp = inp
-        
+            
         # delete old event files first
         if os.path.exists(event_path):
             os.unlink(event_path)

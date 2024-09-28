@@ -59,6 +59,14 @@ forall <?NONTERMINAL> container in start:
     (= elem <?STRING>)
 '''
 
+#name = "Occurrence in Container"
+#constraint = '''
+#forall <?NONTERMINAL> container in start:
+#  exists <?NONTERMINAL> elem in container:
+#    (inside(elem, container))
+#'''
+
+
 [[Existential]]
 
 name = "Existence Numeric String Smaller or Equal Than"
@@ -145,3 +153,14 @@ forall <?NONTERMINAL> elem_1 in start:
   exists <?NONTERMINAL> elem_2 in start:
     (>= (str.to.int elem_1) (str.to.int elem_2))
 '''
+
+#added by lina
+# doesnt work, string operators not implemented -> check regex next?
+#[[Existential]]
+#
+#name = "String Match in elem"
+#constraint = '''
+#forall <?NONTERMINAL> elem in start: (
+#    str.contains elem <?STRING>
+#  ) 
+#'''
