@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,138.225,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+1,64.104,1.0,0.93,"∃ elem ∈ start: (elem == """""")"
+2,154.0,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+3,350.462,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+4,178.519,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+5,90.158,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+6,162.258,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+7,142.037,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+8,92.583,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+9,147.832,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.

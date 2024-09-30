@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,839.286,0.88,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+1,46.458,0.81,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+2,111.791,0.82,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+3,274.052,0.89,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+4,125.113,0.89,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+5,73.429,0.83,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+6,600.908,0.86,1.0,"∃ elem ∈ start: (elem == ""<"")"
+7,47.765,0.87,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+8,391.63,0.92,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
+9,585.417,0.88,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"

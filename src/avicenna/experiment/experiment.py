@@ -239,10 +239,15 @@ class Subject:
             ],
         }
          
+        # no inputs possible to trigger lines 7, 9, and 11 with. 
+        # quotes and < > are mutually exclusive. strings cannot contain <> in this grammar.
         inputs_markup = [
-            '"abc"','"<b>abc</b>"', #'"<abc>"',
-            "abc", "<b>abc</b>", "'a'''''''",
-            ' ', "<b></b>",
+            '"abc"',"abc",  "'a'''''''", ' '
+            '"<b>abc</b>"', "<b>abc</b>", 
+            "<b>abc</b> meow", "meow <b>abc</b>", "meow <b>abc</b> meow",
+            "<b></b>", '"<b></b>"',
+            '<b><baba></i@_gj32}4~></b>', 
+            '<"baba"></123"b3423"""a645a">', "<b>'baba'</b>",
         ]
         
         subject_attributes = {
@@ -252,10 +257,13 @@ class Subject:
             "converter" : None,
             "lines"     : [
                 1, 2, 6, 
-                7, 8, 
-                9, 10, 
-                11, 12, 
-                13, 14,
+                #7,
+                8, 
+                #9, 
+                10, 
+                #11, 12, 
+                #13, 
+                14,
                 16
             ],
             "first_func": "remove_html_markup",

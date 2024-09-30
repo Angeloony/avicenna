@@ -132,8 +132,8 @@ def print_dataframe(
     line: str
 ):
     df = DataFrame(data=results,)
-    print("dataframe")
-    print(df)
+    #print("dataframe")
+    #print(df)
     
     df.to_csv('results/' + subject.name + '/' + str(line) + '_results.csv', sep=',', encoding='utf-8',)  
     
@@ -150,7 +150,7 @@ def run_subject(subject: Subject, runs: int):
 def main():
     runs = 10
     run_subject(Subject(Subject.get_markup()), runs)
-    run_subject(Subject(Subject.get_calculator()), runs)
+    #run_subject(Subject(Subject.get_calculator()), runs)
     #run_subject(Subject(Subject.get_expression()), runs)
     #run_subject(Subject(Subject.get_middle()), runs)
     return
