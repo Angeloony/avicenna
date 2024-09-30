@@ -138,28 +138,22 @@ def print_dataframe(
     df.to_csv('results/' + subject.name + '/' + str(line) + '_results.csv', sep=',', encoding='utf-8',)  
     
     
+def run_subject(subject: Subject, runs: int):
+    subject.results = experiment(subject, runs)
+    export_results(subject)
+    return
+    
+    
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
 """
 def main():
-    calculator = Subject(Subject.get_calculator())
-     
-    expression = Subject(Subject.get_expression())
-    
-    middle = Subject(Subject.get_middle())
-    
-    markup = Subject(Subject.get_markup())
-    
     runs = 10
-    calculator.results = experiment(calculator, runs)
-    expression.results = experiment(expression, runs)
-    middle.results = experiment(middle, runs)
-    markup.results = experiment(markup, runs)
-    
-    export_results(calculator)
-    export_results(expression)
-    export_results(middle)
-    export_results(markup)
+    run_subject(Subject(Subject.get_markup()), runs)
+    run_subject(Subject(Subject.get_calculator()), runs)
+    #run_subject(Subject(Subject.get_expression()), runs)
+    #run_subject(Subject(Subject.get_middle()), runs)
+    return
 
 if __name__ == '__main__':
     main()

@@ -1,3 +1,0 @@
-,Runtime,Precision,Recall,Constraint
-0,490.51,0.6190476190476191,1.0,"∃ elem_xy ∈ start: (inside(elem_xy, start))"
-1,979.93,-1.0,-1.0,No constraint has been found for min_precision 0.6 and min_recall 0.9.

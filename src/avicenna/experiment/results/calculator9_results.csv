@@ -1,3 +1,0 @@
-,Runtime,Precision,Recall,Constraint
-0,45.416,1.0,1.0,"(∀ elem ∈ start: (StrToInt(elem) <= StrToInt(""1"")) ∧ ∃ elem_0 ∈ start: (elem_0 == ""sqrt""))"
-1,41.36,1.0,1.0,"(∀ container ∈ start: (∃ elem ∈ container: (elem == ""0"")) ∧ ∃ elem_0 ∈ start: (elem_0 == ""sqrt""))"

@@ -250,7 +250,14 @@ class Subject:
             "grammar"   : grammar_markup,
             "inputs"    : inputs_markup,
             "converter" : None,
-            "lines"     : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            "lines"     : [
+                1, 2, 6, 
+                7, 8, 
+                9, 10, 
+                11, 12, 
+                13, 14,
+                16
+            ],
             "first_func": "remove_html_markup",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "markup.py",
         } 

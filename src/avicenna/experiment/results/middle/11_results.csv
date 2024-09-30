@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,337.105,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+1,403.728,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+2,337.133,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+3,301.322,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+4,250.111,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+5,421.899,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+6,236.217,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+7,386.541,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+8,265.807,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))
+9,343.314,1.0,1.0,(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∀ elem_0 ∈ start: (∃ elem_3 ∈ start: (StrToInt(elem_0) >= StrToInt(elem_3))))

@@ -1,3 +1,0 @@
-,Runtime,Precision,Recall,Constraint
-0,508.76,0.8620689655172413,1.0,"ExistsFormula(BoundVariable(""elem_xy"", ""<html>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7f68810809d0>)"", 'BoundVariable(""elem_xy"", ""<html>""), Constant(""start"", ""<start>"")')))"
-1,1459.95,0.7878787878787878,1.0,"ExistsFormula(BoundVariable(""elem_xy"", ""<html>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7f68810809d0>)"", 'BoundVariable(""elem_xy"", ""<html>""), Constant(""start"", ""<start>"")')))"
