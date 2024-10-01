@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,11.381,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4"")))"
+1,9.225,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+2,11.045,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+3,10.165,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+4,54.239,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4"")))"
+5,6.905,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+6,8.586,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+7,11.119,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+8,15.665,1.0,1.0,"∃ elem ∈ start: (elem == ""sqrt"")"
+9,21.375,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4"")))"

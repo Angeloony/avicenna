@@ -98,7 +98,7 @@ def explain_line(
             min_min_specificity=0.6,
         )
         
-        logging.basicConfig(filename='logs/' + subject.name + str(line) + '.log', filemode='w', encoding='utf-8', level=logging.DEBUG, force=True)
+        logging.basicConfig(filename='logs/' + subject.name + str(line) + '.log', filemode='w', encoding='utf-8', level=logging.INFO, force=True)
         best_invariant = avix.explain()
         
         # this happens if no invariant was found
@@ -149,8 +149,8 @@ def run_subject(subject: Subject, runs: int):
 """
 def main():
     runs = 10
-    run_subject(Subject(Subject.get_markup()), runs)
-    #run_subject(Subject(Subject.get_calculator()), runs)
+    #run_subject(Subject(Subject.get_markup()), runs)
+    run_subject(Subject(Subject.get_calculator()), runs)
     #run_subject(Subject(Subject.get_expression()), runs)
     #run_subject(Subject(Subject.get_middle()), runs)
     return

@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,22.709,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+1,26.379,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+2,27.869,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+3,16.08,1.0,1.0,"∃ elem ∈ start: (elem == ""sin"")"
+4,17.39,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+5,41.079,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+6,15.762,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+7,28.254,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+8,33.435,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"
+9,24.885,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""sin""))"

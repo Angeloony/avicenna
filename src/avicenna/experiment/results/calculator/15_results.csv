@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,137.401,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+1,45.038,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+2,24.063,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+3,116.563,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+4,113.885,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+5,149.181,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4""))))"
+6,212.886,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+7,139.243,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+8,57.929,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+9,129.096,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"

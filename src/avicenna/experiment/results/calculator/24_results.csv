@@ -1,0 +1,11 @@
+,Runtime,Precision,Recall,Constraint
+0,22.703,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+1,19.337,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+2,28.999,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+3,13.647,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+4,24.631,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+5,28.878,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+6,14.052,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+7,25.733,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+8,15.628,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
+9,11.521,1.0,1.0,"∀ container ∈ start: (∃ elem ∈ container: (elem == ""cos""))"
