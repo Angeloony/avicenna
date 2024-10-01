@@ -1,6 +1,7 @@
 import csv
 import time
 import logging
+import string
 
 from avicenna.avix import AviX
 from avicenna.oracle_construction import * 
@@ -30,21 +31,23 @@ def experiment(
             'Runtime': [-1] * total_attempts,
             'Precision': [-1] * total_attempts,
             'Recall': [-1] * total_attempts,
+            'Line': [-1] * total_attempts,
             'Constraint': ["No constraint has been found for min_precision 0.6 and min_recall 0.9."] * total_attempts,
             'Readable_Constraint': ["No constraint has been found for min_precision 0.6 and min_recall 0.9."] * total_attempts,
         }
         
         for attempt in range(0, total_attempts):
-            try:            
-                start = time.time()
+            try:     
                 result_dict['Attempt'][attempt] = attempt + 1
+                result_dict['Line'][attempt] = line       
+                start = time.time()
                 constraint = explain_line(line=line, subject=subject) 
 
             except AssertionError as e:
                 end = time.time()
                 result_dict['Runtime'][attempt] = round(end - start, 3)
                 # TODO doublecheck this
-                result_dict['Constraint'] = e
+                result_dict['Constraint'] = str(e)
                 
                 print('it failed im alive, just finished line ' + str(line) + ' run ' + str(attempt))
                 continue
@@ -157,28 +160,33 @@ def import_csv(path):
     return data
     
     
-def fuzz_with_constraints(subject: Subject, data, line):
+def fuzz_with_constraints(subject: Subject, data: dict, line):
     # print(data['Constraint'])
     print("constraint")
-    print(data['Constraint'])
+    print(data)
     
-    fuzzed_inputs = []
-    for _ in range(0,100):
-        try:
-            solver = ISLaSolver(
-                grammar=subject.grammar,
-                #formula=data['Constraint'],
-                formula=data['Constraint'][0],
-                enable_optimized_z3_queries=False,
-            )
-            #print(solver.solve())
-            fuzzed_inputs.append(solver.solve())
-        except StopIteration:
-            continue
+    fuzzed_inputs = {
+        'Fuzzed': [],
+    }
+    
+    for constraint in data['Constraint']:
+        fuzzed_inputs['Fuzzed'].append(constraint)
+        for _ in range(0,100):
+            try:
+                solver = ISLaSolver(
+                    grammar=subject.grammar,
+                    #formula=data['Constraint'],
+                    formula=constraint,
+                    enable_optimized_z3_queries=False,
+                )
+                #print(solver.solve())
+                fuzzed_inputs['Fuzzed'].append(solver.solve())
+            except StopIteration:
+                continue
     
     
-    with open('results/middle/' + str(4) + '_fuzzed.txt', 'w') as file:
-        for item in fuzzed_inputs:
+    with open('results/middle/' + str(data['Line']) + '_fuzzed.txt', 'a+') as file:
+        for item in fuzzed_inputs['Fuzzed']:
             file.write(f"{item}\n")
     
     return
@@ -188,7 +196,7 @@ def fuzz_with_constraints(subject: Subject, data, line):
     Main runner. Lets me adjust values, decide what programs to run etc.
 """
 def main():
-    attempts_per_line = 1
+    attempts_per_line = 2
     #run_subject(Subject(Subject.get_markup()), attempts_per_line)
     #run_subject(Subject(Subject.get_calculator()), attempts_per_line)
     # expression = Subject(Subject.get_expression())
@@ -213,8 +221,37 @@ def main():
             
     print(alt_data[3])
     #print(working_line)
+    relevant_constraints = []
     
-    fuzz_with_constraints(middle, alt_data[3], 4)
+    relevant_lines = {
+        'Line': [],
+        'Constraint': [],
+    }
+    
+    for result_dict in middle.results:
+        #print(result_dict['Constraint'])
+        for constraint in result_dict['Constraint']:
+            print(constraint)
+            if isinstance(constraint, str):
+                continue
+            else:
+                print(constraint)
+                if constraint is Formula:
+                    print("yay")
+                    
+                if constraint in relevant_constraints:
+                    continue
+                else:
+                    relevant_lines['Line'] = result_dict['Line'][0]
+                    relevant_lines['Constraint'].append(constraint)
+                    relevant_constraints.append(constraint)
+    
+    print("relevant constraints after finding them hopefully lol")
+    print(relevant_constraints)
+    print(relevant_lines)
+    for constraint_dict in relevant_lines:
+        
+        fuzz_with_constraints(middle, constraint_dict, 4)
     
     # for item in line_4:
     #     fuzz_with_constraints(middle, item)
