@@ -71,7 +71,11 @@ class Subject:
             "grammar"   : grammar_middle,
             "inputs"    : inputs_middle,
             "converter" : converter_middle,
-            "lines"     : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            "lines"     : [
+                1, 2, 3,# 4,
+                #5, 
+                #6, 7, 8, 9, 10, 11, 12, 13
+            ],
             "first_func": "middle",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "middle.py",
         } 
@@ -281,9 +285,15 @@ class Subject:
             "<arith_expr>": [
                 "<arith_expr><operator><arith_expr>",
                 "<number>",
-                "(<arith_expr>)",
+                "<lpar><arith_expr><rpar>",
             ],
-            "<operator>": [" + ", " - ", " * ", " / "],
+            "<lpar>": ["("],
+            "<rpar>": [")"],
+            "<operator>": ["<plus>", "<minus>", "<mul>", "<div>"],
+            "<plus>": [" + "],
+            "<minus>": [" - "],
+            "<mul>": [" * "],
+            "<div>": [" / "],
             "<number>": ["<maybe_minus><non_zero_digit><maybe_digits>", "0"],
             "<maybe_minus>": ["", "~ "],
             "<non_zero_digit>": [
@@ -296,7 +306,7 @@ class Subject:
         
         # buggy behavior when divided by 0, otherwise try to trigger every possible function
         inputs_expression = [
-                  '5',    '(7)', '~ 8', # no space, doesn't trigger line 60
+            '5',    '(7)', '~ 8', # no space, doesn't trigger line 60
             '(9 - 5)', '16 - 5', '0 - (2 - 3)', '(7 - 2) - 3', # all -
             '(9 + 5)', '16 + 5', '0 + (2 + 3)', '(7 + 2) + 3', # all +
             '(9 * 5)', '16 * 5', '0 * (2 * 3)', '(7 * 2) * 3', # all *
@@ -315,21 +325,28 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                #1, 2, # import and empty line
-                #3, 4, 5, #term
-                #8, 9, 
+                #1, 2, # import and empty line DONE
+                #3, 4, 5, #term DONE
+                #8, 9, DONE
                 #10, #binary
-                14, 16, #add
-                #20, 21, 22, 23, #sub
-                #26, 27, 28, 29, #mul
-                #32, 33, 34, 35, #div
-                #38, 39, 40, 41, 42, 43, 44, #neg
-                #47, 48, 49, 51, 52, # Constant
-                #55, 56, 59, 63, 64, 65, #parse func
-                #68, 69, 71, 72, 73, 77, 78, # parse_terminal func, left out same branch lines
-                #81, 82, 83, 85, 86, 87, #parse_neg func
-                #90, 91, 92, 93, 94, 95, 96, 97, 98, 99, #parse_mul_div
-                #102, 103, 104, 106, 107, 108, 109, 110, 111 #parse_add_sub
+                #14, 16, #add DONE
+                #38, 40, 
+                #41, 43, 44, #neg DONE
+                #47, 49, # Constant DONE
+                #55, 56, # DONE
+                #59, # ATTENTION: character parse
+                #63, 64, 65, #parse func DONE
+                # 69, 71, DONE
+                # 72, 73, # ATTENTION: Character parse
+                #77, 78, # DONE parse_terminal func, left out same branch lines
+                #83, # DONE
+                #85,
+                #86, # DONE
+                # 87, # Takes like 1h parse_neg func
+                #91, instant
+                93,
+                95, 97, 99, #parse_mul_div
+                #103, 106, 107, 109, 111 #parse_add_sub
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",
