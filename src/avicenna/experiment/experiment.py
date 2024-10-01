@@ -72,7 +72,7 @@ class Subject:
             "inputs"    : inputs_middle,
             "converter" : converter_middle,
             "lines"     : [
-                1, 2, 3,# 4,
+                1, 2, 3, 4,
                 #5, 
                 #6, 7, 8, 9, 10, 11, 12, 13
             ],
@@ -325,7 +325,7 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                #1, 2, # import and empty line DONE
+                1, 2, # import and empty line DONE
                 #3, 4, 5, #term DONE
                 #8, 9, DONE
                 #10, #binary
@@ -344,8 +344,8 @@ class Subject:
                 #86, # DONE
                 # 87, # Takes like 1h parse_neg func
                 #91, instant
-                93,
-                95, 97, 99, #parse_mul_div
+                #93,
+                #95, 97, 99, #parse_mul_div
                 #103, 106, 107, 109, 111 #parse_add_sub
             ],
             "first_func": "parse", 
