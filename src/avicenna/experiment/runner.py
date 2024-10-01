@@ -150,8 +150,8 @@ def run_subject(subject: Subject, runs: int):
 def main():
     runs = 10
     #run_subject(Subject(Subject.get_markup()), runs)
-    run_subject(Subject(Subject.get_calculator()), runs)
-    #run_subject(Subject(Subject.get_expression()), runs)
+    #run_subject(Subject(Subject.get_calculator()), runs)
+    run_subject(Subject(Subject.get_expression()), runs)
     #run_subject(Subject(Subject.get_middle()), runs)
     return
 

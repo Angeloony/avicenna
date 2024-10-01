@@ -50,10 +50,6 @@ class Constant(Term):
 
     def evaluate(self) -> float | int:
         return self.value
-    
-    
-    from typing import List
-
 
 
 def parse(s: str):

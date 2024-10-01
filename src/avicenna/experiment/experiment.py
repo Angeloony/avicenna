@@ -315,12 +315,21 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, #preamble stuff, all empty
-                55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, #parse func
-                68, 69, 70, 71, 72, 73, 77, 78, # parse_terminal func, left out same branch lines
-                81, 82, 83, 84, 85, 86, 87, #parse_neg func
-                90, 91, 92, 93, 94, 95, 96, 97, 98, 99, #parse_mul_div
-                102, 103, 104, 105, 106, 107, 108, 109, 110, 111 #parse_add_sub
+                #1, 2, # import and empty line
+                #3, 4, 5, #term
+                #8, 9, 
+                #10, #binary
+                14, 16, #add
+                #20, 21, 22, 23, #sub
+                #26, 27, 28, 29, #mul
+                #32, 33, 34, 35, #div
+                #38, 39, 40, 41, 42, 43, 44, #neg
+                #47, 48, 49, 51, 52, # Constant
+                #55, 56, 59, 63, 64, 65, #parse func
+                #68, 69, 71, 72, 73, 77, 78, # parse_terminal func, left out same branch lines
+                #81, 82, 83, 85, 86, 87, #parse_neg func
+                #90, 91, 92, 93, 94, 95, 96, 97, 98, 99, #parse_mul_div
+                #102, 103, 104, 106, 107, 108, 109, 110, 111 #parse_add_sub
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",
