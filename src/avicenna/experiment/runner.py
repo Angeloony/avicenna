@@ -55,7 +55,7 @@ def experiment(
             end = time.time()
             if constraint:
                 result_dict['Runtime'][attempt] = round(end - start, 3)
-                result_dict['Readable_Constraint'][attempt] = constraint
+                result_dict['Readable_Constraint'][attempt] = str(constraint)[1:-11]
                 result_dict['Constraint'][attempt] = constraint[0]
                 result_dict['Precision'][attempt] = round(constraint[1], 2)
                 result_dict['Recall'][attempt] = round(constraint[2], 2)
@@ -160,32 +160,33 @@ def import_csv(path):
     return data
     
     
-def fuzz_with_constraints(subject: Subject, data: dict, line):
-    # print(data['Constraint'])
-    print("constraint")
-    print(data)
-    
+def fuzz_with_constraints(
+    subject: Subject,
+    constraint,
+    line,
+    print_constraints,
+):
     fuzzed_inputs = {
         'Fuzzed': [],
     }
     
-    for constraint in data['Constraint']:
-        fuzzed_inputs['Fuzzed'].append(constraint)
-        for _ in range(0,100):
-            try:
-                solver = ISLaSolver(
-                    grammar=subject.grammar,
-                    #formula=data['Constraint'],
-                    formula=constraint,
-                    enable_optimized_z3_queries=False,
-                )
-                #print(solver.solve())
-                fuzzed_inputs['Fuzzed'].append(solver.solve())
-            except StopIteration:
-                continue
+    fuzzed_inputs['Fuzzed'].append(print_constraints)
     
+    for _ in range(0,100):
+        
+        try:
+            solver = ISLaSolver(
+                grammar=subject.grammar,
+                formula=constraint,
+                enable_optimized_z3_queries=False,
+            )
+            
+            fuzzed_inputs['Fuzzed'].append(solver.solve())
+            
+        except StopIteration:
+            continue
     
-    with open('results/middle/' + str(data['Line']) + '_fuzzed.txt', 'a+') as file:
+    with open('results/' + subject.name + '/' + str(line) + '_fuzzed.txt', 'a+') as file:
         for item in fuzzed_inputs['Fuzzed']:
             file.write(f"{item}\n")
     
@@ -196,7 +197,7 @@ def fuzz_with_constraints(subject: Subject, data: dict, line):
     Main runner. Lets me adjust values, decide what programs to run etc.
 """
 def main():
-    attempts_per_line = 2
+    attempts_per_line = 10
     #run_subject(Subject(Subject.get_markup()), attempts_per_line)
     #run_subject(Subject(Subject.get_calculator()), attempts_per_line)
     # expression = Subject(Subject.get_expression())
@@ -205,60 +206,19 @@ def main():
     middle = Subject(Subject.get_middle())
     # middle_data = []
     middle = run_subject(middle, attempts_per_line)
-    alt_data = middle.results
-    middle_data = []
-    for line in middle.relevant_lines:
-        middle_data.append(import_csv('results/' + middle.name + '/' + str(line) + '_results.csv'))
-    
-    # print(len(middle_data))
-    # print("middledata")
-    # for item in middle_data:
-    #     print(item)
-    #print("altdata")
-    # for item in alt_data:
-    #     for other_item in alt_data:
-    #         print('wa')
             
-    print(alt_data[3])
-    #print(working_line)
-    relevant_constraints = []
-    
-    relevant_lines = {
-        'Line': [],
-        'Constraint': [],
-    }
-    
-    for result_dict in middle.results:
-        #print(result_dict['Constraint'])
-        for constraint in result_dict['Constraint']:
-            print(constraint)
-            if isinstance(constraint, str):
-                continue
-            else:
-                print(constraint)
-                if constraint is Formula:
-                    print("yay")
-                    
-                if constraint in relevant_constraints:
-                    continue
-                else:
-                    relevant_lines['Line'] = result_dict['Line'][0]
-                    relevant_lines['Constraint'].append(constraint)
-                    relevant_constraints.append(constraint)
-    
-    print("relevant constraints after finding them hopefully lol")
-    print(relevant_constraints)
-    print(relevant_lines)
-    for constraint_dict in relevant_lines:
-        
-        fuzz_with_constraints(middle, constraint_dict, 4)
-    
-    # for item in line_4:
-    #     fuzz_with_constraints(middle, item)
-    # for line_attempt_list in middle_data:
-    #     for result_dict in line_attempt_list:
-    #         print(result_dict['Attempt'])
-    # TODO : get access to my dataframes, fuzz with them
+    # TODO : 
+    for result in middle.results:
+        it = 0
+        for constraint in result['Constraint']:
+            if isinstance(constraint, Formula):
+                fuzz_with_constraints(
+                    middle,
+                    constraint,
+                    result['Line'][0],
+                    result['Readable_Constraint'][it],
+                )
+            it = it + 1
     return
 
 if __name__ == '__main__':

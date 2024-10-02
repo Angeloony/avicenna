@@ -73,8 +73,8 @@ class Subject:
             "converter" : converter_middle,
             "lines"     : [
                 1, 2, 3, 4,
-                #5, 
-                #6, 7, 8, 9, 10, 11, 12, 13
+                5, 
+                6, 7, 8, 9, 10, 11, 12, 13
             ],
             "first_func": "middle",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "middle.py",
