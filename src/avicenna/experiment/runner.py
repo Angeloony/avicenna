@@ -2,12 +2,14 @@ import csv
 import time
 import logging
 import string
+from pandas import DataFrame
 
 from avicenna.avix import AviX
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
-from pandas import *
-from isla.language import Formula
+
+from fuzzingbook import GrammarFuzzer
+from isla.language import Formula, ISLaUnparser
 from isla.solver import ISLaSolver
 from isla.derivation_tree import DerivationTree
     
@@ -55,8 +57,12 @@ def experiment(
             end = time.time()
             if constraint:
                 result_dict['Runtime'][attempt] = round(end - start, 3)
+                
                 result_dict['Readable_Constraint'][attempt] = str(constraint)[1:-11]
-                result_dict['Constraint'][attempt] = constraint[0]
+                # check formula_from_string? smth like that, check to read formula to parse for fuzzing
+                result_dict['Constraint'][attempt] = ISLaUnparser(constraint[0]).unparse()
+                print("unparsed constraint")
+                print(ISLaUnparser(constraint[0]).unparse())
                 result_dict['Precision'][attempt] = round(constraint[1], 2)
                 result_dict['Recall'][attempt] = round(constraint[2], 2)
                 
@@ -192,6 +198,16 @@ def fuzz_with_constraints(
     
     return
     
+  
+def predictor(subject: Subject):
+    
+    random_grammar_fuzzer = GrammarFuzzer(subject.grammar)
+    
+    for _ in range(0,1000):
+        with open('results/' + subject.name + '/fuzzed_predictor.txt', 'a+') as file:
+            file.write(f"{random_grammar_fuzzer.fuzz()}\n")
+    
+    return
     
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
