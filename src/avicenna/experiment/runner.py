@@ -8,7 +8,10 @@ from avicenna.avix import AviX
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
 
-from fuzzingbook import GrammarFuzzer
+from fuzzingbook.Grammars import EXPR_EBNF_GRAMMAR, convert_ebnf_grammar, Grammar, Expansion
+from fuzzingbook.Grammars import simple_grammar_fuzzer, is_valid_grammar, exp_string
+from fuzzingbook.GrammarFuzzer import GrammarFuzzer
+
 from isla.language import Formula, ISLaUnparser
 from isla.solver import ISLaSolver
 from isla.derivation_tree import DerivationTree
@@ -34,7 +37,7 @@ def experiment(
             'Precision': [-1] * total_attempts,
             'Recall': [-1] * total_attempts,
             'Line': [-1] * total_attempts,
-            'Constraint': ["No constraint has been found for min_precision 0.6 and min_recall 0.9."] * total_attempts,
+            'Constraint': [None] * total_attempts,
             'Readable_Constraint': ["No constraint has been found for min_precision 0.6 and min_recall 0.9."] * total_attempts,
         }
         
@@ -49,7 +52,8 @@ def experiment(
                 end = time.time()
                 result_dict['Runtime'][attempt] = round(end - start, 3)
                 # TODO doublecheck this
-                result_dict['Constraint'] = str(e)
+                result_dict['Constraint'][attempt] = None
+                result_dict['Readable_Constraint'][attempt] = str(e)
                 
                 print('it failed im alive, just finished line ' + str(line) + ' run ' + str(attempt))
                 continue
@@ -160,25 +164,26 @@ def run_subject(subject: Subject, runs: int):
 
 def import_csv(path):
     # read csv file to a list of dictionaries
+    print(path)
     with open(path, 'r') as data:
         csv_reader = csv.DictReader(data)
         data = [row for row in csv_reader]
     return data
     
-    
+# pass constraint as string
 def fuzz_with_constraints(
     subject: Subject,
     constraint,
     line,
-    print_constraints,
 ):
     fuzzed_inputs = {
         'Fuzzed': [],
     }
     
-    fuzzed_inputs['Fuzzed'].append(print_constraints)
+    fuzzed_inputs['Fuzzed'].append(constraint)
     
-    for _ in range(0,100):
+    # 20 inputs per constraint
+    for _ in range(0,30):
         
         try:
             solver = ISLaSolver(
@@ -198,44 +203,83 @@ def fuzz_with_constraints(
     
     return
     
-  
+# makes 1000 inputs for a subject based on its grammar
 def predictor(subject: Subject):
     
-    random_grammar_fuzzer = GrammarFuzzer(subject.grammar)
+    subject_fuzzer = GrammarFuzzer(grammar=subject.grammar)
     
     for _ in range(0,1000):
         with open('results/' + subject.name + '/fuzzed_predictor.txt', 'a+') as file:
-            file.write(f"{random_grammar_fuzzer.fuzz()}\n")
+            file.write(f"{subject_fuzzer.fuzz()}\n")
     
     return
+
+def fuzz_subject(
+    subject: Subject,
+):
+    for line in subject.relevant_lines:
+        subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
+        for attempt in subject_dict:
+            print("ATTEMPT: ")
+            print(attempt)
+            print(attempt['Constraint'])
+            if attempt['Constraint'] == None or 'Avicenna' in attempt['Constraint']:
+                continue
+            else:
+                fuzz_with_constraints(subject, attempt['Constraint'], line)
+        
     
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
 """
 def main():
-    attempts_per_line = 10
-    #run_subject(Subject(Subject.get_markup()), attempts_per_line)
-    #run_subject(Subject(Subject.get_calculator()), attempts_per_line)
-    # expression = Subject(Subject.get_expression())
-    # expression = run_subject(expression, attempts_per_line)
+    # PREAMBLE
+    # ***************************
+    attempts_per_line = 2
     
+    expression = Subject(Subject.get_expression())
+    calculator = Subject(Subject.get_calculator())
+    markup = Subject(Subject.get_markup())
     middle = Subject(Subject.get_middle())
-    # middle_data = []
-    middle = run_subject(middle, attempts_per_line)
-            
+    
+    # RUNNER SECTION
+    # ****************************
+    # expression = run_subject(expression, attempts_per_line)
+    calculator = run_subject(calculator, attempts_per_line)
+    # markup = run_subject(markup, attempts_per_line)
+    # middle = run_subject(middle, attempts_per_line)
+    
+    
+    
+    # PRODUCER SECTION
+    # ***********************************
+    # fuzz_subject(
+    #     subject=middle,
+    # )
+    
+    # PREDICTOR SECTION
+    # TODO : Read fuzzed inputs from file
+    # TODO : run through oracle, 
+    # ***********************************
+    # predictor(markup)
+    # predictor(expression)
+    # predictor(calculator)
+    #predictor(middle)
+    
+    #fuzz_with_constraints(subject=middle, constraint=str(constraint), line=)
     # TODO : 
-    for result in middle.results:
-        it = 0
-        for constraint in result['Constraint']:
-            if isinstance(constraint, Formula):
-                fuzz_with_constraints(
-                    middle,
-                    constraint,
-                    result['Line'][0],
-                    result['Readable_Constraint'][it],
-                )
-            it = it + 1
-    return
+    # for result in middle.results:
+    #     it = 0
+    #     for constraint in result['Constraint']:
+    #         if isinstance(constraint, Formula):
+    #             fuzz_with_constraints(
+    #                 middle,
+    #                 constraint,
+    #                 result['Line'][0],
+    #                 result['Readable_Constraint'][it],
+    #             )
+    #         it = it + 1
+    # return
 
 if __name__ == '__main__':
     main()

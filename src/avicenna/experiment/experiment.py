@@ -119,11 +119,11 @@ class Subject:
             "converter" : None,
             "lines"     : [
                 1, 4, #import and empty line
-                6, 8, 9, 10, 12, 13, 15, 16, #sqrt
-                19, 20, #tan
-                23, 24, #cos
-                27, 28, #sin
-                31, 32 #main
+                6, 8, 9, 12, 15, 16, #sqrt
+                20, #tan
+                24, #cos
+                28, #sin
+                32, #main
             ],
             "first_func": "main",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "calculator.py",
