@@ -1,11 +1,50 @@
-,Runtime,Precision,Recall,Constraint
-0,158.203,1.0,1.0,"(∀ elem_1 ∈ start: (∃ elem_2 ∈ start: (StrToInt(elem_1) >= StrToInt(elem_2))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-1,24.172,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-2,111.124,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-3,99.98,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-4,28.795,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-5,34.665,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-6,96.484,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-7,96.757,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-8,71.376,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4""))))"
-9,93.304,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,126.203,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+1,2,74.115,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+2,3,128.809,1.0,1.0,12,"(exists <one_nine> elem_xy in start:
+   inside(elem_xy, start) and
+exists <function> elem in start:
+  (= elem ""sqrt""))","ConjunctiveFormula(ExistsFormula(BoundVariable(""elem_xy"", ""<one_nine>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7f929509b130>)"", 'BoundVariable(""elem_xy"", ""<one_nine>""), Constant(""start"", ""<start>"")'))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), )))"
+3,4,82.405,1.0,1.0,12,"(exists <maybe_minus> container1 in start:
+   exists <number> length_field in start:
+     (< (str.len container1) (str.to.int length_field)) and
+exists <function> elem in start:
+  (= elem ""sqrt""))","ConjunctiveFormula(ExistsFormula(BoundVariable(""container1"", ""<maybe_minus>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(< (str.len container1) (str.to_int length_field))', BoundVariable(""length_field"", ""<number>""), BoundVariable(""container1"", ""<maybe_minus>""), ))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), )))"
+4,5,126.342,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+5,6,186.451,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+6,7,189.763,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+7,8,65.25,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+8,9,152.662,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+9,10,46.035,1.0,1.0,12,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"

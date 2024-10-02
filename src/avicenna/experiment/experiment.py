@@ -90,19 +90,21 @@ class Subject:
             "<arith_expr>": ["<function>(<number>)"],
             "<function>": ["sqrt", "sin", "cos", "tan"],
             "<number>": [
-                "<maybe_minus><one_nine><maybe_digits><maybe_frac>", 
-                #"-0",
-                "0"
+                "<maybe_minus><one_nine><maybe_digits><maybe_frac>",
+                "<zero>"
             ],
             "<maybe_minus>": [
                 "",
                 "-"
             ],
             "<maybe_frac>": ["", ".<digits>"],
+            "<maybe_digits>": ["", "<digits>"],
+            "<digits>": [
+                "<digit>",
+                "<digit><digits>"],
+            "<zero>":["0"],
             "<one_nine>": [str(num) for num in range(1, 10)],
             "<digit>": [digit for digit in string.digits],
-            "<maybe_digits>": ["", "<digits>"],
-            "<digits>": ["<digit>", "<digit><digits>"],
         } 
 
         inputs_calc = [
@@ -119,7 +121,7 @@ class Subject:
             "converter" : None,
             "lines"     : [
                 1, 4, #import and empty line
-                6, 8, 9, 12, 15, 16, #sqrt
+                6, 8, 9, 12, 15, #sqrt
                 20, #tan
                 24, #cos
                 28, #sin
@@ -260,15 +262,8 @@ class Subject:
             "inputs"    : inputs_markup,
             "converter" : None,
             "lines"     : [
-                1, 2, 6, 
-                7,
-                8, 
-                9, 
-                10, 
-                11, 12, 
-                13, 
-                14,
-                16
+                1, 6, 
+                8, 10, 12, 14,
             ],
             "first_func": "remove_html_markup",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "markup.py",
@@ -285,8 +280,9 @@ class Subject:
             "<arith_expr>": [
                 "<arith_expr><operator><arith_expr>",
                 "<number>",
-                "<lpar><arith_expr><rpar>",
+                "<par>",
             ],
+            "<par>": ["<lpar><arith_expr><rpar>"],
             "<lpar>": ["("],
             "<rpar>": [")"],
             "<operator>": ["<plus>", "<minus>", "<mul>", "<div>"],
@@ -294,7 +290,10 @@ class Subject:
             "<minus>": [" - "],
             "<mul>": [" * "],
             "<div>": [" / "],
-            "<number>": ["<maybe_minus><non_zero_digit><maybe_digits>", "0"],
+            "<number>": [
+                "<maybe_minus><non_zero_digit><maybe_digits>",
+                "0"
+            ],
             "<maybe_minus>": ["", "~ "],
             "<non_zero_digit>": [
                 str(num) for num in range(1, 10)
@@ -325,28 +324,22 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                1, 2, # import and empty line DONE
-                #3, 4, 5, #term DONE
-                #8, 9, DONE
-                #10, #binary
-                #14, 16, #add DONE
-                #38, 40, 
-                #41, 43, 44, #neg DONE
-                #47, 49, # Constant DONE
-                #55, 56, # DONE
-                #59, # ATTENTION: character parse
-                #63, 64, 65, #parse func DONE
-                # 69, 71, DONE
-                # 72, 73, # ATTENTION: Character parse
-                #77, 78, # DONE parse_terminal func, left out same branch lines
-                #83, # DONE
-                #85,
+                #10, # init Binary
+                #40, # init Negate
+                #49, # init Constant DONE
+                #56, # DONE
+                #59, # ATTENTION: character parse checking for space
+                #71, # DONE checking isnumeric()
+                #73, # ATTENTION: Character parse checking parentheses
+                #85, # return Negate Term
                 #86, # DONE
-                # 87, # Takes like 1h parse_neg func
-                #91, instant
-                #93,
-                #95, 97, 99, #parse_mul_div
-                #103, 106, 107, 109, 111 #parse_add_sub
+                #87, # Takes like 1h parse_neg func
+                #93, # go into mul_div
+                #95, # return Mul
+                #97, # return Div
+                #105,# go into add_sub
+                #107,# return Add
+                #109,# return Sub
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",

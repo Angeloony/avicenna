@@ -1,11 +1,47 @@
-,Runtime,Precision,Recall,Constraint
-0,137.401,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-1,45.038,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-2,24.063,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-3,116.563,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-4,113.885,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-5,149.181,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∀ container ∈ start: (∃ elem ∈ container: (Length(elem) == StrToInt(""4""))))"
-6,212.886,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-7,139.243,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-8,57.929,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
-9,129.096,1.0,1.0,"(∃ container1 ∈ start: (∃ length_field ∈ start: (Length(container1) < StrToInt(length_field))) ∧ ∃ elem ∈ start: (elem == ""sqrt""))"
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,69.821,1.0,1.0,15,"(exists <one_nine> container in start:
+   exists <number> length_field in start:
+     (<= (str.len container) (str.to.int length_field)) and
+exists <function> elem in start:
+  (= elem ""sqrt""))","ConjunctiveFormula(ExistsFormula(BoundVariable(""container"", ""<one_nine>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(<= (str.len container) (str.to_int length_field))', BoundVariable(""length_field"", ""<number>""), BoundVariable(""container"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), )))"
+1,2,177.167,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+2,3,91.212,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+3,4,87.201,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+4,5,254.239,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+5,6,144.805,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+6,7,257.172,1.0,1.0,15,"(exists <one_nine> container in start:
+   exists <number> length_field in start:
+     (<= (str.len container) (str.to.int length_field)) and
+exists <function> elem in start:
+  (= elem ""sqrt""))","ConjunctiveFormula(ExistsFormula(BoundVariable(""container"", ""<one_nine>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(<= (str.len container) (str.to_int length_field))', BoundVariable(""length_field"", ""<number>""), BoundVariable(""container"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""sqrt"")', BoundVariable(""elem"", ""<function>""), )))"
+7,8,133.489,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+8,9,76.605,1.0,1.0,15,"(forall <arith_expr> container in start:
+   exists <one_nine> elem in container:
+     (= (str.len elem) (str.to.int ""1"")) and
+exists <function> elem_0 in start:
+  (= elem_0 ""sqrt""))","ConjunctiveFormula(ForallFormula(BoundVariable(""container"", ""<arith_expr>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem"", ""<one_nine>""), BoundVariable(""container"", ""<arith_expr>""), SMTFormula('(= (str.len elem) (str.to_int ""1""))', BoundVariable(""elem"", ""<one_nine>""), ))), ExistsFormula(BoundVariable(""elem_0"", ""<function>""), Constant(""start"", ""<start>""), SMTFormula('(= elem_0 ""sqrt"")', BoundVariable(""elem_0"", ""<function>""), )))"
+9,10,14.58,-1.0,-1.0,15,,No constraint has been found for min_precision 0.6 and min_recall 0.9.

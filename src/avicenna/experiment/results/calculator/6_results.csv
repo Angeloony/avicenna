@@ -1,11 +1,11 @@
-,Runtime,Precision,Recall,Constraint
-0,0.054,-1,-1,Avicenna requires at least one failure-inducing input!
-1,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
-2,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
-3,0.054,-1,-1,Avicenna requires at least one failure-inducing input!
-4,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
-5,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
-6,0.127,-1,-1,Avicenna requires at least one failure-inducing input!
-7,0.054,-1,-1,Avicenna requires at least one failure-inducing input!
-8,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
-9,0.055,-1,-1,Avicenna requires at least one failure-inducing input!
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,0.067,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+1,2,0.085,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+2,3,0.082,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+3,4,0.068,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+4,5,0.069,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+5,6,0.075,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+6,7,0.095,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+7,8,0.066,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+8,9,0.066,-1,-1,6,,Avicenna requires at least one failure-inducing input!
+9,10,0.07,-1,-1,6,,Avicenna requires at least one failure-inducing input!
