@@ -1,0 +1,120 @@
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 874 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+126 were correctly classified as True Positive out of 126 True Positives.
+tneg
+874 were correctly classified as True Negative out of 874 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 126 True Positives.
+The wrongly classified inputs were: [].
+

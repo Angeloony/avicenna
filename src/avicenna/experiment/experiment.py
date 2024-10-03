@@ -101,7 +101,8 @@ class Subject:
             "<maybe_digits>": ["", "<digits>"],
             "<digits>": [
                 "<digit>",
-                "<digit><digits>"],
+                "<digit><digits>"
+            ],
             "<zero>":["0"],
             "<one_nine>": [str(num) for num in range(1, 10)],
             "<digit>": [digit for digit in string.digits],

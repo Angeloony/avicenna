@@ -166,7 +166,7 @@ def run_subject(subject: Subject, runs: int):
 
 def import_csv(path):
     # read csv file to a list of dictionaries
-    print(path)
+    #print(path)
     with open(path, 'r') as data:
         csv_reader = csv.DictReader(data)
         data = [row for row in csv_reader]
@@ -207,18 +207,18 @@ def fuzz_subject(
 def predict_fuzzed(
     subject: Subject,
 ):  
-    eval_dict = {
-        'fpos' : [],
-        'tpos' : [],
-        'tneg' : [],
-        'fneg' : [],
-    }
     #inputs = import_fuzzed('results/'+subject.name+'/fuzzed_predictor.txt')
     #classify_fuzzed(subject, inputs)
     all_fuzzed = import_fuzzed('results/' + subject.name + '/fuzzed_predictor.txt')    
     for line in subject.relevant_lines:
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         for attempt in subject_dict:
+            eval_dict = {
+            'fpos' : [],
+            'tpos' : [],
+            'tneg' : [],
+            'fneg' : [],
+            }
             # print("ATTEMPT: ")
             # print(attempt)
             if attempt['Constraint'] == None or 'Avicenna' in attempt['Constraint'] or attempt['Constraint'] == '':
@@ -234,6 +234,7 @@ def predict_fuzzed(
                         formula=attempt['Constraint'],
                         enable_optimized_z3_queries=False,
                     )
+                
                 print(line)
                 for input in all_fuzzed:
                     try:
@@ -252,10 +253,20 @@ def predict_fuzzed(
                             # true positive : determined true when true
                             # true negative : determined false when false                        
     
-        with open('results/' + subject.name + '/' + str(line) + '_predict_results.txt', 'w') as file:
-            for item in eval_dict:
-                file.write(f"{item}\n")
-                file.write(f"{len(eval_dict[item])} were classified as {item} out of {len(trigger_fuzzed)}\n")
+                with open('results/' + subject.name + '/' + str(line) + '_predict_results.txt', 'a+') as file:
+                    file.write("----------------NEW ATTEMPT----------------\n")
+                    for item in eval_dict:
+                        file.write(f"{item}\n")
+                        if item == 'tpos':
+                            file.write(f"{len(eval_dict[item])} were correctly classified as True Positive out of {len(trigger_fuzzed)} True Positives.\n")
+                        if item == 'tneg':
+                            file.write(f"{len(eval_dict[item])} were correctly classified as True Negative out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\n")
+                        if item == 'fpos':
+                            file.write(f"{len(eval_dict[item])} were wrongly classified as False Positive out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n")
+                        if item == 'fneg':
+                            file.write(f"{len(eval_dict[item])} were wrongly classified as False Negative out of {len(trigger_fuzzed)} True Positives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n\n")
+                        
+                        
 
     
     return eval_dict
@@ -319,11 +330,8 @@ def classify_fuzzed_inputs(
         for input in initial_inputs:
             if subject_oracle(input) == OracleResult.FAILING:
                 #print(line, input)
-                if not (input in line_dict[str(line)]):
-                    line_dict[str(line)].append(input)
+                line_dict[str(line)].append(input)
                     #print(str(line), input, line_dict[str(line)])
-                else:
-                    continue
         #print(str(line), line_dict[str(line)])
     #print(line_dict)
     
@@ -332,7 +340,7 @@ def classify_fuzzed_inputs(
         
 def import_fuzzed(path):
     # read csv file to a list of dictionaries
-    print(path)
+    #print(path)
     # Open the file and read lines
     inputs = []
     with open(path, 'r') as file:
@@ -408,8 +416,9 @@ def main():
     # predictor(expression)
     # predictor(calculator)
     # predictor(middle)
-    eval_dict = predict_fuzzed(markup)
-    print(eval_dict)
+    # classify_fuzzed(calculator, import_fuzzed('results/calculator/fuzzed_predictor.txt'))
+    # eval_dict = predict_fuzzed(calculator)
+    #print(eval_dict)
   
 
 if __name__ == '__main__':

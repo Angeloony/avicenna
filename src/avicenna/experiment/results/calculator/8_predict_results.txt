@@ -1,0 +1,120 @@
+----------------NEW ATTEMPT----------------
+fpos
+505 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['cos(0)', 'tan(0)', 'tan(7.3)', 'sin(34)', 'sin(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'sin(46.3)', 'cos(0)', 'sin(0)', 'cos(64)', 'cos(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'tan(2.7)', 'cos(0)', 'cos(67.7)', 'cos(0)', 'sin(0)', 'tan(33)', 'sin(1)', 'tan(0)', 'sin(0)', 'sin(0)', 'sin(360.2)', 'tan(0)', 'cos(964)', 'cos(2.18)', 'tan(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'tan(5.8)', 'cos(0)', 'tan(0)', 'tan(729.6)', 'tan(0)', 'cos(0)', 'cos(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'cos(39.31)', 'cos(0)', 'sin(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'sin(65)', 'tan(0)', 'cos(0)', 'sin(2)', 'sin(0)', 'tan(20)', 'tan(3)', 'tan(0)', 'cos(2.24)', 'cos(0)', 'tan(48.72)', 'cos(0)', 'tan(3.11)', 'tan(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'sin(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'sin(0)', 'cos(1.03)', 'sin(7.74)', 'cos(0)', 'cos(51)', 'tan(0)', 'cos(5)', 'sin(1)', 'cos(13)', 'cos(2)', 'tan(0)', 'cos(0)', 'tan(0)', 'sin(6)', 'tan(6.20)', 'sin(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'sin(3)', 'cos(635)', 'tan(3)', 'tan(974.1)', 'tan(0)', 'cos(9.0)', 'sin(65)', 'sin(4)', 'cos(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'sin(31)', 'cos(0)', 'tan(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'tan(8)', 'sin(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'sin(9)', 'sin(0)', 'sin(0)', 'cos(6)', 'sin(0)', 'cos(66)', 'sin(0)', 'tan(0)', 'cos(1.0)', 'cos(0)', 'tan(0)', 'sin(9.00)', 'cos(31)', 'cos(0)', 'sin(3)', 'cos(0)', 'tan(1)', 'tan(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'tan(6)', 'cos(0)', 'sin(0)', 'sin(18)', 'cos(94)', 'sin(0)', 'sin(0)', 'sin(0)', 'cos(2.6)', 'cos(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'tan(0)', 'cos(69.4)', 'tan(0)', 'sin(787.0)', 'cos(9.3)', 'sin(0)', 'sin(3.2)', 'tan(0)', 'cos(69.3)', 'sin(0)', 'cos(0)', 'cos(0)', 'cos(1.3)', 'sin(0)', 'tan(1)', 'cos(0)', 'tan(0)', 'sin(65)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'cos(6)', 'sin(0)', 'sin(0)', 'sin(0)', 'tan(27.2)', 'tan(0)', 'cos(0)', 'sin(4)', 'tan(1)', 'sin(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'cos(5)', 'tan(0)', 'cos(0)', 'sin(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'cos(5)', 'tan(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'tan(4)', 'tan(0)', 'cos(1)', 'tan(0)', 'tan(9.003)', 'sin(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'cos(28.8)', 'sin(4)', 'sin(0)', 'sin(5)', 'cos(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'sin(2)', 'sin(0)', 'cos(0)', 'sin(0)', 'sin(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'sin(63)', 'sin(0)', 'tan(0)', 'sin(67.2)', 'sin(38)', 'tan(6.4)', 'cos(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'sin(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'cos(647)', 'cos(812)', 'sin(0)', 'cos(0)', 'sin(88)', 'cos(0)', 'tan(0)', 'tan(0)', 'sin(3.4)', 'cos(0)', 'sin(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(987)', 'cos(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'sin(46.2)', 'tan(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'sin(549.49)', 'sin(5)', 'sin(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'cos(5)', 'cos(0)', 'cos(0)', 'cos(21.0)', 'cos(0)', 'cos(4)', 'cos(9.9)', 'cos(8.6)', 'sin(0)', 'cos(2)', 'tan(0)', 'cos(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'sin(0)', 'tan(4.5)', 'tan(0)', 'cos(0)', 'sin(3.30)', 'cos(0)', 'tan(0)', 'tan(0)', 'sin(953)', 'sin(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'sin(6.1)', 'cos(0)', 'tan(0)', 'sin(0)', 'cos(53.08)', 'tan(0)', 'sin(0)', 'tan(6.4)', 'tan(99.7)', 'tan(0)', 'tan(256)', 'tan(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(0)', 'sin(0)', 'sin(0)', 'sin(48.5)', 'sin(9.10)', 'tan(5)', 'sin(7.47)', 'tan(0)', 'tan(0)', 'sin(0)', 'sin(569.28)', 'sin(0)', 'tan(9.3)', 'cos(0)', 'sin(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'sin(0)', 'tan(144)', 'tan(66.6)', 'cos(0)', 'sin(738.7)', 'tan(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'sin(3.6)', 'cos(0)', 'sin(0)', 'cos(4)', 'cos(4.89)', 'sin(0)', 'cos(95)', 'tan(0)', 'sin(0)', 'cos(2)', 'cos(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'sin(7)', 'tan(2.27)', 'tan(59)', 'tan(8.61)', 'sin(0)', 'tan(0)', 'cos(0)', 'cos(3.84)', 'tan(96)', 'cos(2.1)', 'sin(5.2)', 'cos(8.16)', 'tan(1)', 'tan(48.3)', 'cos(0)', 'sin(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'cos(0)', 'sin(7)', 'tan(37.0)', 'cos(7.3)', 'cos(0)', 'tan(5)', 'cos(0)', 'sin(0)', 'tan(0)', 'cos(0)', 'tan(8)', 'tan(0)', 'sin(0)', 'sin(1)', 'cos(0)', 'sin(300)', 'cos(0)', 'sin(0)', 'tan(0)', 'tan(0)', 'tan(9.7)', 'sin(6)', 'cos(6.7)', 'cos(379.37)', 'cos(0)', 'tan(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'cos(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'sin(6)', 'sin(0)', 'tan(0)', 'sin(9)', 'tan(84.9)', 'cos(8)', 'tan(0)', 'cos(60)', 'cos(0)', 'sin(0)', 'tan(0)', 'cos(43)', 'cos(863.2)', 'sin(51.7)', 'cos(0)', 'tan(0)', 'sin(0)', 'cos(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'cos(0)', 'tan(0)', 'cos(31.7)', 'cos(0)', 'sin(0)', 'tan(0)', 'tan(9.01)', 'tan(0)', 'tan(0)', 'tan(0)', 'tan(0)', 'cos(0)', 'cos(0)', 'tan(0)', 'cos(44)', 'sin(0)', 'tan(0)'].
+tpos
+181 were correctly classified as True Positive out of 201 True Positives.
+tneg
+294 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+20 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: ['sqrt(71816398.7)', 'sqrt(7681)', 'sqrt(90.91)', 'sqrt(641.6107)', 'sqrt(86.90206)', 'sqrt(13.2892)', 'sqrt(32691)', 'sqrt(9411.1)', 'sqrt(3.180)', 'sqrt(4729.5)', 'sqrt(2.6242)', 'sqrt(2143.84)', 'sqrt(2.27785)', 'sqrt(8.8914)', 'sqrt(55230)', 'sqrt(406.540234)', 'sqrt(257086)', 'sqrt(89.635)', 'sqrt(91.421)', 'sqrt(9144.772)'].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
+----------------NEW ATTEMPT----------------
+fpos
+58 were wrongly classified as False Positive out of 799 True Negatives.
+The wrongly classified inputs were: ['sqrt(-250.88297)', 'sqrt(-1)', 'sqrt(-72.3)', 'sqrt(-6.86)', 'sqrt(-283)', 'sqrt(-1.3)', 'sqrt(-97.14)', 'sqrt(-650.7399)', 'sqrt(-463)', 'sqrt(-84)', 'sqrt(-3.7)', 'sqrt(-504153.702)', 'sqrt(-6.74)', 'sqrt(-6)', 'sqrt(-28.91064)', 'sqrt(-2)', 'sqrt(-1)', 'sqrt(-73)', 'sqrt(-27146)', 'sqrt(-5)', 'sqrt(-3200.080)', 'sqrt(-97)', 'sqrt(-5)', 'sqrt(-9.9)', 'sqrt(-12)', 'sqrt(-37.4)', 'sqrt(-491)', 'sqrt(-91.0)', 'sqrt(-2)', 'sqrt(-7)', 'sqrt(-8013)', 'sqrt(-6991)', 'sqrt(-3808.6)', 'sqrt(-967727917)', 'sqrt(-18)', 'sqrt(-1)', 'sqrt(-89.1)', 'sqrt(-7677)', 'sqrt(-1)', 'sqrt(-2.9699)', 'sqrt(-2)', 'sqrt(-8)', 'sqrt(-5.80)', 'sqrt(-6)', 'sqrt(-80)', 'sqrt(-43.3)', 'sqrt(-86)', 'sqrt(-3)', 'sqrt(-34)', 'sqrt(-4)', 'sqrt(-8.1)', 'sqrt(-5)', 'sqrt(-497)', 'sqrt(-3)', 'sqrt(-10.96)', 'sqrt(-8.90)', 'sqrt(-8818)', 'sqrt(-83)'].
+tpos
+201 were correctly classified as True Positive out of 201 True Positives.
+tneg
+741 were correctly classified as True Negative out of 799 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 201 True Positives.
+The wrongly classified inputs were: [].
+
