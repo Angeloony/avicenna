@@ -1,0 +1,3 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,73.023,1.0,1.0,40,"exists <maybe_minus> elem in start:
+  (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"

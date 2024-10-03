@@ -252,7 +252,7 @@ def main():
     
     # RUNNER SECTION
     # ****************************
-    # expression = run_subject(expression, attempts_per_line)
+    expression = run_subject(expression, attempts_per_line)
     #calculator = run_subject(calculator, attempts_per_line)
     #markup = run_subject(markup, attempts_per_line)
     # middle = run_subject(middle, attempts_per_line)
@@ -264,15 +264,15 @@ def main():
     # fuzz_subject(
     #     subject=middle,
     # )
-    fuzz_subject(
-        subject=calculator,
-    )
+    # fuzz_subject(
+    #     subject=calculator,
+    # )
     # fuzz_subject(
     #     subject=markup,
     # )
-    # fuzz_subject(
-    #     subject=expression,
-    # )
+    fuzz_subject(
+        subject=expression,
+    )
         
     # PREDICTOR SECTION
     # TODO : Read fuzzed inputs from file

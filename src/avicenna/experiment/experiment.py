@@ -303,6 +303,37 @@ class Subject:
             "<digits>": ["<digit>", "<digit><digits>"],
         }
         
+        alt_grammar_expression = {
+            "<start>": ["<arith_expr>"],
+            "<arith_expr>": [
+                "binary",
+                "<number>",
+                "<par>",
+            ],
+            "<binary>": ["<arith_expr><operator><arith_expr>",],
+            "<par>": ["<lpar><arith_expr><rpar>"],
+            "<lpar>": ["("],
+            "<rpar>": [")"],
+            "<operator>": ["<muldiv>","<plussub>",],
+            "<muldiv>": ["<mul>", "<div>"],
+            "<plussub>": ["<plus>", "<minus>",],
+            "<plus>": [" + "],
+            "<minus>": [" - "],
+            "<mul>": [" * "],
+            "<div>": [" / "],
+            "<number>": [
+                "<maybe_minus><non_zero_digit><maybe_digits>",
+                "0"
+            ],
+            "<maybe_minus>": ["", "~ "],
+            "<non_zero_digit>": [
+                str(num) for num in range(1, 10)
+            ],  # Exclude 0 from starting digits
+            "<digit>": list(string.digits),
+            "<maybe_digits>": ["", "<digits>"],
+            "<digits>": ["<digit>", "<digit><digits>"],
+        }
+        
         # buggy behavior when divided by 0, otherwise try to trigger every possible function
         inputs_expression = [
             '5',    '(7)', '~ 8', # no space, doesn't trigger line 60
@@ -324,22 +355,23 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                #10, # init Binary
-                #40, # init Negate
-                #49, # init Constant DONE
-                #56, # DONE
-                #59, # ATTENTION: character parse checking for space
-                #71, # DONE checking isnumeric()
-                #73, # ATTENTION: Character parse checking parentheses
-                #85, # return Negate Term
-                #86, # DONE
-                #87, # Takes like 1h parse_neg func
-                #93, # go into mul_div
-                #95, # return Mul
-                #97, # return Div
-                #105,# go into add_sub
-                #107,# return Add
-                #109,# return Sub
+                10, # init Binary | at least 10 min
+                40, # init Negate | at least 1 minute 
+                49, # init Constant DONE | instant
+                59, # check for space | about 5 min at least
+                71, # DONE checking isnumeric()
+                73, # parenthesis check | about 5 min
+                85, # return Negate Term | about 1 min
+                86, # DONE
+                #87, # return parse_neg | about 1h long - no constraint
+                93, # go into mul_div | about 2 min
+                95, # return Mul | about 5 min
+                97, # return Div | about
+                99, # return parsemuldiv | instant
+                105,# go into add_sub | about 5 min
+                107,# return Add | about 5 min
+                109,# return Sub | about 5 min
+                111,# return parseaddsub | instant
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",
