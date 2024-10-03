@@ -2,9 +2,11 @@ import csv
 import time
 import logging
 import string
+from typing import List, Dict
 from pandas import DataFrame
 
 from avicenna.avix import AviX
+from avicenna.avix_help import instrument
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
 
@@ -13,7 +15,7 @@ from fuzzingbook.Grammars import simple_grammar_fuzzer, is_valid_grammar, exp_st
 from fuzzingbook.GrammarFuzzer import GrammarFuzzer
 
 from isla.language import Formula, ISLaUnparser
-from isla.solver import ISLaSolver
+from isla.solver import ISLaSolver, SemanticError
 from isla.derivation_tree import DerivationTree
     
 """
@@ -91,12 +93,12 @@ def explain_line(
     subject : Subject,
 ):
     avix_oracle = construct_oracle(
-                                program_under_test=subject.first_func,
-                                inp_converter=subject.converter,
-                                line = line,
-                                resource_path=str(get_avicenna_rsc_path()),
-                                put_path=subject.put_path,
-                                )
+        program_under_test=subject.first_func,
+        inp_converter=subject.converter,
+        line = line,
+        resource_path=str(get_avicenna_rsc_path()),
+        put_path=subject.put_path,
+    )
     # in case there is no failure inducing input given, remove from pool essentially
     try:
         avix = AviX(
@@ -191,17 +193,73 @@ def fuzz_subject(
     for line in subject.relevant_lines:
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         for attempt in subject_dict:
-            print("ATTEMPT: ")
-            print(attempt)
+            # print("ATTEMPT: ")
+            # print(attempt)
             if attempt['Constraint'] == None or 'Avicenna' in attempt['Constraint'] or attempt['Constraint'] == '':
-                print("failed")
-                print(attempt['Constraint'])
+                # print("failed")
+                # print(attempt['Constraint'])
                 continue
             else:
-                print("passed")
-                print(attempt['Constraint'])
+                # print("passed")
+                # print(attempt['Constraint'])
                 fuzz_with_constraints(subject, attempt['Constraint'], line)
 
+def predict_fuzzed(
+    subject: Subject,
+):  
+    eval_dict = {
+        'fpos' : [],
+        'tpos' : [],
+        'tneg' : [],
+        'fneg' : [],
+    }
+    #inputs = import_fuzzed('results/'+subject.name+'/fuzzed_predictor.txt')
+    #classify_fuzzed(subject, inputs)
+    all_fuzzed = import_fuzzed('results/' + subject.name + '/fuzzed_predictor.txt')    
+    for line in subject.relevant_lines:
+        subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
+        for attempt in subject_dict:
+            # print("ATTEMPT: ")
+            # print(attempt)
+            if attempt['Constraint'] == None or 'Avicenna' in attempt['Constraint'] or attempt['Constraint'] == '':
+                # print("failed")
+                # print(attempt['Constraint'])
+                continue
+            else:
+                # print("passed")
+                # print(attempt['Constraint'])
+                trigger_fuzzed = import_fuzzed('results/' + subject.name + '/' + str(line) +'_line_triggered_fuzz.txt')
+                solver = ISLaSolver(
+                        grammar=subject.grammar,
+                        formula=attempt['Constraint'],
+                        enable_optimized_z3_queries=False,
+                    )
+                print(line)
+                for input in all_fuzzed:
+                    try:
+                        solver.parse(inp=input)
+                        if input in trigger_fuzzed:
+                            eval_dict['tpos'].append(input)
+                        elif not(input in trigger_fuzzed):
+                            eval_dict['fpos'].append(input)
+                    except SemanticError:
+                        if input in trigger_fuzzed:
+                            eval_dict['fneg'].append(input)
+                        elif not(input in trigger_fuzzed):
+                            eval_dict['tneg'].append(input)
+                            # false positive: determined true eventho false
+                            # false negative: determined false eventho true
+                            # true positive : determined true when true
+                            # true negative : determined false when false                        
+    
+        with open('results/' + subject.name + '/' + str(line) + '_predict_results.txt', 'w') as file:
+            for item in eval_dict:
+                file.write(f"{item}\n")
+                file.write(f"{len(eval_dict[item])} were classified as {item} out of {len(trigger_fuzzed)}\n")
+
+    
+    return eval_dict
+                #fuzz_with_constraints(subject, attempt['Constraint'], line)
 
 # pass constraint as string
 def fuzz_with_constraints(
@@ -236,7 +294,75 @@ def fuzz_with_constraints(
     
     return
    
+# We want t
+# o take an oracle for each line of a program, and run each input through it.
+# Each input will be given a list of lines it triggers for easy testing. 
+# Work with a dict?
+def classify_fuzzed_inputs(
+    initial_inputs,
+    subject: Subject,
+    #oracle: Callable,
+):
+    line_dict = {}
     
+    for line in subject.relevant_lines:
+        line_dict[str(line)] = []
+        
+        subject_oracle = construct_oracle(
+            program_under_test=subject.first_func,
+            inp_converter=subject.converter,
+            line = line,
+            resource_path=str(get_avicenna_rsc_path()),
+            put_path=subject.put_path,
+        )
+        
+        for input in initial_inputs:
+            if subject_oracle(input) == OracleResult.FAILING:
+                #print(line, input)
+                if not (input in line_dict[str(line)]):
+                    line_dict[str(line)].append(input)
+                    #print(str(line), input, line_dict[str(line)])
+                else:
+                    continue
+        #print(str(line), line_dict[str(line)])
+    #print(line_dict)
+    
+    return line_dict
+        
+        
+def import_fuzzed(path):
+    # read csv file to a list of dictionaries
+    print(path)
+    # Open the file and read lines
+    inputs = []
+    with open(path, 'r') as file:
+        for line in file:
+            # Strip newline characters and append the line to the list
+            inputs.append(line.strip())
+    return inputs   
+
+
+def classify_fuzzed(subject: Subject, inputs,):
+    instrument(
+        put_path=subject.put_path,
+        instr_path=str(get_avicenna_rsc_path()) + '/instrumented.py',
+    )
+        
+    result_dict = classify_fuzzed_inputs(
+                    initial_inputs=inputs,
+                    subject=subject,
+                )
+    
+    for line in subject.relevant_lines:
+        
+        with open('results/' + subject.name + '/' + str(line) + '_line_triggered_fuzz.txt', 'w') as file:
+            for item in result_dict:
+                if str(item) == str(line):
+                    #print(line_dict[str(item)])
+                    for value in result_dict[item]:
+                        file.write(f"{value}\n")
+            
+
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
 """
@@ -252,7 +378,7 @@ def main():
     
     # RUNNER SECTION
     # ****************************
-    expression = run_subject(expression, attempts_per_line)
+    #expression = run_subject(expression, attempts_per_line)
     #calculator = run_subject(calculator, attempts_per_line)
     #markup = run_subject(markup, attempts_per_line)
     # middle = run_subject(middle, attempts_per_line)
@@ -270,9 +396,9 @@ def main():
     # fuzz_subject(
     #     subject=markup,
     # )
-    fuzz_subject(
-        subject=expression,
-    )
+    # fuzz_subject(
+    #     subject=expression,
+    # )
         
     # PREDICTOR SECTION
     # TODO : Read fuzzed inputs from file
@@ -282,21 +408,9 @@ def main():
     # predictor(expression)
     # predictor(calculator)
     # predictor(middle)
-    
-    #fuzz_with_constraints(subject=middle, constraint=str(constraint), line=)
-    # TODO : 
-    # for result in middle.results:
-    #     it = 0
-    #     for constraint in result['Constraint']:
-    #         if isinstance(constraint, Formula):
-    #             fuzz_with_constraints(
-    #                 middle,
-    #                 constraint,
-    #                 result['Line'][0],
-    #                 result['Readable_Constraint'][it],
-    #             )
-    #         it = it + 1
-    # return
+    eval_dict = predict_fuzzed(markup)
+    print(eval_dict)
+  
 
 if __name__ == '__main__':
     main()

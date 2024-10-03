@@ -1,2 +1,0 @@
-,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
-0,1,3343.638,-1,-1,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.

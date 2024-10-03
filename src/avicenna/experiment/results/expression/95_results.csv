@@ -1,3 +1,0 @@
-,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
-0,1,294.97,1.0,1.0,95,"exists <operator> elem in start:
-  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"

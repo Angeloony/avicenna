@@ -1,2 +1,11 @@
 ,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
-0,1,0.176,-1,-1,49,,Avicenna requires at least one passing input!
+0,1,0.151,-1,-1,49,,Avicenna requires at least one passing input!
+1,2,0.143,-1,-1,49,,Avicenna requires at least one passing input!
+2,3,0.144,-1,-1,49,,Avicenna requires at least one passing input!
+3,4,0.161,-1,-1,49,,Avicenna requires at least one passing input!
+4,5,0.145,-1,-1,49,,Avicenna requires at least one passing input!
+5,6,0.145,-1,-1,49,,Avicenna requires at least one passing input!
+6,7,0.145,-1,-1,49,,Avicenna requires at least one passing input!
+7,8,0.143,-1,-1,49,,Avicenna requires at least one passing input!
+8,9,0.146,-1,-1,49,,Avicenna requires at least one passing input!
+9,10,0.24,-1,-1,49,,Avicenna requires at least one passing input!
