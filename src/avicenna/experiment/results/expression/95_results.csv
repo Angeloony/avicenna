@@ -1,0 +1,21 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,38.923,1.0,1.0,95,"exists <operator> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"
+1,2,352.645,1.0,1.0,95,"exists <mul> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<mul>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<mul>""), ))"
+2,3,133.646,1.0,1.0,95,"exists <operator> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"
+3,4,258.259,1.0,1.0,95,"exists <mul> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<mul>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<mul>""), ))"
+4,5,260.982,1.0,1.0,95,"exists <mul> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<mul>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<mul>""), ))"
+5,6,265.916,1.0,1.0,95,"exists <mul> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<mul>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<mul>""), ))"
+6,7,311.332,1.0,1.0,95,"exists <mul> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<mul>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<mul>""), ))"
+7,8,765.424,1.0,1.0,95,"exists <operator> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"
+8,9,2016.191,1.0,1.0,95,"exists <operator> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"
+9,10,266.632,1.0,1.0,95,"exists <operator> elem in start:
+  (= elem "" * "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" * "")', BoundVariable(""elem"", ""<operator>""), ))"

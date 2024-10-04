@@ -282,7 +282,7 @@ def fuzz_with_constraints(
         'Fuzzed': [],
     }
     
-    fuzzed_inputs['Fuzzed'].append(constraint)
+    fuzzed_inputs['Fuzzed'].append('Constraint Begin: \n'+ constraint + '\nConstraint End.')
     
     # 20 inputs per constraint
     for _ in range(0,30):
@@ -404,20 +404,25 @@ def main():
     # fuzz_subject(
     #     subject=markup,
     # )
-    # fuzz_subject(
-    #     subject=expression,
-    # )
+    fuzz_subject(
+        subject=expression,
+    )
         
     # PREDICTOR SECTION
-    # TODO : Read fuzzed inputs from file
-    # TODO : run through oracle, 
     # ***********************************
     # predictor(markup)
     # predictor(expression)
     # predictor(calculator)
     # predictor(middle)
-    # classify_fuzzed(calculator, import_fuzzed('results/calculator/fuzzed_predictor.txt'))
-    # eval_dict = predict_fuzzed(calculator)
+    
+    # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
+    classify_fuzzed(expression, import_fuzzed('results/expression/fuzzed_predictor.txt'))
+    eval_dict = predict_fuzzed(expression)
+    
+    for line in expression.relevant_lines:
+        inputs = import_fuzzed('results/' + expression.name + '/' + str(line) + '_fuzzed.txt')
+        
+    print(inputs)
     #print(eval_dict)
   
 

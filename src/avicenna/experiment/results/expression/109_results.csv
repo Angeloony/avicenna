@@ -1,0 +1,21 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,158.839,1.0,1.0,109,"exists <minus> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>"")')))"
+1,2,343.86,1.0,1.0,109,"exists <minus> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<minus>""), ))"
+2,3,2291.785,1.0,1.0,109,"exists <minus> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<minus>""), ))"
+3,4,66.499,1.0,1.0,109,"exists <operator> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<operator>""), ))"
+4,5,55.946,1.0,1.0,109,"exists <operator> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<operator>""), ))"
+5,6,225.503,1.0,1.0,109,"exists <operator> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<operator>""), ))"
+6,7,284.785,1.0,1.0,109,"exists <minus> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>"")')))"
+7,8,288.792,1.0,1.0,109,"exists <operator> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<operator>""), ))"
+8,9,164.992,1.0,1.0,109,"exists <minus> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<minus>""), Constant(""start"", ""<start>"")')))"
+9,10,667.014,1.0,1.0,109,"exists <operator> elem in start:
+  (= elem "" - "")","ExistsFormula(BoundVariable(""elem"", ""<operator>""), Constant(""start"", ""<start>""), SMTFormula('(= elem "" - "")', BoundVariable(""elem"", ""<operator>""), ))"

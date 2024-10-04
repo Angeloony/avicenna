@@ -360,22 +360,22 @@ class Subject:
             "converter" : None,
             "lines"     : [
                 #10, # init Binary | at least 10 min
-                # 40, # init Negate | at least 1 minute 
-                # 49, # init Constant DONE | instant
-                # 59, # check for space | about 5 min at least
-                 71, # DONE checking isnumeric()
-                 73, # parenthesis check | about 5 min
-                 85, # return Negate Term | about 1 min
-                # 86, # DONE instant i tihnk?
-                # #87, # return parse_neg | about 1h long - no constraint
-                # 93, # go into mul_div | about 2 min to 5 min
-                # 95, # return Mul | about 5 min
-                # 97, # return Div | about
-                # 99, # return parsemuldiv | instant
-                # 105,# go into add_sub | about 5 min
-                # 107,# return Add | about 5 min
-                # 109,# return Sub | about 5 min
-                # 111,# return parseaddsub | instant
+                #40, # init Negate | at least 1 minute 
+                49, # init Constant DONE | instant
+                59, # check for space | about 5 min at least
+                71, # DONE checking isnumeric()
+                73, # parenthesis check | about 5 min
+                85, # return Negate Term | about 1 min
+                86, # DONE instant i tihnk?
+                #87, # return parse_neg | about 1h long - no constraint
+                93, # go into mul_div | about 2 min to 5 min
+                95, # return Mul | about 5 min
+                97, # return Div | about
+                99, # return parsemuldiv | instant
+                105,# go into add_sub | about 5 min
+                107,# return Add | about 5 min
+                109,# return Sub | about 5 min
+                111,# return parseaddsub | instant
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",

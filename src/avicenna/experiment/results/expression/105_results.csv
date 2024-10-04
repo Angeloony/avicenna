@@ -1,0 +1,26 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,10.229,0.64,1.0,105,"exists <operator> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), 0.64444444444"
+1,2,23.33,0.61,1.0,105,"exists <operator> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), 0.61111111111"
+2,3,815.112,0.62,0.96,105,"(exists <operator> elem_xy in start:
+   inside(elem_xy, start) and
+forall <digits> elem_1 in start:
+  exists <number> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2)))","ConjunctiveFormula(ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), ForallFormula(BoundVariable(""elem_1"", ""<digits>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<digits>""), BoundVariable(""elem_2"", ""<number>""), )))), 0.6231884057971014, 0.957627"
+3,4,28.221,0.62,1.0,105,"exists <operator> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), 0.61797752808"
+4,5,619.612,0.61,1.0,105,"exists <operator> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), 0.60714285714"
+5,6,349.025,-1.0,-1.0,105,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+6,7,33.967,-1.0,-1.0,105,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+7,8,56.482,0.63,0.94,105,"(exists <operator> elem_xy in start:
+   inside(elem_xy, start) and
+exists <maybe_minus> elem_xy_0 in start:
+  inside(elem_xy_0, start))","ConjunctiveFormula(ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")'))), ExistsFormula(BoundVariable(""elem_xy_0"", ""<maybe_minus>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy_0"", ""<maybe_minus>""), Constant(""start"", ""<start>"")')))), 0.6282051282051282, 0.936170"
+8,9,2803.905,0.64,0.92,105,"(exists <non_zero_digit> container in start:
+   exists <non_zero_digit> length_field in start:
+     (<= (str.len container) (str.to.int length_field)) and
+exists <operator> elem_xy in start:
+  inside(elem_xy, start))","ConjunctiveFormula(ExistsFormula(BoundVariable(""container"", ""<non_zero_digit>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""length_field"", ""<non_zero_digit>""), Constant(""start"", ""<start>""), SMTFormula('(<= (str.len container) (str.to_int length_field))', BoundVariable(""length_field"", ""<non_zero_digit>""), BoundVariable(""container"", ""<non_zero_digit>""), ))), ExistsFormula(BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<operator>""), Constant(""start"", ""<start>"")')))), 0.6363636363636364, 0.922279"
+9,10,986.714,-1.0,-1.0,105,,No constraint has been found for min_precision 0.6 and min_recall 0.9.

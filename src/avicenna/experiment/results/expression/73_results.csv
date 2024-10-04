@@ -1,0 +1,21 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,148.43,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+1,2,451.167,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+2,3,168.774,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+3,4,156.975,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+4,5,151.928,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+5,6,82.94,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+6,7,93.133,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+7,8,85.438,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+8,9,3156.3,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
+9,10,400.678,1.0,1.0,73,"exists <par> elem_xy in start:
+  inside(elem_xy, start)","ExistsFormula(BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>""), PredicateFormula((""StructuralPredicate(name='inside', arity=2, eval_fun=<function in_tree at 0x7efc696770a0>)"", 'BoundVariable(""elem_xy"", ""<par>""), Constant(""start"", ""<start>"")')))"
