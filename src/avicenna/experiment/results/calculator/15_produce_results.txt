@@ -1,0 +1,80 @@
+----------------NEW ATTEMPT----------------
+constraint
+['(exists <one_nine> container in start:', 'exists <number> length_field in start:', '(<= (str.len container) (str.to.int length_field)) and', 'exists <function> elem in start:', '(= elem "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(9)', 'sqrt(2)', 'sqrt(5)', 'sqrt(8)', 'sqrt(1)', 'sqrt(5)', 'sqrt(1)', 'sqrt(4)', 'sqrt(2)', 'sqrt(2)', 'sqrt(3)', 'sqrt(1)', 'sqrt(9)', 'sqrt(1)', 'sqrt(9)', 'sqrt(2)', 'sqrt(5)', 'sqrt(9)', 'sqrt(1)', 'sqrt(9)', 'sqrt(1)', 'sqrt(2)', 'sqrt(2)', 'sqrt(5)', 'sqrt(1)', 'sqrt(1)', 'sqrt(8)', 'sqrt(1)', 'sqrt(3)', 'sqrt(1)', 'sqrt(5)', 'sqrt(8)', 'sqrt(1)', 'sqrt(2)', 'sqrt(9)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(5)', 'sqrt(3)', 'sqrt(5)', 'sqrt(1)', 'sqrt(9)', 'sqrt(5)', 'sqrt(9)', 'sqrt(1)', 'sqrt(1)', 'sqrt(2)', 'sqrt(1)', 'sqrt(1)', 'sqrt(5)', 'sqrt(3)', 'sqrt(2)', 'sqrt(1)', 'sqrt(2)', 'sqrt(4)', 'sqrt(8)', 'sqrt(4)', 'sqrt(5)', 'sqrt(9)', 'sqrt(8)', 'sqrt(3)', 'sqrt(1)', 'sqrt(9)', 'sqrt(1)', 'sqrt(9)', 'sqrt(1)', 'sqrt(5)', 'sqrt(1)', 'sqrt(5)', 'sqrt(3)', 'sqrt(1)', 'sqrt(8)', 'sqrt(9)', 'sqrt(7)', 'sqrt(2)', 'sqrt(8)', 'sqrt(9)', 'sqrt(9)', 'sqrt(1)', 'sqrt(5)', 'sqrt(5)', 'sqrt(7)', 'sqrt(9)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(4)', 'sqrt(1)', 'sqrt(1)', 'sqrt(2)', 'sqrt(3)', 'sqrt(1)', 'sqrt(8)', 'sqrt(4)', 'sqrt(2)', 'sqrt(4)', 'sqrt(9)', 'sqrt(1)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+54 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(4)', 'sqrt(9.47)', 'sqrt(232)', 'sqrt(36)', 'sqrt(2.70)', 'sqrt(84)', 'sqrt(624.9)', 'sqrt(32)', 'sqrt(868)', 'sqrt(820.3)', 'sqrt(37)', 'sqrt(2.2)', 'sqrt(34)', 'sqrt(90.4765)', 'sqrt(50.73)', 'sqrt(9.40)', 'sqrt(27.58016)', 'sqrt(4.1)', 'sqrt(9)', 'sqrt(191)', 'sqrt(976)', 'sqrt(3)', 'sqrt(6)', 'sqrt(887.1)', 'sqrt(295)', 'sqrt(52)', 'sqrt(8.9)', 'sqrt(468.17)', 'sqrt(95)', 'sqrt(5.6)', 'sqrt(625)', 'sqrt(6)', 'sqrt(2.7)', 'sqrt(941.905)', 'sqrt(97)', 'sqrt(24.5302)', 'sqrt(7.28)', 'sqrt(82)', 'sqrt(5)', 'sqrt(75.972)', 'sqrt(1)', 'sqrt(3.25)', 'sqrt(2.7)', 'sqrt(54)', 'sqrt(59.42)', 'sqrt(4.80)', 'sqrt(63)', 'sqrt(934.7152)', 'sqrt(279.136)', 'sqrt(5.74)', 'sqrt(9.79)', 'sqrt(5)', 'sqrt(330)', 'sqrt(4)'].
+non_triggering_fuzz
+46 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-3.7)', 'sqrt(-702.4)', 'sqrt(-6.19)', 'sqrt(-8)', 'sqrt(-9.18)', 'sqrt(-591)', 'sqrt(-8.0)', 'sqrt(-3.2)', 'sqrt(-842)', 'sqrt(-9.24)', 'sqrt(-7)', 'sqrt(-3.60)', 'sqrt(-110)', 'sqrt(-47)', 'sqrt(-7)', 'sqrt(-1.91)', 'sqrt(-1.0)', 'sqrt(-1.97)', 'sqrt(-526)', 'sqrt(-60.91)', 'sqrt(-9.8)', 'sqrt(-1.69)', 'sqrt(-3.48)', 'sqrt(-810.9)', 'sqrt(-521)', 'sqrt(-9.9)', 'sqrt(-15.6314)', 'sqrt(-8.4)', 'sqrt(-4.53)', 'sqrt(-38.1526)', 'sqrt(-37.802)', 'sqrt(-15)', 'sqrt(-9)', 'sqrt(-354.2)', 'sqrt(-9)', 'sqrt(-80.48)', 'sqrt(-6)', 'sqrt(-5.5)', 'sqrt(-38.39)', 'sqrt(-691.07)', 'sqrt(-101)', 'sqrt(-6)', 'sqrt(-10)', 'sqrt(-701)', 'sqrt(-696)', 'sqrt(-379.1)'].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+49 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(97)', 'sqrt(231.02)', 'sqrt(495)', 'sqrt(3.6)', 'sqrt(628.5)', 'sqrt(9.20)', 'sqrt(2)', 'sqrt(7)', 'sqrt(1)', 'sqrt(36.8190245)', 'sqrt(9)', 'sqrt(63)', 'sqrt(83.18576)', 'sqrt(3)', 'sqrt(6.5)', 'sqrt(6.5)', 'sqrt(4.97)', 'sqrt(3)', 'sqrt(9)', 'sqrt(5)', 'sqrt(13.10)', 'sqrt(550.74)', 'sqrt(9)', 'sqrt(8.40)', 'sqrt(2.43)', 'sqrt(3)', 'sqrt(8)', 'sqrt(6.09)', 'sqrt(91)', 'sqrt(17)', 'sqrt(25)', 'sqrt(276.2)', 'sqrt(7.81)', 'sqrt(668)', 'sqrt(8)', 'sqrt(947)', 'sqrt(7)', 'sqrt(12.406)', 'sqrt(60.1576)', 'sqrt(21.76320)', 'sqrt(698)', 'sqrt(7)', 'sqrt(410)', 'sqrt(17)', 'sqrt(8)', 'sqrt(7)', 'sqrt(73.789)', 'sqrt(146)', 'sqrt(6.51)'].
+non_triggering_fuzz
+51 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-8.02)', 'sqrt(-274)', 'sqrt(-79)', 'sqrt(-7.3)', 'sqrt(-5)', 'sqrt(-9)', 'sqrt(-585.39)', 'sqrt(-1.5)', 'sqrt(-25)', 'sqrt(-20)', 'sqrt(-96.53)', 'sqrt(-6)', 'sqrt(-77)', 'sqrt(-2.2)', 'sqrt(-165)', 'sqrt(-4.2)', 'sqrt(-24.91)', 'sqrt(-154.6)', 'sqrt(-6)', 'sqrt(-996.1)', 'sqrt(-562.154)', 'sqrt(-610)', 'sqrt(-7)', 'sqrt(-281)', 'sqrt(-5.7)', 'sqrt(-1.43)', 'sqrt(-95)', 'sqrt(-9.3)', 'sqrt(-19.71)', 'sqrt(-508)', 'sqrt(-5.9)', 'sqrt(-6.29)', 'sqrt(-308.7352)', 'sqrt(-1)', 'sqrt(-56.704)', 'sqrt(-339)', 'sqrt(-18.021)', 'sqrt(-84)', 'sqrt(-65.63)', 'sqrt(-694)', 'sqrt(-516)', 'sqrt(-5.0)', 'sqrt(-7)', 'sqrt(-7)', 'sqrt(-65.42)', 'sqrt(-226)', 'sqrt(-5.07)', 'sqrt(-990.8)', 'sqrt(-97)', 'sqrt(-3.8)', 'sqrt(-20)'].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+58 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(862)', 'sqrt(619.8706)', 'sqrt(2)', 'sqrt(96.70)', 'sqrt(35.79)', 'sqrt(8.8)', 'sqrt(393)', 'sqrt(976)', 'sqrt(8.36)', 'sqrt(2.5)', 'sqrt(5.06)', 'sqrt(4.4)', 'sqrt(64.17)', 'sqrt(72)', 'sqrt(45.679)', 'sqrt(518)', 'sqrt(57)', 'sqrt(3.7)', 'sqrt(85)', 'sqrt(79.65)', 'sqrt(8.86)', 'sqrt(6.5)', 'sqrt(84)', 'sqrt(20)', 'sqrt(88)', 'sqrt(8.89)', 'sqrt(4.3)', 'sqrt(109.43)', 'sqrt(843)', 'sqrt(72)', 'sqrt(80.56)', 'sqrt(9)', 'sqrt(8)', 'sqrt(9.2)', 'sqrt(4)', 'sqrt(830.4)', 'sqrt(38.157)', 'sqrt(360)', 'sqrt(89)', 'sqrt(23)', 'sqrt(198)', 'sqrt(1)', 'sqrt(1)', 'sqrt(84)', 'sqrt(9.67)', 'sqrt(6.23)', 'sqrt(3)', 'sqrt(6)', 'sqrt(119)', 'sqrt(2)', 'sqrt(54.3185)', 'sqrt(4)', 'sqrt(7.97)', 'sqrt(2)', 'sqrt(47)', 'sqrt(3)', 'sqrt(8.09)', 'sqrt(3.96)'].
+non_triggering_fuzz
+42 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-447.6025)', 'sqrt(-9.56)', 'sqrt(-27)', 'sqrt(-636)', 'sqrt(-3)', 'sqrt(-407.32)', 'sqrt(-516.542)', 'sqrt(-675)', 'sqrt(-5)', 'sqrt(-54)', 'sqrt(-1.7)', 'sqrt(-301)', 'sqrt(-9.8)', 'sqrt(-194)', 'sqrt(-1)', 'sqrt(-16)', 'sqrt(-636.9)', 'sqrt(-5.79)', 'sqrt(-589.36)', 'sqrt(-204)', 'sqrt(-7.7)', 'sqrt(-53.894)', 'sqrt(-6)', 'sqrt(-70.51)', 'sqrt(-481.392)', 'sqrt(-18)', 'sqrt(-6)', 'sqrt(-5.9)', 'sqrt(-5.7)', 'sqrt(-8)', 'sqrt(-9.79)', 'sqrt(-44.59)', 'sqrt(-79.81)', 'sqrt(-260)', 'sqrt(-63.859)', 'sqrt(-44)', 'sqrt(-1)', 'sqrt(-6)', 'sqrt(-21)', 'sqrt(-3)', 'sqrt(-6.1)', 'sqrt(-70)'].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+46 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(6)', 'sqrt(6.39)', 'sqrt(3)', 'sqrt(21.2735)', 'sqrt(7)', 'sqrt(7)', 'sqrt(594)', 'sqrt(34.87026)', 'sqrt(492.56)', 'sqrt(573)', 'sqrt(55)', 'sqrt(336)', 'sqrt(5)', 'sqrt(9.72)', 'sqrt(2)', 'sqrt(6.5)', 'sqrt(45)', 'sqrt(16.70)', 'sqrt(6.82)', 'sqrt(7.8)', 'sqrt(8)', 'sqrt(909.6)', 'sqrt(1)', 'sqrt(1)', 'sqrt(782.4)', 'sqrt(1.25)', 'sqrt(68.93)', 'sqrt(52.13)', 'sqrt(9)', 'sqrt(8.89)', 'sqrt(207.38)', 'sqrt(461.4)', 'sqrt(9.0)', 'sqrt(6)', 'sqrt(5.8)', 'sqrt(9)', 'sqrt(1)', 'sqrt(2.2)', 'sqrt(2.8)', 'sqrt(134.1)', 'sqrt(23.718)', 'sqrt(7.4)', 'sqrt(9.20)', 'sqrt(5.4)', 'sqrt(29.72)', 'sqrt(25)'].
+non_triggering_fuzz
+54 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-3)', 'sqrt(-367.928)', 'sqrt(-5)', 'sqrt(-6)', 'sqrt(-4.91)', 'sqrt(-4.94)', 'sqrt(-90)', 'sqrt(-2.65)', 'sqrt(-52)', 'sqrt(-160)', 'sqrt(-44)', 'sqrt(-5)', 'sqrt(-4)', 'sqrt(-2.8)', 'sqrt(-3.31)', 'sqrt(-251.84)', 'sqrt(-48)', 'sqrt(-5.57)', 'sqrt(-36)', 'sqrt(-1)', 'sqrt(-6.47)', 'sqrt(-8.7)', 'sqrt(-2.3)', 'sqrt(-5)', 'sqrt(-693)', 'sqrt(-694)', 'sqrt(-418.0)', 'sqrt(-4.92)', 'sqrt(-541.57)', 'sqrt(-191)', 'sqrt(-248)', 'sqrt(-3)', 'sqrt(-8.4)', 'sqrt(-4)', 'sqrt(-71)', 'sqrt(-1.3)', 'sqrt(-87.80)', 'sqrt(-26.04)', 'sqrt(-22.147936)', 'sqrt(-2.3)', 'sqrt(-4)', 'sqrt(-4.19)', 'sqrt(-1)', 'sqrt(-605)', 'sqrt(-934)', 'sqrt(-5.5)', 'sqrt(-2)', 'sqrt(-960.7)', 'sqrt(-153)', 'sqrt(-4)', 'sqrt(-12.6418)', 'sqrt(-6)', 'sqrt(-6)', 'sqrt(-613.9)'].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+48 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(1)', 'sqrt(719)', 'sqrt(6)', 'sqrt(6.26)', 'sqrt(695.6)', 'sqrt(350.9)', 'sqrt(196)', 'sqrt(6.46)', 'sqrt(22)', 'sqrt(9.2)', 'sqrt(8.1)', 'sqrt(31.82)', 'sqrt(43.246)', 'sqrt(247)', 'sqrt(6.8)', 'sqrt(4.4)', 'sqrt(9.7)', 'sqrt(57.86)', 'sqrt(70)', 'sqrt(31)', 'sqrt(654)', 'sqrt(175.6)', 'sqrt(1.5)', 'sqrt(2.4)', 'sqrt(82.50)', 'sqrt(7)', 'sqrt(51)', 'sqrt(71)', 'sqrt(63)', 'sqrt(181)', 'sqrt(6.83)', 'sqrt(8.32)', 'sqrt(69)', 'sqrt(7)', 'sqrt(1)', 'sqrt(57.93)', 'sqrt(538)', 'sqrt(9)', 'sqrt(4)', 'sqrt(1.84)', 'sqrt(604)', 'sqrt(690.4)', 'sqrt(92)', 'sqrt(804.9526)', 'sqrt(6)', 'sqrt(3.13)', 'sqrt(986)', 'sqrt(1)'].
+non_triggering_fuzz
+52 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-503)', 'sqrt(-83)', 'sqrt(-3)', 'sqrt(-8)', 'sqrt(-40.312)', 'sqrt(-4)', 'sqrt(-59.10)', 'sqrt(-9.9)', 'sqrt(-59.20671)', 'sqrt(-19)', 'sqrt(-6.0)', 'sqrt(-1)', 'sqrt(-1)', 'sqrt(-649.3)', 'sqrt(-5)', 'sqrt(-8)', 'sqrt(-4.37)', 'sqrt(-814)', 'sqrt(-54)', 'sqrt(-2)', 'sqrt(-5)', 'sqrt(-13.4678912)', 'sqrt(-3)', 'sqrt(-9)', 'sqrt(-4.94)', 'sqrt(-5.8)', 'sqrt(-5)', 'sqrt(-6)', 'sqrt(-94)', 'sqrt(-178)', 'sqrt(-217.5)', 'sqrt(-85.03)', 'sqrt(-16)', 'sqrt(-532)', 'sqrt(-9)', 'sqrt(-739.847051)', 'sqrt(-9.7)', 'sqrt(-52)', 'sqrt(-5)', 'sqrt(-9.3)', 'sqrt(-24.257)', 'sqrt(-5.85)', 'sqrt(-97)', 'sqrt(-9.0)', 'sqrt(-7.5)', 'sqrt(-474)', 'sqrt(-70.16)', 'sqrt(-685)', 'sqrt(-908)', 'sqrt(-8)', 'sqrt(-771)', 'sqrt(-3.2)'].
+----------------NEW ATTEMPT----------------
+constraint
+['(exists <one_nine> container in start:', 'exists <number> length_field in start:', '(<= (str.len container) (str.to.int length_field)) and', 'exists <function> elem in start:', '(= elem "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(8)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(9)', 'sqrt(9)', 'sqrt(5)', 'sqrt(2)', 'sqrt(9)', 'sqrt(8)', 'sqrt(5)', 'sqrt(9)', 'sqrt(2)', 'sqrt(2)', 'sqrt(3)', 'sqrt(1)', 'sqrt(9)', 'sqrt(9)', 'sqrt(1)', 'sqrt(1)', 'sqrt(5)', 'sqrt(3)', 'sqrt(3)', 'sqrt(4)', 'sqrt(5)', 'sqrt(4)', 'sqrt(1)', 'sqrt(8)', 'sqrt(4)', 'sqrt(8)', 'sqrt(8)', 'sqrt(1)', 'sqrt(5)', 'sqrt(1)', 'sqrt(2)', 'sqrt(1)', 'sqrt(5)', 'sqrt(1)', 'sqrt(2)', 'sqrt(1)', 'sqrt(8)', 'sqrt(3)', 'sqrt(2)', 'sqrt(8)', 'sqrt(5)', 'sqrt(8)', 'sqrt(1)', 'sqrt(1)', 'sqrt(1)', 'sqrt(8)', 'sqrt(9)', 'sqrt(4)', 'sqrt(1)', 'sqrt(8)', 'sqrt(3)', 'sqrt(9)', 'sqrt(2)', 'sqrt(1)', 'sqrt(1)', 'sqrt(3)', 'sqrt(3)', 'sqrt(1)', 'sqrt(1)', 'sqrt(5)', 'sqrt(1)', 'sqrt(2)', 'sqrt(8)', 'sqrt(1)', 'sqrt(5)', 'sqrt(2)', 'sqrt(1)', 'sqrt(1)', 'sqrt(8)', 'sqrt(4)', 'sqrt(8)', 'sqrt(1)', 'sqrt(5)', 'sqrt(9)', 'sqrt(9)', 'sqrt(1)', 'sqrt(3)', 'sqrt(4)', 'sqrt(4)', 'sqrt(5)', 'sqrt(3)', 'sqrt(1)', 'sqrt(8)', 'sqrt(8)', 'sqrt(5)', 'sqrt(1)', 'sqrt(5)', 'sqrt(5)', 'sqrt(1)', 'sqrt(9)', 'sqrt(2)', 'sqrt(2)', 'sqrt(5)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['(forall <arith_expr> container in start:', 'exists <one_nine> elem in container:', '(= (str.len elem) (str.to.int "1")) and', 'exists <function> elem_0 in start:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+triggering_fuzz
+53 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(13)', 'sqrt(506)', 'sqrt(7)', 'sqrt(838)', 'sqrt(2)', 'sqrt(21.80)', 'sqrt(768.25)', 'sqrt(691.236)', 'sqrt(7)', 'sqrt(438)', 'sqrt(1.30)', 'sqrt(2)', 'sqrt(30.381)', 'sqrt(963.0)', 'sqrt(6)', 'sqrt(9.4)', 'sqrt(6)', 'sqrt(175.4)', 'sqrt(951.793)', 'sqrt(5)', 'sqrt(64)', 'sqrt(185.9)', 'sqrt(1.9)', 'sqrt(681)', 'sqrt(4.02)', 'sqrt(19.14)', 'sqrt(84.963)', 'sqrt(260)', 'sqrt(44)', 'sqrt(8)', 'sqrt(3)', 'sqrt(8.9)', 'sqrt(23.08)', 'sqrt(3)', 'sqrt(6.2)', 'sqrt(5)', 'sqrt(92.605)', 'sqrt(8)', 'sqrt(26.4517)', 'sqrt(7.4)', 'sqrt(430.29)', 'sqrt(1.1)', 'sqrt(650.91)', 'sqrt(16.18)', 'sqrt(29.801)', 'sqrt(6)', 'sqrt(4.9)', 'sqrt(562.95)', 'sqrt(609.65)', 'sqrt(72)', 'sqrt(90.542381)', 'sqrt(3)', 'sqrt(84)'].
+non_triggering_fuzz
+47 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: ['sqrt(-9)', 'sqrt(-4)', 'sqrt(-189.3)', 'sqrt(-56.42)', 'sqrt(-447)', 'sqrt(-6.4)', 'sqrt(-840)', 'sqrt(-5.5)', 'sqrt(-3.75)', 'sqrt(-9.35)', 'sqrt(-5.67)', 'sqrt(-8)', 'sqrt(-496)', 'sqrt(-3)', 'sqrt(-9)', 'sqrt(-30)', 'sqrt(-78.13)', 'sqrt(-80.524)', 'sqrt(-26.84)', 'sqrt(-93)', 'sqrt(-2.98)', 'sqrt(-687.1)', 'sqrt(-86.923)', 'sqrt(-8.43)', 'sqrt(-7.3)', 'sqrt(-867)', 'sqrt(-83.5074162)', 'sqrt(-540)', 'sqrt(-76.540)', 'sqrt(-936.942)', 'sqrt(-7.68)', 'sqrt(-952)', 'sqrt(-1)', 'sqrt(-71.8347)', 'sqrt(-762.914)', 'sqrt(-5)', 'sqrt(-474.6)', 'sqrt(-2)', 'sqrt(-4)', 'sqrt(-2)', 'sqrt(-12)', 'sqrt(-86)', 'sqrt(-43.80497)', 'sqrt(-25.621)', 'sqrt(-6.89)', 'sqrt(-6.0)', 'sqrt(-907.6)'].

@@ -1,0 +1,90 @@
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(0)', 'cos(0)', 'cos(9.9)', 'cos(-92)', 'cos(0)', 'cos(0)', 'cos(7.1)', 'cos(781)', 'cos(4.59)', 'cos(-5)', 'cos(-6.43)', 'cos(0)', 'cos(-9)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(8.91)', 'cos(2)', 'cos(8)', 'cos(0)', 'cos(479.4)', 'cos(6.65)', 'cos(0)', 'cos(1.52)', 'cos(0)', 'cos(-5.8)', 'cos(9)', 'cos(-541392867.0)', 'cos(-2)', 'cos(-730)', 'cos(684.3)', 'cos(-467)', 'cos(-4)', 'cos(-830)', 'cos(0)', 'cos(201)', 'cos(-410)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(875.3)', 'cos(-1.2)', 'cos(-385.39)', 'cos(30)', 'cos(-3.12)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-6)', 'cos(0)', 'cos(-5)', 'cos(9801.6)', 'cos(-42.63)', 'cos(0)', 'cos(-95)', 'cos(-8183.2)', 'cos(-22.740)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(32.835)', 'cos(134518.2)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(5)', 'cos(0)', 'cos(-2.80)', 'cos(7)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-280)', 'cos(0)', 'cos(0)', 'cos(-786.7)', 'cos(0)', 'cos(-2)', 'cos(0)', 'cos(0)', 'cos(290.5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(22)', 'cos(-7.78)', 'cos(0)', 'cos(1.5)', 'cos(0)', 'cos(9.0)', 'cos(-8.9)', 'cos(716)', 'cos(1.50)', 'cos(997)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-192)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(9)', 'cos(0)', 'cos(0)', 'cos(-7)', 'cos(-929.5)', 'cos(0)', 'cos(0)', 'cos(5)', 'cos(-7.17)', 'cos(-8.08)', 'cos(0)', 'cos(7)', 'cos(-8.8)', 'cos(0)', 'cos(0)', 'cos(2.06)', 'cos(-139)', 'cos(-50547.9)', 'cos(5)', 'cos(-2)', 'cos(4)', 'cos(0)', 'cos(99104.3)', 'cos(-5)', 'cos(0)', 'cos(0)', 'cos(6.95)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(3)', 'cos(-8.35)', 'cos(0)', 'cos(0)', 'cos(40)', 'cos(154)', 'cos(-1.82)', 'cos(-5)', 'cos(576.0)', 'cos(1.5)', 'cos(4.10)', 'cos(-92)', 'cos(0)', 'cos(-4.3)', 'cos(2.36)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-65)', 'cos(0)', 'cos(-1439.5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(169)', 'cos(-3.51)', 'cos(0)', 'cos(0)', 'cos(103.2)', 'cos(0)', 'cos(-9673409.2)', 'cos(-7.8)', 'cos(0)', 'cos(77)', 'cos(0)', 'cos(0)', 'cos(724.7)', 'cos(3)', 'cos(3.80)', 'cos(4.8)', 'cos(163.1)', 'cos(0)', 'cos(8.87)', 'cos(0)', 'cos(0)', 'cos(-1.37)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(6)', 'cos(0)', 'cos(0)', 'cos(8)', 'cos(0)', 'cos(0)', 'cos(-7)', 'cos(0)', 'cos(89826.1)', 'cos(0)', 'cos(-2.31)', 'cos(0)', 'cos(-87.83)', 'cos(0)', 'cos(7.51)', 'cos(-6)', 'cos(0)', 'cos(-857)', 'cos(0)', 'cos(0)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(0)', 'cos(0)', 'cos(-8)', 'cos(0)', 'cos(3.6)', 'cos(0)', 'cos(-56.92)', 'cos(-8.95)', 'cos(0)', 'cos(83)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-2)', 'cos(92)', 'cos(669.3)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(1745.9)', 'cos(0)', 'cos(698)', 'cos(-7)', 'cos(-458)', 'cos(0)', 'cos(163)', 'cos(53)', 'cos(0)', 'cos(793.5)', 'cos(-9.4)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-11243.6)', 'cos(-151)', 'cos(0)', 'cos(0)', 'cos(934)', 'cos(0)', 'cos(-52)', 'cos(35293.4)', 'cos(0)', 'cos(0)', 'cos(-2072.4)', 'cos(0)', 'cos(0)', 'cos(8179.6)', 'cos(260.4)', 'cos(0)', 'cos(0)', 'cos(-4)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-8)', 'cos(851386.2)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-46.8507)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-395.7)', 'cos(0)', 'cos(-2.72)', 'cos(0)', 'cos(0)', 'cos(-49)', 'cos(-760)', 'cos(-9)', 'cos(0)', 'cos(-96.89)', 'cos(-985.41)', 'cos(1)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(6.3)', 'cos(5690.84)', 'cos(2.7)', 'cos(0)', 'cos(0)', 'cos(-669)', 'cos(9291.6)', 'cos(-86982.4)', 'cos(0)', 'cos(-1)', 'cos(-4)', 'cos(0)', 'cos(6)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(47.94)', 'cos(0)', 'cos(0)', 'cos(0)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(0)', 'cos(0)', 'cos(3)', 'cos(1)', 'cos(-88.17)', 'cos(-9.0)', 'cos(0)', 'cos(-27981506.4)', 'cos(-196.4)', 'cos(-461)', 'cos(0)', 'cos(-2)', 'cos(-163)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-4)', 'cos(0)', 'cos(-46.78)', 'cos(0)', 'cos(92)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(18.754)', 'cos(56.32)', 'cos(-81)', 'cos(-3.37)', 'cos(-4)', 'cos(17.04)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(620)', 'cos(702)', 'cos(-3.56)', 'cos(0)', 'cos(0)', 'cos(16)', 'cos(0)', 'cos(0)', 'cos(-7.52)', 'cos(2)', 'cos(0)', 'cos(73.6847)', 'cos(-1871.5)', 'cos(-5)', 'cos(0)', 'cos(-576.8)', 'cos(0)', 'cos(0)', 'cos(-785.4)', 'cos(0)', 'cos(-7)', 'cos(3)', 'cos(-4)', 'cos(-27.49)', 'cos(-612.87)', 'cos(0)', 'cos(-972)', 'cos(94)', 'cos(-4)', 'cos(-28)', 'cos(-884.5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(58.64)', 'cos(3)', 'cos(0)', 'cos(19)', 'cos(-987)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(6.9)', 'cos(-7)', 'cos(-38)', 'cos(0)', 'cos(-3)', 'cos(0)', 'cos(0)', 'cos(-3.0)', 'cos(0)', 'cos(0)', 'cos(32)', 'cos(-7.54)', 'cos(-953)', 'cos(0)', 'cos(0)', 'cos(-36)', 'cos(0)', 'cos(0)', 'cos(7)', 'cos(651)', 'cos(-2)', 'cos(-520.935)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(63)', 'cos(0)', 'cos(0)', 'cos(8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-2.0)', 'cos(-462)', 'cos(-9)', 'cos(546.53)', 'cos(0)', 'cos(-6.8)', 'cos(0)', 'cos(69)', 'cos(-7)', 'cos(0)', 'cos(672)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-960.52)', 'cos(0)', 'cos(0)', 'cos(-39)', 'cos(-7.34)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(585097.3)', 'cos(-5)', 'cos(0)', 'cos(-105.761)', 'cos(-8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(2)', 'cos(-26)', 'cos(94)', 'cos(9.80)', 'cos(-9.29)', 'cos(0)', 'cos(-638)', 'cos(8)', 'cos(30941.32)', 'cos(-9)', 'cos(-7)', 'cos(0)', 'cos(0)', 'cos(-2.14)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-554.7)', 'cos(0)', 'cos(-9)', 'cos(48.371)', 'cos(474)', 'cos(381)', 'cos(0)', 'cos(5.75)', 'cos(1.8)', 'cos(-6.42)', 'cos(-2.06)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-77.09)', 'cos(-3124.3)', 'cos(1)', 'cos(-7.97)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(3.8)', 'cos(313)', 'cos(-2.2)', 'cos(9)', 'cos(7.8)', 'cos(-63)', 'cos(0)', 'cos(0)', 'cos(-6.49)', 'cos(-73)', 'cos(0)', 'cos(0)', 'cos(2)', 'cos(0)', 'cos(-861)', 'cos(0)', 'cos(5.04)', 'cos(-507)', 'cos(0)', 'cos(-3903.2)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(0)', 'cos(0)', 'cos(-3)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(7567.3)', 'cos(6)', 'cos(0)', 'cos(-8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(81)', 'cos(10)', 'cos(2903.8)', 'cos(0)', 'cos(-2.08)', 'cos(-5)', 'cos(0)', 'cos(0)', 'cos(441.2)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-6)', 'cos(-2.5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-206.1)', 'cos(53)', 'cos(-2)', 'cos(-54.97)', 'cos(0)', 'cos(0)', 'cos(-7.5)', 'cos(509.4)', 'cos(0)', 'cos(458.6)', 'cos(-18.572)', 'cos(851)', 'cos(4)', 'cos(0)', 'cos(0)', 'cos(-3.04)', 'cos(-3.38)', 'cos(818.23)', 'cos(0)', 'cos(-1.89)', 'cos(640)', 'cos(768.1)', 'cos(710.3)', 'cos(0)', 'cos(83127.6)', 'cos(-8)', 'cos(0)', 'cos(-5)', 'cos(-7)', 'cos(172.5)', 'cos(0)', 'cos(0)', 'cos(1.3)', 'cos(0)', 'cos(4.5)', 'cos(-3.78)', 'cos(30.16)', 'cos(-31.902)', 'cos(-36)', 'cos(0)', 'cos(0)', 'cos(-9)', 'cos(4.95)', 'cos(0)', 'cos(-9.79)', 'cos(-8)', 'cos(49)', 'cos(-11)', 'cos(0)', 'cos(-71)', 'cos(0)', 'cos(0)', 'cos(-8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-7)', 'cos(75)', 'cos(0)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(-2)', 'cos(87.31)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-987.3)', 'cos(-1879.6)', 'cos(2.61)', 'cos(14)', 'cos(0)', 'cos(8)', 'cos(26)', 'cos(-732)', 'cos(0)', 'cos(0)', 'cos(5)', 'cos(7)', 'cos(2.0)', 'cos(4)', 'cos(0)', 'cos(0)', 'cos(-831.0)', 'cos(954)', 'cos(47.43)', 'cos(0)', 'cos(4.43)', 'cos(0)', 'cos(5.07)', 'cos(6)', 'cos(-66.74)', 'cos(-5342.96)', 'cos(0)', 'cos(-32180.4)', 'cos(803.5)', 'cos(452.3)', 'cos(-9.2)', 'cos(6)', 'cos(0)', 'cos(0)', 'cos(-27.48)', 'cos(1)', 'cos(-82)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(1.8)', 'cos(0)', 'cos(-5.95)', 'cos(9)', 'cos(0)', 'cos(0)', 'cos(-689)', 'cos(0)', 'cos(-91)', 'cos(-61493.8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(812)', 'cos(0)', 'cos(0)', 'cos(-295.3)', 'cos(-39.0534)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-9)', 'cos(53)', 'cos(0)', 'cos(-7.5)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-527)', 'cos(6)', 'cos(205.4)', 'cos(-784.0)', 'cos(-90.1347)', 'cos(641)', 'cos(-74)', 'cos(-530)', 'cos(0)', 'cos(-2.8)', 'cos(61)', 'cos(26.89)', 'cos(0)', 'cos(0)', 'cos(2)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-3.12)', 'cos(0)', 'cos(-6.6)', 'cos(0)', 'cos(-428)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(-3)', 'cos(-45.9706)', 'cos(24.01)', 'cos(-6)', 'cos(-13652.1)', 'cos(0)', 'cos(0)', 'cos(-496.1)', 'cos(4.9)', 'cos(0)', 'cos(67)', 'cos(492.7)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-8)', 'cos(0)', 'cos(-4)', 'cos(0)', 'cos(0)', 'cos(-218.0)', 'cos(0)', 'cos(0)', 'cos(51)', 'cos(5)', 'cos(-634)', 'cos(951)', 'cos(-37)', 'cos(-2.5)', 'cos(0)', 'cos(-5)', 'cos(0)', 'cos(0)', 'cos(93)', 'cos(0)', 'cos(7.92)', 'cos(-1)', 'cos(0)', 'cos(0)', 'cos(-4.38)', 'cos(32.08)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(79)', 'cos(-9)', 'cos(0)', 'cos(-14.72)', 'cos(-782)', 'cos(-1415.8)', 'cos(9.39)', 'cos(0)', 'cos(7)', 'cos(0)', 'cos(1)', 'cos(-2.4)', 'cos(0)', 'cos(0)', 'cos(-10.32)', 'cos(0)', 'cos(7.42)', 'cos(-7427.9)', 'cos(0)', 'cos(0)', 'cos(17)', 'cos(0)', 'cos(0)', 'cos(354.9)', 'cos(0)', 'cos(0)', 'cos(3)', 'cos(0)', 'cos(774.65)', 'cos(0)', 'cos(0)', 'cos(-2304.8)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-4.9)', 'cos(0)', 'cos(9)', 'cos(0)', 'cos(0)', 'cos(1)', 'cos(0)', 'cos(20.81256)', 'cos(0)', 'cos(-34.5637)', 'cos(0)', 'cos(37)', 'cos(-86.70)', 'cos(0)', 'cos(0)', 'cos(837)', 'cos(0)', 'cos(0)', 'cos(5.46)', 'cos(-6)', 'cos(-6.39)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].
+----------------NEW ATTEMPT----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "cos")']
+The following stats were collected.
+triggering_fuzz
+100 correctly triggered the line out of 100 originally fuzzed inputs.
+These are the inputs: ['cos(0)', 'cos(0)', 'cos(-2.7)', 'cos(0)', 'cos(301)', 'cos(0)', 'cos(-4.9)', 'cos(1)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(-1)', 'cos(-1180.4)', 'cos(11)', 'cos(0)', 'cos(-9302.4)', 'cos(673)', 'cos(3.2)', 'cos(7.6)', 'cos(0)', 'cos(-78.297)', 'cos(4)', 'cos(-3.1)', 'cos(-1)', 'cos(0)', 'cos(0)', 'cos(319)', 'cos(0)', 'cos(-6)', 'cos(0)', 'cos(0)', 'cos(-47)', 'cos(0)', 'cos(0)', 'cos(-8)', 'cos(66.91485)', 'cos(0)', 'cos(-7.36)', 'cos(0)', 'cos(-5)', 'cos(0)', 'cos(0)', 'cos(4.78)', 'cos(-5)', 'cos(0)', 'cos(-9.3)', 'cos(-6.5)', 'cos(0)', 'cos(2)', 'cos(0)', 'cos(-9247691.30)', 'cos(-7.98)', 'cos(-19)', 'cos(854.6)', 'cos(82.86)', 'cos(0)', 'cos(2.61)', 'cos(5.1)', 'cos(0)', 'cos(-69)', 'cos(-44)', 'cos(-3)', 'cos(0)', 'cos(-5.3)', 'cos(38.57)', 'cos(-730)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(7)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(1.9)', 'cos(0)', 'cos(0)', 'cos(-52)', 'cos(79.417)', 'cos(0)', 'cos(-3)', 'cos(507)', 'cos(9.71)', 'cos(-5)', 'cos(0)', 'cos(8934.6)', 'cos(-917)', 'cos(0)', 'cos(-658.2917)', 'cos(0)', 'cos(0)', 'cos(0)', 'cos(1.92)', 'cos(0)', 'cos(0)', 'cos(-1.61)', 'cos(0)', 'cos(9.78)', 'cos(0)', 'cos(-6)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.
+These are the inputs: [].

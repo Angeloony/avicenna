@@ -180,7 +180,7 @@ def predictor(subject: Subject):
     
     subject_fuzzer = GrammarFuzzer(grammar=subject.grammar)
     
-    for _ in range(0,1000):
+    for _ in range(0,99900):
         with open('results/' + subject.name + '/fuzzed_predictor.txt', 'a+') as file:
             file.write(f"{subject_fuzzer.fuzz()}\n")
     
@@ -285,7 +285,7 @@ def fuzz_with_constraints(
     fuzzed_inputs['Fuzzed'].append('Constraint Begin: \n'+ constraint + '\nConstraint End.')
     
     # 20 inputs per constraint
-    for _ in range(0,30):
+    for _ in range(0,100):
         
         try:
             solver = ISLaSolver(
@@ -299,7 +299,7 @@ def fuzz_with_constraints(
         except StopIteration:
             continue
     
-    with open('results/' + subject.name + '/' + str(line) + '_fuzzed.txt', 'a+') as file:
+    with open('results/' + subject.name + '/' + str(line) + '_produce.txt', 'a+') as file:
         for item in fuzzed_inputs['Fuzzed']:
             file.write(f"{item}\n")
     
@@ -369,7 +369,85 @@ def classify_fuzzed(subject: Subject, inputs,):
                     #print(line_dict[str(item)])
                     for value in result_dict[item]:
                         file.write(f"{value}\n")
+  
+  
+def check_sem_fuzz(subject:Subject,):
+    instrument(
+        put_path=subject.put_path,
+        instr_path=str(get_avicenna_rsc_path()) + '/instrumented.py',
+    )
+    
+    
+    
+    result = []
+    
+    for line in subject.relevant_lines:
+        subject_oracle = construct_oracle(
+        program_under_test=subject.first_func,
+        inp_converter=subject.converter,
+        line = line,
+        resource_path=str(get_avicenna_rsc_path()),
+        put_path=subject.put_path,
+    )
+        inputs = import_fuzzed('results/' + subject.name + '/' + str(line) + '_produce.txt')
+        in_constraint = False
+        
+        
+        constraint_before = False
+        for input in inputs:
+            #print("input",input)
+            if 'Constraint Begin' in input:
+                if constraint_before == True:
+                    #print(eval_dict)
+                    with open('results/' + subject.name + '/' + str(line) + '_produce_results.txt', 'a+') as file:
+                        file.write("----------------NEW ATTEMPT----------------\n")
+                        for item in eval_dict:
+                            #print(item)
+                            file.write(f"{item}\n")
+                            if item == 'constraint':
+                                file.write(f"{eval_dict[item]}\nThe following stats were collected.\n") 
+                            if item == 'triggering_fuzz':
+                                file.write(f"{len(eval_dict[item])} correctly triggered the line out of 100 originally fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
+                            if item == 'non_triggering_fuzz':
+                                file.write(f"{len(eval_dict[item])} incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
+                
+                constraint_before = True
+                eval_dict = {
+                    'constraint' : [],
+                    'triggering_fuzz' : [],
+                    'non_triggering_fuzz' : [],
+                }
+                in_constraint = True
+                
+            elif 'Constraint End' in input:
+                in_constraint = False
             
+            elif in_constraint == False:
+                if subject_oracle(input) == OracleResult.FAILING:
+                    # good
+                    
+                    eval_dict['triggering_fuzz'].append(input)
+                else:
+                    # not good
+                    eval_dict['non_triggering_fuzz'].append(input)
+                    
+            elif in_constraint == True:
+                eval_dict['constraint'].append(input)
+        
+    with open('results/' + subject.name + '/' + str(line) + '_produce_results.txt', 'a+') as file:
+                    file.write("----------------NEW ATTEMPT----------------\n")
+                    for item in eval_dict:
+                        #print(item)
+                        file.write(f"{item}\n")
+                        if item == 'constraint':
+                            file.write(f"{eval_dict[item]}\nThe following stats were collected.\n") 
+                        if item == 'triggering_fuzz':
+                            file.write(f"{len(eval_dict[item])} correctly triggered the line out of 100 originally fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
+                        if item == 'non_triggering_fuzz':
+                            file.write(f"{len(eval_dict[item])} incorrectly did NOT trigger the line out of 100 originally fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
+                
+        
+        
 
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
@@ -404,10 +482,12 @@ def main():
     # fuzz_subject(
     #     subject=markup,
     # )
-    fuzz_subject(
-        subject=expression,
-    )
+    # fuzz_subject(
+    #     subject=markup,
+    # )
         
+    #check_sem_fuzz(calculator)
+    
     # PREDICTOR SECTION
     # ***********************************
     # predictor(markup)
@@ -416,13 +496,14 @@ def main():
     # predictor(middle)
     
     # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
+    classify_fuzzed(markup, import_fuzzed('results/markup/fuzzed_predictor.txt'))
     classify_fuzzed(expression, import_fuzzed('results/expression/fuzzed_predictor.txt'))
-    eval_dict = predict_fuzzed(expression)
+    #classify_fuzzed(middle, import_fuzzed('results/middle/fuzzed_predictor.txt'))
+    classify_fuzzed(calculator, import_fuzzed('results/calculator/fuzzed_predictor.txt'))
+    # eval_dict = predict_fuzzed(markup)
     
-    for line in expression.relevant_lines:
-        inputs = import_fuzzed('results/' + expression.name + '/' + str(line) + '_fuzzed.txt')
-        
-    print(inputs)
+                
+    #print(inputs)
     #print(eval_dict)
   
 
