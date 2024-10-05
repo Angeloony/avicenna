@@ -191,7 +191,10 @@ def main():
     # predictor(markup)
     # predictor(expression)
     # predictor(calculator)
-    predictor(middle)
+    predictor(
+        subject=calculator,
+        relevant_attempts=['1',]  
+        )
     
     # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
     #ground_truth(markup, import_fuzzed('results/markup/fuzzed_predictor_nodupl.txt'))

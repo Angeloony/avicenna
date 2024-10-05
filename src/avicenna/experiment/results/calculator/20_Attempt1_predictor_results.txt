@@ -1,0 +1,14 @@
+----------------NEW ATTEMPT #1----------------
+fpos
+0 were wrongly classified as False Positive out of 18462 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+6088 were correctly classified as True Positive out of 6088 True Positives.
+tneg
+18462 were correctly classified as True Negative out of 18462 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 6088 True Positives.
+The wrongly classified inputs were: [].
+
+
+24550 unique inputs were grammar-fuzzed in total.

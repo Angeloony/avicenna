@@ -97,7 +97,6 @@ def export_predictor(
         file.write(f"----------------NEW ATTEMPT #{attempt}----------------\n")
         for item in eval_dict:
             file.write(f"{item}\n")
-            file.write(f"{len(all_fuzzed)} unique inputs were grammar-fuzzed.\n")
             if item == 'tpos':
                 file.write(f"{len(eval_dict[item])} were correctly classified as True Positive out of {len(trigger_fuzzed)} True Positives.\n")
             if item == 'tneg':
@@ -106,7 +105,8 @@ def export_predictor(
                 file.write(f"{len(eval_dict[item])} were wrongly classified as False Positive out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n")
             if item == 'fneg':
                 file.write(f"{len(eval_dict[item])} were wrongly classified as False Negative out of {len(trigger_fuzzed)} True Positives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n\n")
- 
+    
+                file.write(f"\n{len(all_fuzzed)} unique inputs were grammar-fuzzed in total.")
    
 """ 
     ~* export_producer *~

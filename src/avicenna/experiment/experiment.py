@@ -65,7 +65,8 @@ class Subject:
             ]
             
             return converted_inp
-            
+        
+        # TODO : producer stuff for all lines
         subject_attributes = {
             "name"      : "middle",
             "grammar"   : grammar_middle,
@@ -73,17 +74,17 @@ class Subject:
             "converter" : converter_middle,
             "lines"     : [
                 #1, 2, 3,
-                #4, # 
-                5, # ['1', '4']
-                # 6, # ['1', '2']
-                # 7, # ['1', '3','4'] diff constraints check if they differ after tests maybe
-                # #8, 
+                # 4, # 
+                # #5, # ['1', '4']
+                # #6, # ['1', '2']
+                # #7, # ['1', '3', '4'] diff constraints check if they differ after tests maybe
+                # # #8, 
                 # 9, 
                 # 10, 
                 # 11, 
                 # 12, 
                 #13
-            ], # 8 lines with analysis, 8 lines with returned constraints
+            ], # 7 lines with analysis, 7 lines with returned constraints
             "first_func": "middle",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "middle.py",
         } 
@@ -123,6 +124,7 @@ class Subject:
             'tan(8)', 'tan(-10)', 'tan(0)',
         ]
         
+        # TODO : Producer stuff for all files
         subject_attributes = {
             "name"      : "calculator",
             "grammar"   : grammar_calc,
@@ -131,13 +133,13 @@ class Subject:
             "lines"     : [
                 # 1, 4, 32 are irrelevant for predict, no constraints
                 #1, 4, #import and empty line
-                6,
-                8,  # ['1', '2', '3'] || 0 vs 1, 4, 5, 7 vs 2, 3, 6, 8, 9
-                9,  # ['1', '2']      || 0, 2, 3, 5, 7, 9, 10 vs 1, 4, 6
-                12, # ['3', '4', '1'] || 3 vs 4 vs rest
-                15, # ['1', '2']      || 1, 7 vs 2, 3, 4, 5, 6, 8, 9 no constraint on 10
+                #6,
+                #8,  # ['1', '2', '3'] || 0 vs 1, 4, 5, 7 vs 2, 3, 6, 8, 9
+                #9,  # ['1', '2']      || 0, 2, 3, 5, 7, 9, 10 vs 1, 4, 6
+                #12, # ['3', '4', '1'] || 3 vs 4 vs rest
+                #15, # ['1', '2']      || 1, 7 vs 2, 3, 4, 5, 6, 8, 9 no constraint on 10
                 20, # ['1']           || all same 
-                24, # ['1', '10']     || 10 vs rest
+                #24, # ['1', '10']     || 10 vs rest
                 28, # ['1']           || all same 
                 #32, #main
             ], # 8 lines with analysis, 8 lines with returned constraints
