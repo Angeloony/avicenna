@@ -1,0 +1,31 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,48.593,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+1,2,60.739,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+2,3,64.825,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+3,4,104.133,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+4,5,67.735,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+5,6,56.524,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+6,7,35.932,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+7,8,51.1,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+8,9,42.191,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"
+9,10,176.205,1.0,1.0,9,"forall <y> elem_1 in start:
+  exists <z> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<y>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<z>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<y>""), BoundVariable(""elem_2"", ""<z>""), )))"

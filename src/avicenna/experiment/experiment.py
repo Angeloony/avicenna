@@ -72,10 +72,18 @@ class Subject:
             "inputs"    : inputs_middle,
             "converter" : converter_middle,
             "lines"     : [
-                1, 2, 3, 4,
-                5, 
-                6, 7, 8, 9, 10, 11, 12, 13
-            ],
+                #1, 2, 3,
+                #4, # 
+                5, # ['1', '4']
+                # 6, # ['1', '2']
+                # 7, # ['1', '3','4'] diff constraints check if they differ after tests maybe
+                # #8, 
+                # 9, 
+                # 10, 
+                # 11, 
+                # 12, 
+                #13
+            ], # 8 lines with analysis, 8 lines with returned constraints
             "first_func": "middle",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "middle.py",
         } 
@@ -121,14 +129,18 @@ class Subject:
             "inputs"    : inputs_calc,
             "converter" : None,
             "lines"     : [
+                # 1, 4, 32 are irrelevant for predict, no constraints
                 #1, 4, #import and empty line
                 6,
-                8, 9, 12, 15, #sqrt
-                20, #tan
-                24, #cos
-                28, #sin
+                8,  # ['1', '2', '3'] || 0 vs 1, 4, 5, 7 vs 2, 3, 6, 8, 9
+                9,  # ['1', '2']      || 0, 2, 3, 5, 7, 9, 10 vs 1, 4, 6
+                12, # ['3', '4', '1'] || 3 vs 4 vs rest
+                15, # ['1', '2']      || 1, 7 vs 2, 3, 4, 5, 6, 8, 9 no constraint on 10
+                20, # ['1']           || all same 
+                24, # ['1', '10']     || 10 vs rest
+                28, # ['1']           || all same 
                 #32, #main
-            ],
+            ], # 8 lines with analysis, 8 lines with returned constraints
             "first_func": "main",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "calculator.py",
         } 
@@ -264,12 +276,14 @@ class Subject:
             "inputs"    : inputs_markup,
             "converter" : None,
             "lines"     : [
+                # 1, 6, 12 don't have constraints, dont need to predict
                 #1, 
                 #6, 
-                8, 10, 
-                #12, 
-                14,
-            ],
+                8, # attempts ['6', '1']  check 6 vs rest
+                10, # all same
+                12, # none found
+                14, # attempts ['9'], constraint vs no constraints
+            ], # 4 lines with actual analysis, 3 with constraints
             "first_func": "remove_html_markup",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "markup.py",
         } 
@@ -308,37 +322,6 @@ class Subject:
             "<digits>": ["<digit>", "<digit><digits>"],
         }
         
-        alt_grammar_expression = {
-            "<start>": ["<arith_expr>"],
-            "<arith_expr>": [
-                "binary",
-                "<number>",
-                "<par>",
-            ],
-            "<binary>": ["<arith_expr><operator><arith_expr>",],
-            "<par>": ["<lpar><arith_expr><rpar>"],
-            "<lpar>": ["("],
-            "<rpar>": [")"],
-            "<operator>": ["<muldiv>","<plussub>",],
-            "<muldiv>": ["<mul>", "<div>"],
-            "<plussub>": ["<plus>", "<minus>",],
-            "<plus>": [" + "],
-            "<minus>": [" - "],
-            "<mul>": [" * "],
-            "<div>": [" / "],
-            "<number>": [
-                "<maybe_minus><non_zero_digit><maybe_digits>",
-                "0"
-            ],
-            "<maybe_minus>": ["", "~ "],
-            "<non_zero_digit>": [
-                str(num) for num in range(1, 10)
-            ],  # Exclude 0 from starting digits
-            "<digit>": list(string.digits),
-            "<maybe_digits>": ["", "<digits>"],
-            "<digits>": ["<digit>", "<digit><digits>"],
-        }
-        
         # buggy behavior when divided by 0, otherwise try to trigger every possible function
         inputs_expression = [
             '5',    '(7)', '~ 8', # no space, doesn't trigger line 60
@@ -360,23 +343,27 @@ class Subject:
             "inputs"    : inputs_expression,
             "converter" : None,
             "lines"     : [
-                #10, # init Binary | at least 10 min
-                #40, # init Negate | at least 1 minute 
-                49, # init Constant DONE | instant
-                59, # check for space | about 5 min at least
-                71, # DONE checking isnumeric()
-                73, # parenthesis check | about 5 min
-                85, # return Negate Term | about 1 min
-                86, # DONE instant i tihnk?
-                #87, # return parse_neg | about 1h long - no constraint
-                93, # go into mul_div | about 2 min to 5 min
-                95, # return Mul | about 5 min
-                97, # return Div | about
-                99, # return parsemuldiv | instant
-                105,# go into add_sub | about 5 min
-                107,# return Add | about 5 min
-                109,# return Sub | about 5 min
-                111,# return parseaddsub | instant
+                # TODO : run lines 10, 87 overnight for constraints (87 prolly wont have)
+                # TODO : predictor all lines
+                # TODO : producer all lines
+                # lines 49, 71, 86, 87, 99, 111, do not have constraints - no predict
+                #10, # init Binary | at least 10 min  || check attempts
+                40, # init Negate | at least 1 minute || all same
+                #49, # init Constant DONE | instant   || no constraints
+                59, # check for space | about 5 min at least || all same ['1']
+                #71, # DONE checking isnumeric()  || no constraints
+                73, # parenthesis check | about 5 min || all same 
+                85, # return Negate Term | about 1 min || all same
+                #86, # DONE instant i tihnk? || no constraint
+                #87, # return parse_neg | about 1h long - no constraint || no constraint BUT RELEVANT cuz we still searched NOT RUN YET
+                93, # go into mul_div | about 2 min to 5 min || all same, not found in attempt 7
+                95, # return Mul | about 5 min different constraint results here || attempt 0, 2, 7, 8, 9 vs 1, 3, 4, 5, 6 | ['1', '2']
+                97, # return Div | || all same
+                #99, # return parsemuldiv | instant || no constraint
+                105,# go into add_sub | about 5 min different constraint results here || attempts 1, 2, 4, 5, vs 3, vs 8, vs 9 vs 10 no constraint | ['1', '3', '8', '9'] IMPORTANT: NO CONSTRAINT FOUND ONCE 
+                107,# return Add | about 5 min different constraint results here || 7, 10, vs rest of lines | ['1', '7']
+                109,# return Sub | about 5 min different constraint results here || 0, 6 ,8 vs 1, 2, vs 3, 4, 5, 7, 9 | ['1', '2', '4']
+                #111,# return parseaddsub | instant
             ],
             "first_func": "parse", 
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "expression.py",

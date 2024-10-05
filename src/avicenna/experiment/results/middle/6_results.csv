@@ -1,0 +1,61 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,237.946,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+1,2,315.714,1.0,1.0,6,"(forall <x> elem_1 in start:
+   exists <y> elem_2 in start:
+     (>= (str.to.int elem_1) (str.to.int elem_2)) and
+forall <z> elem_0 in start:
+  exists <y> elem_3 in start:
+    (> (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<x>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<z>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+2,3,275.933,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+3,4,233.32,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+4,5,208.002,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+5,6,244.141,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+6,7,233.077,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+7,8,285.917,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+8,9,200.483,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"
+9,10,262.894,1.0,1.0,6,"(forall <z> elem_1 in start:
+   exists <y> elem_2 in start:
+     (> (str.to.int elem_1) (str.to.int elem_2)) and
+forall <x> elem_0 in start:
+  exists <y> elem_3 in start:
+    (>= (str.to.int elem_0) (str.to.int elem_3)))","ConjunctiveFormula(ForallFormula(BoundVariable(""elem_1"", ""<z>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(> (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<z>""), BoundVariable(""elem_2"", ""<y>""), ))), ForallFormula(BoundVariable(""elem_0"", ""<x>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_3"", ""<y>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_0) (str.to_int elem_3))', BoundVariable(""elem_0"", ""<x>""), BoundVariable(""elem_3"", ""<y>""), ))))"

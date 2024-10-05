@@ -1,0 +1,12 @@
+----------------NEW ATTEMPT----------------
+fpos
+0 were wrongly classified as False Positive out of 41548 True Negatives.
+The wrongly classified inputs were: [].
+tpos
+40168 were correctly classified as True Positive out of 40168 True Positives.
+tneg
+41548 were correctly classified as True Negative out of 41548 True Negatives.
+fneg
+0 were wrongly classified as False Negative out of 40168 True Positives.
+The wrongly classified inputs were: [].
+
