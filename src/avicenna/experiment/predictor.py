@@ -18,6 +18,8 @@ def predictor(
 ):  
     all_fuzzed = import_fuzzed('results/' + subject.name + '/fuzzed_predictor_nodupl.txt')    
     for line in subject.relevant_lines:
+        print('predictor', subject.name, line)
+        
         # allows me to test just 1 line/1 predictor
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         for attempt in subject_dict:

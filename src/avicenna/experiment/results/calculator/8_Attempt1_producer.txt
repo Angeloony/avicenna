@@ -1,0 +1,10 @@
+Constraint Begin: 
+(forall <digits> elem in start:
+   (<= (str.to.int elem) (str.to.int "89")) and
+forall <number> elem_0 in start:
+  (>= (str.to.int elem_0) (str.to.int "0")))
+Constraint End.
+cos(0)
+sin(0)
+tan(0)
+sqrt(0)

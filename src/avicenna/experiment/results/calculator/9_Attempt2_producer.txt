@@ -1,0 +1,7 @@
+Constraint Begin: 
+(exists <number> elem in start:
+   (= elem "0") and
+exists <function> elem_0 in start:
+  (= elem_0 "sqrt"))
+Constraint End.
+sqrt(0)

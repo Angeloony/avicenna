@@ -1,0 +1,8 @@
+Constraint Begin: 
+(exists <number> elem in start:
+   (= elem "0") and
+forall <arith_expr> container in start:
+  exists <function> elem_0 in container:
+    (= elem_0 "sqrt"))
+Constraint End.
+sqrt(0)

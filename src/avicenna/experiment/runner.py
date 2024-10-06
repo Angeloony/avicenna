@@ -9,7 +9,7 @@ from avicenna.avix import AviX
 from avicenna.avix_help import instrument
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
-from avicenna.experiment.producer import producer
+from avicenna.experiment.producer import producer, check_producer
 from avicenna.experiment.predictor import predictor
 
 from isla.language import Formula, ISLaUnparser
@@ -154,34 +154,39 @@ def main():
     
     # PRODUCER SECTION
     # ***********************************
-    producer(
-        # relevant_attempts=['1', '2'], # for line 6
-        # relevant_attempts= ['1', '3','4'], # line 7
-        relevant_attempts= ['1'], # rest of the lines, exclude 1, 2, 3, 8, 13
-        subject=middle,
-    )
-    producer(
-        subject=calculator,
-        # relevant_attempts= ['1']#'2', '3'] # line 8
-        # relevant_attempts= ['1']#'2'] # line 9
-        # relevant_attempts= ['1']#'3', '4'] # line 12
-        # relevant_attempts= ['1']#'2'] # line 15
-        # relevant_attempts= ['1']## line 20, 28,
-        relevant_attempts= ['1']#'10'] # line 24
-    )
-    producer(
-        subject=markup,
-        relevant_attempts= ['9']#'6'] # line 8
-        # relevant_attempts= ['1'] # line 10
-        # relevant_attempts= ['9'] # line 14
-    )
-    producer(
-        subject=expression,
-        relevant_attempts= ['1'] # line 40, 59, 73, 85, 93, 97, 
-        # relevant_attempts= ['1', '2'] # line 95
-        # relevant_attempts= ['1', '3', '8', '9'] # line 105
-        # relevant_attempts= ['1', '7'] # line 107
-        # relevant_attempts= ['1', '2', '4'] # line 109
+    # producer(
+    #     # relevant_attempts=['1', '2'], # for line 6
+    #     # relevant_attempts= ['1', '3','4'], # line 7
+    #     relevant_attempts= ['3', '4'], # rest of the lines, exclude 1, 2, 3, 8, 13
+    #     subject=middle,
+    # )
+    # producer(
+    #     subject=calculator,
+    #     # relevant_attempts= [] # line 8
+    #     # relevant_attempts= [] # line 9
+    #     # relevant_attempts= [] # line 12
+    #     # relevant_attempts=  # line 15
+    #     # relevant_attempts= [# line 20, 28,
+    #     relevant_attempts= ['4']#'10'] # line 24
+    # )
+    # # producer(
+    # #     subject=markup,
+    # #     relevant_attempts= ['6']#] # line 8
+    # #     # relevant_attempts= [] # line 10
+    # #     # relevant_attempts= [] # line 14
+    # # )
+    # producer(
+    #     subject=expression,
+    #     relevant_attempts= ['7'] # line 40, 59, 73, 85, 93, 97, 
+    #     # relevant_attempts= [] # line 95
+    #     # relevant_attempts= ['3', '8', '9'] # line 105
+    #     # relevant_attempts= ['7'] # line 107
+    #     # relevant_attempts= [] # line 109
+    # )
+    
+    check_producer(
+        middle,
+        ['1']
     )
         
     #check_sem_fuzz(calculator)
@@ -192,10 +197,10 @@ def main():
     # predictor(expression)
     # predictor(calculator)
     #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
-    predictor(
-        subject=expression,
-        relevant_attempts=['1'] 
-    )
+    # predictor(
+    #     subject=expression,
+    #     relevant_attempts=['1'] 
+    # )
     
     # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
     #ground_truth(markup, import_fuzzed('results/markup/fuzzed_predictor_nodupl.txt'))

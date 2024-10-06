@@ -14,6 +14,7 @@ def producer(
     # These are the attempts that have returned different constraints.
     # We are only interested in returning these.
     for line in subject.relevant_lines:
+        print(subject.name, line)
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         
         for attempt in subject_dict:
@@ -24,7 +25,7 @@ def producer(
             else:
                 #print("hi", attempt['Attempt'])
                 if attempt['Attempt'] in relevant_attempts:
-                    semantic_fuzz(subject, attempt['Constraint'], line, 1000, attempt['Attempt'])
+                    semantic_fuzz(subject, attempt['Constraint'], line, 200, attempt['Attempt'])
 
 
 # pass constraint as string
@@ -63,52 +64,53 @@ def semantic_fuzz(
 
 
 def check_producer(
-    subject:Subject
+    subject:Subject,
+    attempts,
 ):
     instrument(
         put_path=subject.put_path,
         instr_path=str(get_avicenna_rsc_path()) + '/instrumented.py',
     )
-    
-    for line in subject.relevant_lines:
-        
-        subject_oracle = construct_oracle(
-            program_under_test=subject.first_func,
-            inp_converter=subject.converter,
-            line = line,
-            resource_path=str(get_avicenna_rsc_path()),
-            put_path=subject.put_path,
-        )
-        inputs = import_fuzzed(
-            'results/' + subject.name + '/' + str(line) + '_produce.txt'
-        )
-        parsing_constraint = False
-        after_first_run = False
-        
-        for input in inputs:
+    for attempt in attempts:
+        for line in subject.relevant_lines:
             
-            if 'Constraint Begin' in input:
-                if after_first_run == True:
-                    export_producer(subject, line, eval_dict,)
-                    
-                parsing_constraint = True
-                after_first_run = True
-                eval_dict = {
-                    'constraint' : [],
-                    'triggering_fuzz' : [],
-                    'non_triggering_fuzz' : [],
-                }
+            subject_oracle = construct_oracle(
+                program_under_test=subject.first_func,
+                inp_converter=subject.converter,
+                line = line,
+                resource_path=str(get_avicenna_rsc_path()),
+                put_path=subject.put_path,
+            )
+            inputs = import_fuzzed(
+                'results/' + subject.name + '/' + str(line) + '_Attempt'+ attempt +'_producer.txt'
+            )
+            parsing_constraint = False
+            after_first_run = False
             
-            elif 'Constraint End' in input:
-                parsing_constraint = False
-            
-            elif parsing_constraint == False:
-                if subject_oracle(input) == OracleResult.FAILING:
-                    eval_dict['triggering_fuzz'].append(input)
-                else:
-                    eval_dict['non_triggering_fuzz'].append(input)
-                    
-            elif parsing_constraint == True:
-                eval_dict['constraint'].append(input)
+            for input in inputs:
+                
+                if 'Constraint Begin' in input:
+                    if after_first_run == True:
+                        export_producer(subject, line, eval_dict, attempt)
+                        
+                    parsing_constraint = True
+                    after_first_run = True
+                    eval_dict = {
+                        'constraint' : [],
+                        'triggering_fuzz' : [],
+                        'non_triggering_fuzz' : [],
+                    }
+                
+                elif 'Constraint End' in input:
+                    parsing_constraint = False
+                
+                elif parsing_constraint == False:
+                    if subject_oracle(input) == OracleResult.FAILING:
+                        eval_dict['triggering_fuzz'].append(input)
+                    else:
+                        eval_dict['non_triggering_fuzz'].append(input)
+                        
+                elif parsing_constraint == True:
+                    eval_dict['constraint'].append(input)
 
-    export_producer(subject, line, eval_dict)
+        export_producer(subject, line, eval_dict, attempt=attempt)

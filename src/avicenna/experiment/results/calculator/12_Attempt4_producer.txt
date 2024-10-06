@@ -1,0 +1,16 @@
+Constraint Begin: 
+(exists <maybe_minus> container1 in start:
+   exists <number> length_field in start:
+     (< (str.len container1) (str.to.int length_field)) and
+exists <function> elem in start:
+  (= elem "sqrt"))
+Constraint End.
+sqrt(2)
+sqrt(4)
+sqrt(1)
+sqrt(3)
+sqrt(8)
+sqrt(7)
+sqrt(9)
+sqrt(5)
+sqrt(6)

@@ -91,22 +91,27 @@ def export_predictor(
     all_fuzzed,
     trigger_fuzzed,
     attempt
-):
-    
+):  
     with open('results/' + subject.name + '/' + str(line) + '_Attempt'+str(attempt)+'_predictor_results.txt', 'a+') as file:
         file.write(f"----------------NEW ATTEMPT #{attempt}----------------\n")
+       
         for item in eval_dict:
             file.write(f"{item}\n")
+            
             if item == 'tpos':
                 file.write(f"{eval_dict[item]} were correctly classified as True Positive out of {len(trigger_fuzzed)} True Positives.\n")
+            
             if item == 'tneg':
                 file.write(f"{eval_dict[item]} were correctly classified as True Negative out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\n")
+            
             if item == 'fpos':
                 file.write(f"{len(eval_dict[item])} were wrongly classified as False Positive out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n")
+           
             if item == 'fneg':
                 file.write(f"{len(eval_dict[item])} were wrongly classified as False Negative out of {len(trigger_fuzzed)} True Positives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n\n")
     
                 file.write(f"\n{len(all_fuzzed)} unique inputs were grammar-fuzzed in total.")
+   
    
 """ 
     ~* export_producer *~
@@ -123,16 +128,22 @@ def export_producer(
     subject:Subject,
     line,
     eval_dict,
+    attempt
 ):
     unique_inputs = len(eval_dict['triggering_fuzz']) + len(eval_dict['non_triggering_fuzz'])
-    with open('results/' + subject.name + '/' + str(line) +'_producer_results.txt', 'a+') as file:
-        file.write(f"----------------NEW ATTEMPT----------------\n")
+    
+    with open('results/' + subject.name + '/' + str(line) +'_Attempt'+str(attempt)+'producer_results.txt', 'a+') as file:
+        file.write(f"----------------NEW ATTEMPT #{attempt}----------------\n")
+        
         for item in eval_dict:
             file.write(f"{item}\n")
+            
             if item == 'constraint':
-                file.write(f"{eval_dict[item]}\nThe following stats were collected.\nf{unique_inputs} out of 1000 originally fuzzed inputs were unique.\n") 
+                file.write(f"{eval_dict[item]}\nThe following stats were collected.\nf{unique_inputs} out of 1,000 originally fuzzed inputs were unique.\n") 
+            
             if item == 'triggering_fuzz':
                 file.write(f"{len(eval_dict[item])} correctly triggered the line out of {unique_inputs} unique fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
+            
             if item == 'non_triggering_fuzz':
                 file.write(f"{len(eval_dict[item])} incorrectly did NOT trigger the line out of {unique_inputs} unique fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")
   
