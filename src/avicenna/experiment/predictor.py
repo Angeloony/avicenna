@@ -1,4 +1,4 @@
-from avicenna.experiment.runner_helper import import_fuzzed, import_csv, check_trigger, export_predictor
+from avicenna.experiment.helper import import_fuzzed, import_csv, check_trigger, export_predictor
 
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
@@ -16,18 +16,17 @@ def predictor(
     subject: Subject,
     relevant_attempts,
 ):  
-    
     all_fuzzed = import_fuzzed('results/' + subject.name + '/fuzzed_predictor_nodupl.txt')    
     for line in subject.relevant_lines:
         # allows me to test just 1 line/1 predictor
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         for attempt in subject_dict:
             if str(attempt['Attempt']) in relevant_attempts:
-                
+                print(attempt['Attempt'])
                 eval_dict = {
                 'fpos' : [],
-                'tpos' : [],
-                'tneg' : [],
+                'tpos' : 0,
+                'tneg' : 0,
                 'fneg' : [],
                 }
                 
@@ -46,22 +45,19 @@ def predictor(
                         try:
                             solver.parse(inp=input)
                             if input in trigger_fuzzed:
-                                eval_dict['tpos'].append(input)
+                                eval_dict['tpos'] += 1
                             elif not(input in trigger_fuzzed):
                                 eval_dict['fpos'].append(input)
+                                
                                 
                         except SemanticError:
                             if input in trigger_fuzzed:
                                 eval_dict['fneg'].append(input)
                             elif not(input in trigger_fuzzed):
-                                eval_dict['tneg'].append(input)                      
+                                eval_dict['tneg'] += 1            
 
                     export_predictor(subject, line, eval_dict, all_fuzzed=all_fuzzed, trigger_fuzzed=trigger_fuzzed, attempt=attempt['Attempt'])
             else:
                 continue
                     
     return eval_dict
-
-
-  
- 

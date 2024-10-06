@@ -98,9 +98,9 @@ def export_predictor(
         for item in eval_dict:
             file.write(f"{item}\n")
             if item == 'tpos':
-                file.write(f"{len(eval_dict[item])} were correctly classified as True Positive out of {len(trigger_fuzzed)} True Positives.\n")
+                file.write(f"{eval_dict[item]} were correctly classified as True Positive out of {len(trigger_fuzzed)} True Positives.\n")
             if item == 'tneg':
-                file.write(f"{len(eval_dict[item])} were correctly classified as True Negative out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\n")
+                file.write(f"{eval_dict[item]} were correctly classified as True Negative out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\n")
             if item == 'fpos':
                 file.write(f"{len(eval_dict[item])} were wrongly classified as False Positive out of {len(all_fuzzed) - len(trigger_fuzzed)} True Negatives.\nThe wrongly classified inputs were: {eval_dict[item]}.\n")
             if item == 'fneg':

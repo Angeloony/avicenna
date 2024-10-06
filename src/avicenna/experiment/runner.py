@@ -4,7 +4,7 @@ import logging
 import string
 from typing import List, Dict
 
-from avicenna.experiment.runner_helper import *
+from avicenna.experiment.helper import *
 from avicenna.avix import AviX
 from avicenna.avix_help import instrument
 from avicenna.oracle_construction import * 
@@ -154,35 +154,35 @@ def main():
     
     # PRODUCER SECTION
     # ***********************************
-    # producer(
-    #     relevant_attempts=['1', '2'], # for line 6
-    #     # relevant_attempts= ['1', '3','4'], # line 7
-    #     # relevant_attempts= ['1'] # rest of the lines, exclude 1, 2, 3, 8, 13
-    #     subject=middle,
-    # )
-    # fuzz_subject(
-    #     subject=calculator,
-    #     relevant_attempts= ['1', '2', '3'] # line 8
-    #     relevant_attempts= ['1', '2'] # line 9
-    #     relevant_attempts= ['1', '3', '4'] # line 12
-    #     relevant_attempts= ['1', '2'] # line 15
-    #     relevant_attempts= ['1'] # line 20, 28,
-    #     relevant_attempts= ['1', '10'] # line 24
-    # )
-    # fuzz_subject(
-    #     subject=markup,
-    #     relevant_attempts= ['1', '6'] # line 8
-    #     relevant_attempts= ['1'] # line 10
-    #     relevant_attempts= ['9'] # line 14
-    # )
-    # fuzz_subject(
-    #     subject=markup,
-    #     relevant_attempts= ['1'] # line 40, 59, 73, 85, 93, 97, 
-    #     relevant_attempts= ['1', '2'] # line 95
-    #     relevant_attempts= ['1', '3', '8', '9'] # line 105
-    #     relevant_attempts= ['1', '7'] # line 107
-    #     relevant_attempts= ['1', '2', '4'] # line 109
-    # )
+    producer(
+        # relevant_attempts=['1', '2'], # for line 6
+        # relevant_attempts= ['1', '3','4'], # line 7
+        relevant_attempts= ['1'], # rest of the lines, exclude 1, 2, 3, 8, 13
+        subject=middle,
+    )
+    producer(
+        subject=calculator,
+        # relevant_attempts= ['1']#'2', '3'] # line 8
+        # relevant_attempts= ['1']#'2'] # line 9
+        # relevant_attempts= ['1']#'3', '4'] # line 12
+        # relevant_attempts= ['1']#'2'] # line 15
+        # relevant_attempts= ['1']## line 20, 28,
+        relevant_attempts= ['1']#'10'] # line 24
+    )
+    producer(
+        subject=markup,
+        relevant_attempts= ['9']#'6'] # line 8
+        # relevant_attempts= ['1'] # line 10
+        # relevant_attempts= ['9'] # line 14
+    )
+    producer(
+        subject=expression,
+        relevant_attempts= ['1'] # line 40, 59, 73, 85, 93, 97, 
+        # relevant_attempts= ['1', '2'] # line 95
+        # relevant_attempts= ['1', '3', '8', '9'] # line 105
+        # relevant_attempts= ['1', '7'] # line 107
+        # relevant_attempts= ['1', '2', '4'] # line 109
+    )
         
     #check_sem_fuzz(calculator)
     
@@ -191,14 +191,15 @@ def main():
     # predictor(markup)
     # predictor(expression)
     # predictor(calculator)
+    #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
     predictor(
-        subject=calculator,
-        relevant_attempts=['1',]  
-        )
+        subject=expression,
+        relevant_attempts=['1'] 
+    )
     
     # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
     #ground_truth(markup, import_fuzzed('results/markup/fuzzed_predictor_nodupl.txt'))
-    #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
+    #
     #ground_truth(middle, import_fuzzed('results/middle/fuzzed_predictor_nodupl.txt'))
     #ground_truth(calculator, import_fuzzed('results/calculator/fuzzed_predictor_nodupl.txt'))
     # eval_dict = predict_fuzzed(markup)

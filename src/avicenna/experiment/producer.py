@@ -1,8 +1,8 @@
-from avicenna.experiment.runner_helper import *
+from avicenna.experiment.helper import *
 from avicenna.avix_help import instrument
 from avicenna.oracle_construction import * 
 from avicenna.experiment.experiment import Subject
-from avicenna.experiment.runner_helper import import_csv, import_fuzzed
+from avicenna.experiment.helper import import_csv, import_fuzzed
 
 from isla.solver import ISLaSolver
 
@@ -47,6 +47,7 @@ def semantic_fuzz(
                 enable_optimized_z3_queries=False,
             )
             fuzz = solver.solve()
+            fuzz = fuzz.to_string()
             if not(fuzz in fuzzed_inputs['Fuzzed']):
                 fuzzed_inputs['Fuzzed'].append(fuzz)
             
