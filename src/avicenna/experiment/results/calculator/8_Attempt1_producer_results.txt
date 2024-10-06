@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #1----------------
+constraint
+['(forall <digits> elem in start:', '(<= (str.to.int elem) (str.to.int "89")) and', 'forall <number> elem_0 in start:', '(>= (str.to.int elem_0) (str.to.int "0")))']
+The following stats were collected.
+4 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+1 correctly triggered the line out of 4 unique fuzzed inputs.
+These are the inputs: ['sqrt(0)'].
+non_triggering_fuzz
+3 incorrectly did NOT trigger the line out of 4 unique fuzzed inputs.
+These are the inputs: ['cos(0)', 'sin(0)', 'tan(0)'].

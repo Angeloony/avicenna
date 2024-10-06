@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #1----------------
+constraint
+['forall <arith_expr> container in start:', 'exists <function> elem in container:', '(= elem "sin")']
+The following stats were collected.
+96 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+96 correctly triggered the line out of 96 unique fuzzed inputs.
+These are the inputs: ['sin(5)', 'sin(0)', 'sin(549.80)', 'sin(4)', 'sin(-56)', 'sin(-70)', 'sin(-1.7)', 'sin(5.27)', 'sin(2)', 'sin(-7.32)', 'sin(-1)', 'sin(192)', 'sin(640.9)', 'sin(7.27)', 'sin(-2)', 'sin(463)', 'sin(-2.2)', 'sin(32)', 'sin(76.735018924321)', 'sin(-47)', 'sin(254)', 'sin(-9)', 'sin(8)', 'sin(9)', 'sin(1.8)', 'sin(60)', 'sin(521.9)', 'sin(135)', 'sin(87)', 'sin(2.82)', 'sin(-86)', 'sin(8.0)', 'sin(-4.34)', 'sin(-8)', 'sin(-971)', 'sin(6.74)', 'sin(7.1)', 'sin(1)', 'sin(-30)', 'sin(-6)', 'sin(1.1)', 'sin(-4.2)', 'sin(1204.9)', 'sin(7.13)', 'sin(18)', 'sin(5.32)', 'sin(-8.8)', 'sin(-597)', 'sin(683)', 'sin(3.03)', 'sin(-637.6)', 'sin(-5879.6)', 'sin(3.2)', 'sin(2.9)', 'sin(6)', 'sin(-497.2)', 'sin(-5)', 'sin(-951.6)', 'sin(-29.06)', 'sin(15)', 'sin(5.89)', 'sin(-494.57)', 'sin(2.34)', 'sin(-46)', 'sin(2.5)', 'sin(679)', 'sin(-83714258.6)', 'sin(-7)', 'sin(-4786.1)', 'sin(-827.8)', 'sin(-476)', 'sin(23)', 'sin(-6532.1)', 'sin(-245)', 'sin(876)', 'sin(-164)', 'sin(-864.82)', 'sin(8137902.4)', 'sin(37.9841)', 'sin(-530)', 'sin(-378)', 'sin(93)', 'sin(242)', 'sin(-7.45)', 'sin(1.6)', 'sin(-19802.4)', 'sin(-228415.3)', 'sin(4.0)', 'sin(84.25)', 'sin(4.67)', 'sin(-69)', 'sin(-449)', 'sin(37)', 'sin(58)', 'sin(-80)', 'sin(64916.2)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 96 unique fuzzed inputs.
+These are the inputs: [].

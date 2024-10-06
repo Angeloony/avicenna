@@ -74,15 +74,15 @@ class Subject:
             "converter" : converter_middle,
             "lines"     : [
                 #1, 2, 3,
-                4, # 
-                5, # ['1', '4']
-                6, # ['1', '2']
+                # 4, # 
+                #5, # ['1', '4']
+                #6, # ['1', '2']
                 7, # ['1', '3', '4'] diff constraints check if they differ after tests maybe
-                # # #8, 
-                9, 
-                10, 
-                11, 
-                12, 
+                # # # #8, 
+                # 9, 
+                # 10, 
+                # 11, 
+                # 12, 
                 #13
             ], # 7 lines with analysis, 7 lines with returned constraints
             "first_func": "middle",
@@ -136,11 +136,11 @@ class Subject:
                 #6,
                 #8,  # ['1', '2', '3'] || 0 vs 1, 4, 5, 7 vs 2, 3, 6, 8, 9
                 #9,  # ['1', '2']      || 0, 2, 3, 5, 7, 9, 10 vs 1, 4, 6
-                12, # ['1', '3', '4'] || 3 vs 4 vs rest
+                #12, # ['1', '3', '4'] || 3 vs 4 vs rest
                 #15, # ['1', '2']      || 1, 7 vs 2, 3, 4, 5, 6, 8, 9 no constraint on 10
                 # 20, # ['1']           || all same 
-                # 24, # ['1', '10']     || 10 vs rest
-                #28, # ['1']           || all same 
+                24, # ['1', '10']     || 10 vs rest
+                # 28, # ['1']           || all same 
                 #32, #main
             ], # 8 lines with analysis, 8 lines with returned constraints
             "first_func": "main",
@@ -282,9 +282,9 @@ class Subject:
                 #1, 
                 #6, 
                 8, # attempts ['6', '1']  check 6 vs rest
-                #10, # all same
-                #12, # none found
-                #14, # attempts ['9'], constraint vs no constraints
+                # 10, # all same
+                # #12, # none found
+                # 14, # attempts ['9'], constraint vs no constraints
             ], # 4 lines with actual analysis, 3 with constraints
             "first_func": "remove_html_markup",
             "put_path"  : str(get_avicenna_rsc_path()) + '/' + "markup.py",
@@ -362,9 +362,9 @@ class Subject:
                 #95, # return Mul | about 5 min different constraint results here || attempt 0, 2, 7, 8, 9 vs 1, 3, 4, 5, 6 | ['1', '2']
                 # 97, # return Div | || all same
                 # #99, # return parsemuldiv | instant || no constraint
-                # 105,# go into add_sub | about 5 min different constraint results here || attempts 1, 2, 4, 5, vs 3, vs 8, vs 9 vs 10 no constraint | ['1', '3', '8', '9'] IMPORTANT: NO CONSTRAINT FOUND ONCE 
-                # 107,# return Add | about 5 min different constraint results here || 7, 10, vs rest of lines | ['1', '7']
-                109,# return Sub | about 5 min different constraint results here || 0, 6 ,8 vs 1, 2, vs 3, 4, 5, 7, 9 | ['1', '2', '4']
+                105,# go into add_sub | about 5 min different constraint results here || attempts 1, 2, 4, 5, vs 3, vs 8, vs 9 vs 10 no constraint | ['1', '3', '8', '9'] IMPORTANT: NO CONSTRAINT FOUND ONCE 
+                #107,# return Add | about 5 min different constraint results here || 7, 10, vs rest of lines | ['1', '7']
+                # 109,# return Sub | about 5 min different constraint results here || 0, 6 ,8 vs 1, 2, vs 3, 4, 5, 7, 9 | ['1', '2', '4']
                 #111,# return parseaddsub | instant
             ],
             "first_func": "parse", 

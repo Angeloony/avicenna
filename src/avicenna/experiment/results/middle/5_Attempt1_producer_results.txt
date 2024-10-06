@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #1----------------
+constraint
+['(forall <z> elem_1 in start:', 'exists <y> elem_2 in start:', '(> (str.to.int elem_1) (str.to.int elem_2)) and', 'forall <y> elem_0 in start:', 'exists <x> elem_3 in start:', '(> (str.to.int elem_0) (str.to.int elem_3)))']
+The following stats were collected.
+32 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+32 correctly triggered the line out of 32 unique fuzzed inputs.
+These are the inputs: ['1,4,9', '4,6,8', '1,2,4', '2,4,6', '1,2,8', '1,2,3', '2,4,9', '2,4,5', '4,5,8', '2,4,8', '1,4,6', '2,5,8', '1,2,6', '1,4,8', '4,8,9', '1,4,7', '1,5,8', '1,8,9', '1,2,7', '1,3,8', '1,6,8', '2,6,8', '1,4,5', '2,8,9', '1,2,5', '1,2,9', '2,3,8', '1,3,4', '2,4,7', '2,7,8', '2,3,9', '1,7,8'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 32 unique fuzzed inputs.
+These are the inputs: [].

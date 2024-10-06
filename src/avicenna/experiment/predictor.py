@@ -31,6 +31,8 @@ def predictor(
                 'tneg' : 0,
                 'fneg' : [],
                 }
+                # for life check
+                alive = 1
                 
                 if (attempt['Constraint'] == None or attempt['Constraint'] == '' or 'Avicenna' in attempt['Constraint'] ):
                     continue
@@ -44,6 +46,12 @@ def predictor(
                         )
                     
                     for input in all_fuzzed:
+                        
+                        # a little life check
+                        alive += 1
+                        if alive % 5000 == 0:
+                            print(alive, input, len(all_fuzzed) - alive, " are left to classify")
+                       
                         try:
                             solver.parse(inp=input)
                             if input in trigger_fuzzed:

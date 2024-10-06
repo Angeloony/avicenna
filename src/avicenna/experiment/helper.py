@@ -132,14 +132,14 @@ def export_producer(
 ):
     unique_inputs = len(eval_dict['triggering_fuzz']) + len(eval_dict['non_triggering_fuzz'])
     
-    with open('results/' + subject.name + '/' + str(line) +'_Attempt'+str(attempt)+'producer_results.txt', 'a+') as file:
+    with open('results/' + subject.name + '/' + str(line) +'_Attempt'+str(attempt)+'_producer_results.txt', 'a+') as file:
         file.write(f"----------------NEW ATTEMPT #{attempt}----------------\n")
         
         for item in eval_dict:
             file.write(f"{item}\n")
             
             if item == 'constraint':
-                file.write(f"{eval_dict[item]}\nThe following stats were collected.\nf{unique_inputs} out of 1,000 originally fuzzed inputs were unique.\n") 
+                file.write(f"{eval_dict[item]}\nThe following stats were collected.\n{unique_inputs} out of 1,000 originally fuzzed inputs were unique.\n") 
             
             if item == 'triggering_fuzz':
                 file.write(f"{len(eval_dict[item])} correctly triggered the line out of {unique_inputs} unique fuzzed inputs.\nThese are the inputs: {eval_dict[item]}.\n")

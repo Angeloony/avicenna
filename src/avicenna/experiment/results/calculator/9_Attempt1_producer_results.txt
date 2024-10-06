@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #1----------------
+constraint
+['(exists <number> elem in start:', '(= elem "0") and', 'forall <arith_expr> container in start:', 'exists <function> elem_0 in container:', '(= elem_0 "sqrt"))']
+The following stats were collected.
+1 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+1 correctly triggered the line out of 1 unique fuzzed inputs.
+These are the inputs: ['sqrt(0)'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 1 unique fuzzed inputs.
+These are the inputs: [].

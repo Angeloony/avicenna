@@ -71,8 +71,11 @@ def check_producer(
         put_path=subject.put_path,
         instr_path=str(get_avicenna_rsc_path()) + '/instrumented.py',
     )
+    
+    after_first_run = False
     for attempt in attempts:
         for line in subject.relevant_lines:
+            print(subject.name, line, attempt)
             
             subject_oracle = construct_oracle(
                 program_under_test=subject.first_func,
@@ -81,17 +84,18 @@ def check_producer(
                 resource_path=str(get_avicenna_rsc_path()),
                 put_path=subject.put_path,
             )
+            
             inputs = import_fuzzed(
                 'results/' + subject.name + '/' + str(line) + '_Attempt'+ attempt +'_producer.txt'
             )
+            #print(inputs)
             parsing_constraint = False
-            after_first_run = False
             
             for input in inputs:
                 
                 if 'Constraint Begin' in input:
-                    if after_first_run == True:
-                        export_producer(subject, line, eval_dict, attempt)
+                    # if after_first_run == True:
+                    #     export_producer(subject, line - 1, eval_dict, attempt)
                         
                     parsing_constraint = True
                     after_first_run = True
@@ -112,5 +116,7 @@ def check_producer(
                         
                 elif parsing_constraint == True:
                     eval_dict['constraint'].append(input)
+            
+            export_producer(subject, line, eval_dict, attempt)
 
-        export_producer(subject, line, eval_dict, attempt=attempt)
+        #export_producer(subject, line, eval_dict, attempt=attempt)

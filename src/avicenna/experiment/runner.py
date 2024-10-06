@@ -157,7 +157,7 @@ def main():
     # producer(
     #     # relevant_attempts=['1', '2'], # for line 6
     #     # relevant_attempts= ['1', '3','4'], # line 7
-    #     relevant_attempts= ['3', '4'], # rest of the lines, exclude 1, 2, 3, 8, 13
+    #     relevant_attempts= ['4'], # rest of the lines, exclude 1, 2, 3, 8, 13
     #     subject=middle,
     # )
     # producer(
@@ -167,26 +167,26 @@ def main():
     #     # relevant_attempts= [] # line 12
     #     # relevant_attempts=  # line 15
     #     # relevant_attempts= [# line 20, 28,
-    #     relevant_attempts= ['4']#'10'] # line 24
+    #     relevant_attempts= ['10']#] # line 24
     # )
-    # # producer(
-    # #     subject=markup,
-    # #     relevant_attempts= ['6']#] # line 8
-    # #     # relevant_attempts= [] # line 10
-    # #     # relevant_attempts= [] # line 14
-    # # )
+    # producer(
+    #     subject=markup,
+    #     relevant_attempts= ['6']#] # line 8
+    #     # relevant_attempts= [] # line 10
+    #     # relevant_attempts= [] # line 14
+    # )
     # producer(
     #     subject=expression,
-    #     relevant_attempts= ['7'] # line 40, 59, 73, 85, 93, 97, 
+    #     #relevant_attempts= ['3', '8', '9'] # line 40, 59, 73, 85, 93, 97, 
     #     # relevant_attempts= [] # line 95
-    #     # relevant_attempts= ['3', '8', '9'] # line 105
-    #     # relevant_attempts= ['7'] # line 107
+    #     relevant_attempts= ['8', '9'] # line 105
+    #     # relevant_attempts= [] # line 107
     #     # relevant_attempts= [] # line 109
     # )
     
     check_producer(
-        middle,
-        ['1']
+        calculator,
+        ['10']
     )
         
     #check_sem_fuzz(calculator)

@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #2----------------
+constraint
+['exists <function> elem in start:', '(= elem "sqrt")']
+The following stats were collected.
+91 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+43 correctly triggered the line out of 91 unique fuzzed inputs.
+These are the inputs: ['sqrt(276)', 'sqrt(3.3)', 'sqrt(0)', 'sqrt(9)', 'sqrt(8.18)', 'sqrt(48)', 'sqrt(6)', 'sqrt(16.38)', 'sqrt(67.81)', 'sqrt(1)', 'sqrt(3679204.1)', 'sqrt(5.08)', 'sqrt(81.07)', 'sqrt(2)', 'sqrt(191.5)', 'sqrt(8.4)', 'sqrt(7)', 'sqrt(3.2)', 'sqrt(7.1)', 'sqrt(9.03)', 'sqrt(4.0)', 'sqrt(84.25)', 'sqrt(4.67)', 'sqrt(37)', 'sqrt(58)', 'sqrt(64916.2)', 'sqrt(83.81)', 'sqrt(4)', 'sqrt(43)', 'sqrt(6.1)', 'sqrt(120.9)', 'sqrt(4.5)', 'sqrt(4.09)', 'sqrt(9.49)', 'sqrt(579.8)', 'sqrt(714)', 'sqrt(742)', 'sqrt(872)', 'sqrt(3.10)', 'sqrt(64)', 'sqrt(3)', 'sqrt(7.21)', 'sqrt(8926581.3)'].
+non_triggering_fuzz
+48 incorrectly did NOT trigger the line out of 91 unique fuzzed inputs.
+These are the inputs: ['sqrt(-72.50)', 'sqrt(-18.169)', 'sqrt(-2.4)', 'sqrt(-7.04)', 'sqrt(-627)', 'sqrt(-8.04)', 'sqrt(-17)', 'sqrt(-57.03)', 'sqrt(-3.3)', 'sqrt(-9528409.7)', 'sqrt(-4)', 'sqrt(-9.8)', 'sqrt(-6.8)', 'sqrt(-7.4)', 'sqrt(-3.7)', 'sqrt(-73.47)', 'sqrt(-8)', 'sqrt(-37.63)', 'sqrt(-4.37)', 'sqrt(-69)', 'sqrt(-449)', 'sqrt(-80)', 'sqrt(-37.438)', 'sqrt(-357)', 'sqrt(-45.9312)', 'sqrt(-87.48)', 'sqrt(-1.5)', 'sqrt(-293)', 'sqrt(-824)', 'sqrt(-9)', 'sqrt(-5)', 'sqrt(-697)', 'sqrt(-5.4)', 'sqrt(-6.24)', 'sqrt(-7.83)', 'sqrt(-3)', 'sqrt(-2.0)', 'sqrt(-8869.3)', 'sqrt(-40)', 'sqrt(-139.16)', 'sqrt(-7)', 'sqrt(-9.04)', 'sqrt(-27.13)', 'sqrt(-557)', 'sqrt(-8.83)', 'sqrt(-120.9)', 'sqrt(-96)', 'sqrt(-4.76)'].
