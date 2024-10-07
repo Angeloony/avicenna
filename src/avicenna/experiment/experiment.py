@@ -350,21 +350,21 @@ class Subject:
                 # TODO : producer all lines
                 # lines 49, 71, 86, 87, 99, 111, do not have constraints - no predict
                 #10, # init Binary | at least 10 min  || check attempts
-                # 40, # init Negate | at least 1 minute || all same
-                # #49, # init Constant DONE | instant   || no constraints
-                # 59, # check for space | about 5 min at least || all same ['1']
-                # #71, # DONE checking isnumeric()  || no constraints
-                # 73, # parenthesis check | about 5 min || all same 
-                # 85, # return Negate Term | about 1 min || all same
-                # #86, # DONE instant i tihnk? || no constraint
-                # #87, # return parse_neg | about 1h long - no constraint || no constraint BUT RELEVANT cuz we still searched NOT RUN YET
-                # 93, # go into mul_div | about 2 min to 5 min || all same, not found in attempt 7
+                #40, # init Negate | at least 1 minute || all same
+                #49, # init Constant DONE | instant   || no constraints
+                #59, # check for space | about 5 min at least || all same ['1']
+                #71, # DONE checking isnumeric()  || no constraints
+                #73, # parenthesis check | about 5 min || all same 
+                #85, # return Negate Term | about 1 min || all same
+                #86, # DONE instant i tihnk? || no constraint
+                #87, # return parse_neg | about 1h long - no constraint || no constraint BUT RELEVANT cuz we still searched NOT RUN YET
+                #93, # go into mul_div | about 2 min to 5 min || all same, not found in attempt 7
                 #95, # return Mul | about 5 min different constraint results here || attempt 0, 2, 7, 8, 9 vs 1, 3, 4, 5, 6 | ['1', '2']
-                # 97, # return Div | || all same
-                # #99, # return parsemuldiv | instant || no constraint
+                #97, # return Div | || all same
+                #99, # return parsemuldiv | instant || no constraint
                 105,# go into add_sub | about 5 min different constraint results here || attempts 1, 2, 4, 5, vs 3, vs 8, vs 9 vs 10 no constraint | ['1', '3', '8', '9'] IMPORTANT: NO CONSTRAINT FOUND ONCE 
                 #107,# return Add | about 5 min different constraint results here || 7, 10, vs rest of lines | ['1', '7']
-                # 109,# return Sub | about 5 min different constraint results here || 0, 6 ,8 vs 1, 2, vs 3, 4, 5, 7, 9 | ['1', '2', '4']
+                #109,# return Sub | about 5 min different constraint results here || 0, 6 ,8 vs 1, 2, vs 3, 4, 5, 7, 9 | ['1', '2', '4']
                 #111,# return parseaddsub | instant
             ],
             "first_func": "parse", 

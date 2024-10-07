@@ -4,7 +4,7 @@ from avicenna.oracle_construction import *
 from avicenna.experiment.experiment import Subject
 
 from isla.solver import ISLaSolver, SemanticError
-
+import gc 
 """
     PREDICTOR STUFF
 """
@@ -15,30 +15,31 @@ from isla.solver import ISLaSolver, SemanticError
 def predictor(
     subject: Subject,
     relevant_attempts,
+    predict_file_name,
+    total_file_name
 ):  
-    all_fuzzed = import_fuzzed('results/' + subject.name + '/fuzzed_predictor_nodupl.txt')    
+    all_fuzzed = import_fuzzed('results/' + subject.name + '/'+ total_file_name +'.txt')    
     for line in subject.relevant_lines:
-        print('predictor', subject.name, line)
         
         # allows me to test just 1 line/1 predictor
         subject_dict = import_csv('results/' + subject.name + '/' + str(line) + '_results.csv')
         for attempt in subject_dict:
             if str(attempt['Attempt']) in relevant_attempts:
-                print(attempt['Attempt'])
+                print('predictor', subject.name, line, attempt['Attempt'])
                 eval_dict = {
-                'fpos' : [],
+                'fpos' : 0,
                 'tpos' : 0,
                 'tneg' : 0,
-                'fneg' : [],
+                'fneg' : 0,
                 }
                 # for life check
-                alive = 1
+                # alive = 1
                 
                 if (attempt['Constraint'] == None or attempt['Constraint'] == '' or 'Avicenna' in attempt['Constraint'] ):
                     continue
                 
                 else:
-                    trigger_fuzzed = import_fuzzed('results/' + subject.name + '/' + str(line) +'_line_triggered_fuzz.txt')
+                    trigger_fuzzed = import_fuzzed('results/' + subject.name + '/' + str(line) + predict_file_name + '.txt')
                     solver = ISLaSolver(
                             grammar=subject.grammar,
                             formula=attempt['Constraint'],
@@ -46,23 +47,22 @@ def predictor(
                         )
                     
                     for input in all_fuzzed:
-                        
-                        # a little life check
-                        alive += 1
-                        if alive % 5000 == 0:
-                            print(alive, input, len(all_fuzzed) - alive, " are left to classify")
-                       
+                        # # a little life check
+                        # alive += 1
+                        # if alive % 2500 == 0:
+                        #     print(alive, input, len(all_fuzzed) - alive, " are left to classify")
+                        #print(input)
                         try:
-                            solver.parse(inp=input)
-                            if input in trigger_fuzzed:
+                            parsed =solver.parse(inp=input).to_string()
+                            
+                            if parsed in trigger_fuzzed:
                                 eval_dict['tpos'] += 1
-                            elif not(input in trigger_fuzzed):
-                                eval_dict['fpos'].append(input)
-                                
+                            elif not(parsed in trigger_fuzzed):
+                                eval_dict['fpos'] += 1
                                 
                         except SemanticError:
                             if input in trigger_fuzzed:
-                                eval_dict['fneg'].append(input)
+                                eval_dict['fneg'] += 1
                             elif not(input in trigger_fuzzed):
                                 eval_dict['tneg'] += 1            
 
@@ -70,4 +70,4 @@ def predictor(
             else:
                 continue
                     
-    return eval_dict
+    return

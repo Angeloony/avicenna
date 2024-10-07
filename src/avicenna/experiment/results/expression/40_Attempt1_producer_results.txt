@@ -1,0 +1,11 @@
+----------------NEW ATTEMPT #1----------------
+constraint
+['exists <maybe_minus> elem in start:', '(= elem "~ ")']
+The following stats were collected.
+88 out of 1,000 originally fuzzed inputs were unique.
+triggering_fuzz
+88 correctly triggered the line out of 88 unique fuzzed inputs.
+These are the inputs: ['~ 6', '~ 40', '~ 95', '~ 2', '~ 8', '~ 16', '~ 69', '~ 3', '~ 7', '~ 77', '~ 712', '~ 79', '~ 5', '~ 4', '~ 1', '~ 742', '~ 162', '~ 56', '~ 57', '~ 9', '~ 76', '~ 24', '~ 605', '~ 18', '~ 963', '~ 513', '~ 967', '~ 430', '~ 305', '~ 151', '~ 20', '~ 60', '~ 918', '~ 108', '~ 38', '~ 587', '~ 695', '~ 64', '~ 321', '~ 449', '~ 32', '~ 249', '~ 50', '~ 96', '~ 94', '~ 36', '~ 327', '~ 49', '~ 954', '~ 62', '~ 44', '~ 279', '~ 484', '~ 30', '~ 663', '~ 448', '~ 25', '~ 948', '~ 89', '~ 21', '~ 86', '~ 13', '~ 557', '~ 935', '~ 946', '~ 10', '~ 489', '~ 98', '~ 11', '~ 367', '~ 759', '~ 92', '~ 71', '~ 85', '~ 306', '~ 51', '~ 378', '~ 307', '~ 81', '~ 813', '~ 65', '~ 572', '~ 146', '~ 42', '~ 167', '~ 535', '~ 262', '~ 604'].
+non_triggering_fuzz
+0 incorrectly did NOT trigger the line out of 88 unique fuzzed inputs.
+These are the inputs: [].

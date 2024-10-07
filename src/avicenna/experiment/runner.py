@@ -179,15 +179,15 @@ def main():
     #     subject=expression,
     #     #relevant_attempts= ['3', '8', '9'] # line 40, 59, 73, 85, 93, 97, 
     #     # relevant_attempts= [] # line 95
-    #     relevant_attempts= ['8', '9'] # line 105
+    #     relevant_attempts= ['7'] # line 105
     #     # relevant_attempts= [] # line 107
     #     # relevant_attempts= [] # line 109
     # )
     
-    check_producer(
-        calculator,
-        ['10']
-    )
+    # check_producer(
+    #     expression,
+    #     ['2']
+    # )
         
     #check_sem_fuzz(calculator)
     
@@ -197,20 +197,24 @@ def main():
     # predictor(expression)
     # predictor(calculator)
     #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
-    # predictor(
-    #     subject=expression,
-    #     relevant_attempts=['1'] 
-    # )
+
+    attempt = '2'
+    predictor(
+        subject=expression,
+        relevant_attempts=['3','8','9'],
+        predict_file_name='_line_triggered_fuzz',
+        total_file_name='placeholder'
+    )
     
     # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
     #ground_truth(markup, import_fuzzed('results/markup/fuzzed_predictor_nodupl.txt'))
     #
-    #ground_truth(middle, import_fuzzed('results/middle/fuzzed_predictor_nodupl.txt'))
+    #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
     #ground_truth(calculator, import_fuzzed('results/calculator/fuzzed_predictor_nodupl.txt'))
     # eval_dict = predict_fuzzed(markup)
     # remove_duplicate_lines('results/' + middle.name + '/fuzzed_predictor.txt', 'results/' + middle.name + '/fuzzed_predictor_nodupl.txt')
     # remove_duplicate_lines('results/' + markup.name + '/fuzzed_predictor.txt', 'results/' + markup.name + '/fuzzed_predictor_nodupl.txt')
-    # remove_duplicate_lines('results/' + expression.name + '/fuzzed_predictor.txt', 'results/' + expression.name + '/fuzzed_predictor_nodupl.txt')
+    #remove_duplicate_lines('results/' + expression.name + '/fuzzed_predictor.txt', 'results/' + expression.name + '/fuzzed_predictor_nodupl.txt')
     # remove_duplicate_lines('results/' + calculator.name + '/fuzzed_predictor.txt', 'results/' + calculator.name + '/fuzzed_predictor_nodupl.txt')
     #predictor(markup)
     # predictor(expression)
