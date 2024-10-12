@@ -1,0 +1,13 @@
+,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+0,1,3442.147,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+1,2,1756.931,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+2,3,2660.807,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+3,4,77.693,0.67,0.91,87,"forall <digit> elem_1 in start:
+  exists <number> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))","ForallFormula(BoundVariable(""elem_1"", ""<digit>""), Constant(""start"", ""<start>""), ExistsFormula(BoundVariable(""elem_2"", ""<number>""), Constant(""start"", ""<start>""), SMTFormula('(>= (str.to_int elem_1) (str.to_int elem_2))', BoundVariable(""elem_1"", ""<digit>""), BoundVariable(""elem_2"", ""<number>""), ))), 0.6666666666666667, 0.912408"
+4,5,2352.805,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+5,6,722.42,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+6,7,2578.692,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+7,8,1751.312,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+8,9,3661.993,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.
+9,10,3422.983,-1.0,-1.0,87,,No constraint has been found for min_precision 0.6 and min_recall 0.9.

@@ -3,13 +3,13 @@ fpos
 0 were wrongly classified as False Positive out of 24279 True Negatives.
 The wrongly classified inputs were: 0.
 tpos
-26770 were correctly classified as True Positive out of 26771 True Positives.
+26770 were correctly classified as True Positive out of 26770 True Positives.
 tneg
-24280 were correctly classified as True Negative out of 24279 True Negatives.
+24279 were correctly classified as True Negative out of 24279 True Negatives.
 fneg
-0 were wrongly classified as False Negative out of 26771 True Positives.
+0 were wrongly classified as False Negative out of 26770 True Positives.
 The wrongly classified inputs were: 0.
 
 
-51050 unique inputs were grammar-fuzzed in this section.
+51049 unique inputs were grammar-fuzzed in this section.
 

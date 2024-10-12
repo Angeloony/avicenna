@@ -1,5 +1,6 @@
 ,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
-0,1,235.885,1.0,1.0,5,"(forall <z> elem_1 in start:
+0,1,235.885,1.0,1.0,5,"
+(forall <z> elem_1 in start:
    exists <y> elem_2 in start:
      (> (str.to.int elem_1) (str.to.int elem_2)) and
 forall <y> elem_0 in start:

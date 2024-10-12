@@ -1,21 +1,21 @@
-,Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
-0,1,29.228,1.0,1.0,40,"exists <maybe_minus> elem in start:
+Attempt,Runtime,Precision,Recall,Line,Constraint,Readable_Constraint
+1,29.228,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-1,2,58.092,1.0,1.0,40,"exists <maybe_minus> elem in start:
+2,58.092,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-2,3,30.712,1.0,1.0,40,"exists <maybe_minus> elem in start:
+3,30.712,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-3,4,88.24,1.0,1.0,40,"exists <maybe_minus> elem in start:
+4,88.24,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-4,5,81.928,1.0,1.0,40,"exists <maybe_minus> elem in start:
+5,81.928,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-5,6,32.534,1.0,1.0,40,"exists <maybe_minus> elem in start:
+6,32.534,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-6,7,36.845,1.0,1.0,40,"exists <maybe_minus> elem in start:
+7,36.845,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-7,8,42.119,1.0,1.0,40,"exists <maybe_minus> elem in start:
+8,42.119,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-8,9,52.542,1.0,1.0,40,"exists <maybe_minus> elem in start:
+9,52.542,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"
-9,10,28.61,1.0,1.0,40,"exists <maybe_minus> elem in start:
+10,28.61,1.0,1.0,40,"exists <maybe_minus> elem in start:
   (= elem ""~ "")","ExistsFormula(BoundVariable(""elem"", ""<maybe_minus>""), Constant(""start"", ""<start>""), SMTFormula('(= elem ""~ "")', BoundVariable(""elem"", ""<maybe_minus>""), ))"

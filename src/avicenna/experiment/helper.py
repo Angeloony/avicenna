@@ -172,8 +172,8 @@ def remove_duplicate_lines(input_file, output_file):
 """  
 def grammar_fuzz(subject: Subject):
     subject_fuzzer = GrammarFuzzer(grammar=subject.grammar)
-    for _ in range(0,100000):
-        with open('results/' + subject.name + '/fuzzed_predictor.txt', 'a+') as file:
+    for _ in range(0,1000):
+        with open('results/' + subject.name + '/fuzz_producer.txt', 'a+') as file:
             file.write(f"{subject_fuzzer.fuzz()}\n")
     return
 
@@ -208,6 +208,7 @@ def check_trigger(
         )
         
         for input in inputs:
+            
             if subject_oracle(input) == OracleResult.FAILING:
                 line_dict[str(line)].append(input)
     
@@ -239,7 +240,7 @@ def ground_truth(subject: Subject, inputs,):
     
     for line in subject.relevant_lines:
         
-        with open('results/' + subject.name + '/' + str(line) + '_line_triggered_fuzz.txt', 'w') as file:
+        with open('results/' + subject.name + '/' + str(line) + '_producer_line_triggered_fuzz.txt', 'w') as file:
             for item in result_dict:
                 if str(item) == str(line):
                     for value in result_dict[item]:

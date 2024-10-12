@@ -27,10 +27,10 @@ def predictor(
             if str(attempt['Attempt']) in relevant_attempts:
                 print('predictor', subject.name, line, attempt['Attempt'])
                 eval_dict = {
-                'fpos' : 0,
-                'tpos' : 0,
-                'tneg' : 0,
-                'fneg' : 0,
+                'fpos' : [],
+                'tpos' : [],
+                'tneg' : [],
+                'fneg' : [],
                 }
                 # for life check
                 # alive = 1
@@ -56,15 +56,15 @@ def predictor(
                             parsed =solver.parse(inp=input).to_string()
                             
                             if parsed in trigger_fuzzed:
-                                eval_dict['tpos'] += 1
+                                eval_dict['tpos'].append(input)
                             elif not(parsed in trigger_fuzzed):
-                                eval_dict['fpos'] += 1
+                                eval_dict['fpos'].append(input)
                                 
                         except SemanticError:
                             if input in trigger_fuzzed:
-                                eval_dict['fneg'] += 1
+                                eval_dict['fneg'].append(input)
                             elif not(input in trigger_fuzzed):
-                                eval_dict['tneg'] += 1            
+                                eval_dict['tneg'].append(input)          
 
                     export_predictor(subject, line, eval_dict, all_fuzzed=all_fuzzed, trigger_fuzzed=trigger_fuzzed, attempt=attempt['Attempt'])
             else:

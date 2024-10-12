@@ -1,0 +1,12 @@
+Constraint Begin: 
+forall <digit> elem_1 in start:
+  exists <number> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))
+Constraint End.
+0
+Constraint Begin: 
+forall <digit> elem_1 in start:
+  exists <number> elem_2 in start:
+    (>= (str.to.int elem_1) (str.to.int elem_2))
+Constraint End.
+0

@@ -2,8 +2,12 @@ import csv
 import time
 import logging
 import string
+from pandas import *
+import statistics 
+import numpy
 from typing import List, Dict
-
+from avicenna.rsc.expression import *
+from avicenna.rsc.calculator import main as pain
 from avicenna.experiment.helper import *
 from avicenna.avix import AviX
 from avicenna.avix_help import instrument
@@ -129,6 +133,25 @@ def run_subject(subject: Subject, runs: int):
     
     return subject
 
+def get_runtimes(subject:Subject):
+    runtimes = []
+    final = []
+    for line in subject.relevant_lines:
+        df = DataFrame(data=import_csv('results/'+ subject.name +'/'+str(line)+'_results.csv'))
+        #print(df)
+        runtimes.append(df['Runtime'])
+        #print(runtimes)
+    
+    for attempt in runtimes:
+        #print(attempt)
+        for runtime in attempt:
+            #print(runtime)
+            if runtime == '-1.0' or runtime == '-1':
+                final.append(0)
+            else:
+                final.append((float(runtime)))
+    final.sort()
+    return final
 
 """
     Main runner. Lets me adjust values, decide what programs to run etc.
@@ -169,7 +192,7 @@ def main():
     #     # relevant_attempts= [# line 20, 28,
     #     relevant_attempts= ['10']#] # line 24
     # )
-    # producer(
+    #producer(
     #     subject=markup,
     #     relevant_attempts= ['6']#] # line 8
     #     # relevant_attempts= [] # line 10
@@ -177,9 +200,9 @@ def main():
     # )
     # producer(
     #     subject=expression,
-    #     #relevant_attempts= ['3', '8', '9'] # line 40, 59, 73, 85, 93, 97, 
+    #     relevant_attempts= ['3',] # line 40, 59, 73, 85, 93, 97, 
     #     # relevant_attempts= [] # line 95
-    #     relevant_attempts= ['7'] # line 105
+    #     #relevant_attempts= ['4'] # line 87
     #     # relevant_attempts= [] # line 107
     #     # relevant_attempts= [] # line 109
     # )
@@ -198,29 +221,29 @@ def main():
     # predictor(calculator)
     #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
 
-    attempt = '2'
+    # # attempt = '2'
     predictor(
         subject=expression,
-        relevant_attempts=['3','8','9'],
+        relevant_attempts=['4',],
         predict_file_name='_line_triggered_fuzz',
-        total_file_name='placeholder'
+        total_file_name='fuzzed_predictor_nodupl'
     )
     
-    # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
-    #ground_truth(markup, import_fuzzed('results/markup/fuzzed_predictor_nodupl.txt'))
-    #
-    #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
-    #ground_truth(calculator, import_fuzzed('results/calculator/fuzzed_predictor_nodupl.txt'))
-    # eval_dict = predict_fuzzed(markup)
-    # remove_duplicate_lines('results/' + middle.name + '/fuzzed_predictor.txt', 'results/' + middle.name + '/fuzzed_predictor_nodupl.txt')
-    # remove_duplicate_lines('results/' + markup.name + '/fuzzed_predictor.txt', 'results/' + markup.name + '/fuzzed_predictor_nodupl.txt')
-    #remove_duplicate_lines('results/' + expression.name + '/fuzzed_predictor.txt', 'results/' + expression.name + '/fuzzed_predictor_nodupl.txt')
-    # remove_duplicate_lines('results/' + calculator.name + '/fuzzed_predictor.txt', 'results/' + calculator.name + '/fuzzed_predictor_nodupl.txt')
-    #predictor(markup)
-    # predictor(expression)
-    # predictor(calculator)
-    
-                
+    # runtimes = get_runtimes(subject=expression)
+    # print(runtimes)
+    # print(statistics.median(runtimes), numpy.percentile(runtimes, 25), numpy.percentile(runtimes, 75), numpy.min(runtimes), numpy.max(runtimes), )
+    # print(numpy.percentile(runtimes, 75) - numpy.percentile(runtimes, 25), numpy.percentile(runtimes, 75) - numpy.percentile(runtimes, 25) + numpy.percentile(runtimes, 75))
+    # # TODO : DO EXPRESSION AND MIDDLE RUN OVER NIGHT
+    # #ground_truth(expression, import_fuzzed('results/expression/fuzzed_predictor_nodupl.txt'))
+    # for line in markup.relevant_lines:
+    #     remove_duplicate_lines(
+    #         'results/markup/' + str(line) + '_producer_line_triggered_fuzz.txt',
+    #         'results/markup/' + str(line) + '_producer_line_triggered_fuzznodupl.txt')
+        
+    #ground_truth(middle,import_fuzzed('results/middle/fuzz_producer.txt'))
+    #ground_truth(markup,import_fuzzed('results/markup/fuzz_producer.txt'))
+    #ground_truth(calculator,import_fuzzed('results/calculator/fuzz_producer.txt'))
+    #ground_truth(expression,import_fuzzed('results/expression/fuzz_producer.txt'))
     #print(inputs)
     #print(eval_dict)
   
